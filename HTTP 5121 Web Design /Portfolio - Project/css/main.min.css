@@ -54,6 +54,16 @@ header nav ul li {
 nav .nav_menu_links {
   font-size: 1.2em;
 }
+.barMenu {
+  display: none;
+  color: white;
+}
+/* add Toggle */
+.menu_toggle {
+  background-color: yellow;
+  font-weight: bold;
+  display: inline-block;
+}
 /* ---------------------END------------------------------------ */
 /* ---------------- Header Navigation ---------------------*/
 
@@ -202,9 +212,3 @@ footer nav .nav_menu_links {
   font-size: 1.2em;
 }
 /* ---------------------END------------------------------------ */
-
-/* Tablet CSS */
-
-.barMenu {
-  display: none;
-}

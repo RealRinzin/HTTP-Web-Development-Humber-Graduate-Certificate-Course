@@ -66,6 +66,7 @@
   /* Show hamburger, hide nav links */
   .barMenu {
     display: inline-block;
+    color: white;
   }
   header .nav_menu_links li:not(.barMenu) {
     display: none;

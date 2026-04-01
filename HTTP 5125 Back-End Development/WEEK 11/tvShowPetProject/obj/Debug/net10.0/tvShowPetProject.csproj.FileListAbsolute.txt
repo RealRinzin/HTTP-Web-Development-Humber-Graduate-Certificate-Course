@@ -22,7 +22,6 @@
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/scopedcss/bundle/tvShowPetProject.styles.css
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/scopedcss/projectbundle/tvShowPetProject.bundle.scp.css
-/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/compressed/668tyemz36-{0}-lugek5hnai-lugek5hnai.gz
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/compressed/33w64jogq5-{0}-61n19gt1b8-61n19gt1b8.gz
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/compressed/kh95axxd7g-{0}-fr7q2aak1r-fr7q2aak1r.gz
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/compressed/i31js0xsog-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -96,3 +95,4 @@
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/tvShowPetProject.pdb
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/tvShowPetProject.genruntimeconfig.cache
 /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/ref/tvShowPetProject.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 11/tvShowPetProject/obj/Debug/net10.0/compressed/668tyemz36-{0}-gqq32i2w5t-gqq32i2w5t.gz

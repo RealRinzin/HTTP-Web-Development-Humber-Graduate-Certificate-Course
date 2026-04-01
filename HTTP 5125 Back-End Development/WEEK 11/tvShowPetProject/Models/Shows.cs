@@ -9,19 +9,23 @@ public class Shows
     public string type { get; set; }
     public string language { get; set; }
 
+    public string url { get; set; }
     public List<string> genres { get; set; }
-    // public string status { get; set; }
-    // public int runtime { get; set; }
-    // public string premiered { get; set; }
-    // public string officialSite { get; set; }
-    // public string schedule { get; set; }
-    // public string rating { get; set; }
-    // public string weight { get; set; }
+    public Image image { get; set; }
+
 }
 
+/** The Show class represents a TV show with its ID, name, and URL. */
 public class Show
 {
     public int id { get; set; }
     public string name { get; set; }
     public string url { get; set; }
+}
+
+/*** The Image class represents the image information for a TV show, including the medium and original image URLs. */
+public class Image
+{
+    public string medium { get; set; }
+    public string original { get; set; }
 }

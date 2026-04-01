@@ -16,12 +16,7 @@ public class TVShowController : Controller
     public async Task<IActionResult> Index()
     {
         var content = await service.getData();
-        // foreach (var item in content) 
-            // {
-            //     Console.WriteLine(item.Show.name);
-            // }
-            // Console.WriteLine(content);
-            return View(content);
+        return View(content);
         // return View();
 
     }

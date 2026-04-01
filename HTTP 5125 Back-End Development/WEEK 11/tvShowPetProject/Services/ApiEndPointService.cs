@@ -18,7 +18,7 @@ namespace tvShowPetProject.Services
             var req = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api.tvmaze.com/show"),
+                RequestUri = new Uri("https://api.tvmaze.com/shows?page=2"),
             };
 
             // var req = new HttpRequestMessage(HttpMethod.Get,

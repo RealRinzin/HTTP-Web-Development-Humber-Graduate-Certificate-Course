@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj": {}
+    "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj": {}
   },
   "projects": {
-    "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj": {
+    "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj",
+        "projectUniqueName": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj",
         "projectName": "ApiConnection",
-        "projectPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj",
+        "projectPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/ApiConnection.csproj",
         "packagesPath": "/Users/tenzinrinzin/.nuget/packages/",
-        "outputPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/obj/",
+        "outputPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 10/ApiConnection/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/tenzinrinzin/.nuget/NuGet/NuGet.Config"

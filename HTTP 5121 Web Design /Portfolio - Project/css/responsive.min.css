@@ -1,5 +1,5 @@
 /* ============================================================
-   TABLET — max-width: 786
+   TABLET — max-width: 786px
    ============================================================ */
 @media (max-width: 786px) {
   /* --- Header --- */
@@ -66,7 +66,6 @@
   /* Show hamburger, hide nav links */
   .barMenu {
     display: inline-block;
-    color: white;
   }
   header .nav_menu_links li:not(.barMenu) {
     display: none;

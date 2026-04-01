@@ -1,0 +1,45 @@
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.GeneratedMSBuildEditorConfig.editorconfig
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfoInputs.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfo.cs
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.csproj.CoreCompileInputs.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.sourcelink.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.deps.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.runtimeconfig.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.pdb
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/refint/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.pdb
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.genruntimeconfig.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/SpaBookingSystem/obj/Debug/net10.0/ref/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.deps.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.runtimeconfig.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.pdb
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.GeneratedMSBuildEditorConfig.editorconfig
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfoInputs.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfo.cs
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.csproj.CoreCompileInputs.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.sourcelink.json
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/refint/SpaBookingSystem.dll
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.pdb
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.genruntimeconfig.cache
+/Users/codewithvoran/Humber/Back-End-Web-Development-1---HTTP-5125-0NA/assignments/SpaBookingSystem/obj/Debug/net10.0/ref/SpaBookingSystem.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.deps.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.runtimeconfig.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/bin/Debug/net10.0/SpaBookingSystem.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfoInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.AssemblyInfo.cs
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.csproj.CoreCompileInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.sourcelink.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/refint/SpaBookingSystem.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/SpaBookingSystem.genruntimeconfig.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 7/SpaBookingSystem/obj/Debug/net10.0/ref/SpaBookingSystem.dll

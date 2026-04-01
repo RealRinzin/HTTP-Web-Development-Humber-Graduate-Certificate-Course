@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html> -->
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="3d-graph"></div>
+    <script src="https://unpkg.com/3d-force-graph"></script>
+    <script>
+      const graphData = {
+        nodes: [
+          { id: "node1", level: 0, label: "Root", url: "http://localhost:3001/" }, // top
+          {
+            id: "node2",
+            level: 1,
+            label: "Branch A",
+            url: "http://localhost:3001/",
+          },
+          {
+            id: "node3",
+            level: 1,
+            label: "Branch B",
+            url: "https://humber.ca",
+          },
+          {
+            id: "node4",
+            level: 2,
+            label: "Leaf A1",
+            url: "https://youtube.com",
+          },
+          {
+            id: "node5",
+            level: 2,
+            label: "Leaf A2",
+            url: "https://amazon.com",
+          },
+          {
+            id: "node6",
+            level: 2,
+            label: "Leaf B1",
+            url: "https://bestbuy.com",
+          },
+          {
+            id: "node7",
+            level: 2,
+            label: "Leaf B2",
+            url: "https://youtube.com",
+          },
+        ],
+        links: [
+          { source: "node1", target: "node2" },
+          { source: "node1", target: "node3" },
+          { source: "node2", target: "node4" },
+          { source: "node2", target: "node5" },
+          { source: "node3", target: "node6" },
+          { source: "node3", target: "node7" },
+        ],
+      };
+      // Pre-calculate positions before rendering
+      const levelHeight = 100; // vertical gap between levels
+      const spreadWidth = 100; // horizontal spread
+      // Group nodes by level
+      const levelGroups = {};
+      graphData.nodes.forEach((node) => {
+        if (!levelGroups[node.level]) levelGroups[node.level] = [];
+        levelGroups[node.level].push(node);
+      });
+
+      // Assign x, y, z positions
+      Object.entries(levelGroups).forEach(([level, nodes]) => {
+        const count = nodes.length;
+        nodes.forEach((node, i) => {
+          node.fx = (i - (count - 1) / 2) * spreadWidth; // center spread
+          node.fy = -level * levelHeight; // top to bottom
+          node.fz = 0;
+        });
+      });
+      //   const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
+      //     .graphData(graphData)
+      //     .nodeLabel("label")
+      //     .nodeColor((node) => {
+      //       const colors = ["#ff4444", "#ffaa00", "#00aaff", "#00ff88"];
+      //       return colors[node.level] || "#ffffff";
+      //     })
+      //     .nodeVal((node) => 10 - node.level * 2) // root is biggest
+      //     .linkColor(() => "rgba(255,255,255,0.4)")
+      //     .linkWidth(2)
+      //     .nodeLabel((node) => `${node.label} — ${node.url}`)
+      //     .onNodeClick((node) => {
+      //       if (node.url) window.open(node.url, "_blank");
+      //     })
+      //     .onNodeHover((node) => {
+      //       document.body.style.cursor = node ? "pointer" : "default";
+      //       if (node.url) window.open(node.url, "_blank");
+      //     })
+      // .d3AlphaDecay(1); // stop physics so fixed positions hold
+      const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
+        .graphData(graphData)
+        .nodeVal((node) => 10 - node.level * 2) // root is biggest
+        .nodeLabel((node) => `${node.label} — ${node.url}`)
+        .linkWidth(2)
+        .nodeColor((node) => {
+          const colors = ["#ff4444", "#ffaa00", "#00aaff", "#00ff88"];
+          return colors[node.level] || "#ffffff";
+        })
+        .onNodeHover((node) => {
+          document.body.style.cursor = node ? "pointer" : "default";
+        })
+        .onNodeClick((node) => {
+          if (node.url) window.open(node.url, "_blank");
+        })
+        .d3AlphaDecay(1);
+    </script>
+  </body>
+</html>

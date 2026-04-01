@@ -1,0 +1,15 @@
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/bin/Debug/net10.0/App
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/bin/Debug/net10.0/App.deps.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/bin/Debug/net10.0/App.runtimeconfig.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/bin/Debug/net10.0/App.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/bin/Debug/net10.0/App.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.AssemblyInfoInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.AssemblyInfo.cs
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.csproj.CoreCompileInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.sourcelink.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/refint/App.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/App.genruntimeconfig.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 3/App/obj/Debug/net10.0/ref/App.dll

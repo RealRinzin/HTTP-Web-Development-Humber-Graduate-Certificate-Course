@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Checkout Order #123 - Billing and Payment</title>
+  </head>
+  <body>
+    <header>
+      <h2>Fake Store</h2>
+    </header>
+    <!-- Navigation  -->
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="/">Account</a></li>
+        <li><a href="/">Cart</a></li>
+      </ul>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="/">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Main Content -->
+    <main>
+      <h1>Checkout Order #123 - Billing and Payment</h1>
+      <p>Order Total : $129.57</p>
+      <form action="post">
+        <!-- Billing Information -->
+        <fieldset>
+          <legend>Billing Information</legend>
+          <div>
+            <!-- First Name -->
+            <label for="first_name">First name</label>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              placeholder="John"
+            >
+            <!-- Last Name -->
+            <label for="last_name">Last name</label>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              placeholder="Doe"
+            >
+          </div>
+          <div>
+            <!--  Address-->
+            <label for="address">Address:</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="123 Fake Street"
+            >
+            <!-- Province selection -->
+            <label for="province">Province:</label>
+            <select name="province" id="province">
+              <option disabled selected>--Choose province --</option>
+              <option value="NB">New Brunswick</option>
+              <option value="ON">Ontario</option>
+              <option value="QC">Quebec</option>
+            </select>
+            <!-- Postal Code -->
+            <label for="postal_code">Postal code:</label>
+            <input
+              type="text"
+              name="postal_code"
+              id="postal_code"
+              placeholder="A1A 1A1"
+            >
+          </div>
+          <div>
+            <!-- Phone Number -->
+            <label for="phone_number">Phone Number</label>
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              placeholder="555-555-5555"
+            >
+          </div>
+        </fieldset>
+        <!-- Payment Information -->
+        <fieldset>
+          <legend>Payment Information</legend>
+          <!-- Card Choice -->
+          <fieldset>
+            <legend>Choose Card</legend>
+            <!-- Master Card -->
+            <div>
+              <label for="master_card">
+                <input type="radio" name="card" id="master_card" checked>
+                Master Card</label
+              >
+            </div>
+            <!-- Visa Card-->
+            <div>
+              <label for="visa">
+                <input type="radio" name="card" id="visa" >
+                Visa</label
+              >
+            </div>
+          </fieldset>
+          <div>
+            <!-- Card Number -->
+            <label for="card_number">Card number:</label>
+            <input type="text" inputmode="numeric" id="card_number" name="card_number" placeholder="1234 1234 1234 1234">
+          </div>
+          <!-- Card Expiry -->
+          <div>
+            <label for="card_expiry">Card expiry:</label>
+            <input type="text" id="card_expiry" name="card_expiry" placeholder="MM/YY">
+          </div>
+        </fieldset>
+        <!-- Pay Now button -->
+        <button type="submit"> Pay now</button>
+      </form>
+    </main>
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; copyright HTTP5121,2024</p>
+    </footer>
+  </body>
+</html>

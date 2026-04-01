@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "OY5wGuGmysc=",
+  "success": true,
+  "projectFilePath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 2/Basic/Basic.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file /Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 2/Basic/obj/project.nuget.cache : The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.",
+      "projectPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 2/Basic/Basic.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 2/Basic/Basic.csproj",
+      "targetGraphs": []
+    }
+  ]
+}

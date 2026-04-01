@@ -1,0 +1,9 @@
+@model List<ApiConnection.Models.Job>
+test
+<ul>
+    @foreach (var job in Model)
+    {
+        <p>@job.id</p>
+        <p>@job.title</p>
+    }
+</ul>

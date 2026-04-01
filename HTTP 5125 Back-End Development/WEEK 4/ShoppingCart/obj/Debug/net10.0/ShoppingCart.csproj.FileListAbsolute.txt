@@ -1,0 +1,15 @@
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/bin/Debug/net10.0/ShoppingCart
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/bin/Debug/net10.0/ShoppingCart.deps.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/bin/Debug/net10.0/ShoppingCart.runtimeconfig.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/bin/Debug/net10.0/ShoppingCart.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/bin/Debug/net10.0/ShoppingCart.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.GeneratedMSBuildEditorConfig.editorconfig
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.AssemblyInfoInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.AssemblyInfo.cs
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.csproj.CoreCompileInputs.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.sourcelink.json
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/refint/ShoppingCart.dll
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.pdb
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ShoppingCart.genruntimeconfig.cache
+/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 4/ShoppingCart/obj/Debug/net10.0/ref/ShoppingCart.dll

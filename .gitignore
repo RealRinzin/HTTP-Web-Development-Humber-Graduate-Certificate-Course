@@ -1,0 +1,4 @@
+.DS_Store
+/space-demo/node_modules/
+/space-demo/dist
+/space-demo/.vscode

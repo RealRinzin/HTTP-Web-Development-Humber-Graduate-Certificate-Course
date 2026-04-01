@@ -1,0 +1,151 @@
+/* ============================================================
+   TABLET — max-width: 786
+   ============================================================ */
+@media (max-width: 786px) {
+  /* --- Header --- */
+  header nav {
+    padding: 1em 2em;
+  }
+
+  /* --- Hero --- */
+  #hero_section {
+    padding: 3em 2em;
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: left;
+  }
+  #hero_section .hero_image {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  #hero_section .hero_image img {
+    max-width: 320px;
+  }
+
+  /* --- About / Skills --- */
+  #about_skills {
+    padding: 3em 2em;
+    flex-direction: column;
+  }
+  #about_skills .skill_logos {
+    flex-wrap: wrap;
+    gap: 1.5em;
+  }
+
+  /* --- Projects --- */
+  #project_section {
+    padding: 3em 2em;
+  }
+  #project_section .my_projects {
+    flex-wrap: wrap;
+  }
+  #project_section .my_projects .project_card {
+    flex: 1 1 calc(50% - 1em);
+    min-width: 260px;
+  }
+
+  /* --- Footer --- */
+  footer {
+    padding: 2em;
+  }
+  footer nav {
+    padding: 1em 0;
+  }
+}
+
+/* ============================================================
+   MOBILE — max-width: 480px
+   ============================================================ */
+@media (max-width: 480px) {
+  /* --- Header --- */
+  header nav {
+    padding: 1em 1.2em;
+  }
+
+  /* Show hamburger, hide nav links */
+  .barMenu {
+    display: inline-block;
+  }
+  header .nav_menu_links li:not(.barMenu) {
+    display: none;
+  }
+
+  /* --- Hero --- */
+  #hero_section {
+    padding: 2em 1.2em;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  #hero_section .hero_image {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+  #hero_section .hero_image img {
+    max-width: 100%;
+  }
+  #hero_section .text_link_btn h2 {
+    font-size: 2em;
+  }
+  #hero_section .text_link_btn .btn_links {
+    flex-direction: column;
+    gap: 1em;
+    font-size: 1em;
+  }
+  #hero_section .btn_links .view_my_works,
+  #hero_section .btn_links .get_in_touch {
+    display: block;
+    text-align: center;
+  }
+
+  /* --- About / Skills --- */
+  #about_skills {
+    padding: 2em 1.2em;
+    flex-direction: column;
+  }
+  #about_skills .skill_logos {
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  #about_skills .my_skills img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  /* --- Projects --- */
+  #project_section {
+    padding: 2em 1.2em;
+  }
+  #project_section .my_projects {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  #project_section .my_projects .project_card {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  #project_section .project_card a {
+    margin-top: 1em;
+    display: inline-block;
+  }
+
+  /* --- Footer --- */
+  footer {
+    padding: 1.5em 1.2em;
+  }
+  footer nav {
+    padding: 1em 0;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+  }
+  footer nav ul {
+    justify-content: center;
+  }
+  footer .nav_menu_links {
+    display: none;
+  }
+}

@@ -1,5 +1,3 @@
-/* * */
-
 html {
   box-sizing: border-box; /* 1. Set box-sizing to border-box for the root element */
 }
@@ -29,6 +27,10 @@ p {
 a {
   color: var(--text-color);
   text-decoration: none;
+}
+nav a:hover {
+  color: var(--btn-primary);
+  transition: all 0.3s ease;
 }
 /* ---------------- Header Navigation ---------------------*/
 /* header */
@@ -200,3 +202,9 @@ footer nav .nav_menu_links {
   font-size: 1.2em;
 }
 /* ---------------------END------------------------------------ */
+
+/* Tablet CSS */
+
+.barMenu {
+  display: none;
+}

@@ -28,7 +28,7 @@ a {
   color: var(--text-color);
   text-decoration: none;
 }
-nav a:hover {
+nav .nav_menu_links a:hover {
   color: var(--btn-primary);
   transition: all 0.3s ease;
 }

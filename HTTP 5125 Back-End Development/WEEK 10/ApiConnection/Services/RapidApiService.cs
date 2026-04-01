@@ -32,7 +32,6 @@ namespace ApiConnection.Services
                     { "x-rapidapi-host", "linkedin-job-search-api.p.rapidapi.com" },
                 },
             };
-
             // Send the request to the API and wait for the response. If the response is successful, read the response body as a string and deserialize it into a list of Job objects using the JsonSerializer class. 
             // The deserialization process is case-insensitive to ensure that the property names in the JSON response match the property names in the Job class.
             // Finally, return the list of Job objects to the caller.

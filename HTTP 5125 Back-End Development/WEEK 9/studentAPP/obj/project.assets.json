@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 9/studentAPP/studentAPP.csproj",
+      "projectUniqueName": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 9/studentAPP/studentAPP.csproj",
       "projectName": "studentAPP",
-      "projectPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 9/studentAPP/studentAPP.csproj",
+      "projectPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 9/studentAPP/studentAPP.csproj",
       "packagesPath": "/Users/tenzinrinzin/.nuget/packages/",
-      "outputPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate/HTTP 5125 Back-End Development/WEEK 9/studentAPP/obj/",
+      "outputPath": "/Users/tenzinrinzin/Documents/HTTP-Web-Development-Humber-Graduate-Certificate-Course/HTTP 5125 Back-End Development/WEEK 9/studentAPP/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/tenzinrinzin/.nuget/NuGet/NuGet.Config"

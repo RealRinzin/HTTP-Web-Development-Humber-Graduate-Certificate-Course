@@ -1,0 +1,28 @@
+@model List<tvShowPetProject.Models.Shows>
+@{
+    ViewData["Title"] = "TV Shows";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Score</th>
+            <th>Name</th>
+            <th>Language</th>
+            @* <th>Type</th> *@
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var show in Model)
+        {
+            <tr>
+                <td>@show.name</td>
+                <td>@show.language</td>
+                <td>@show.type</td>
+                <td>@string.Join(", ", show.genres)</td>
+            </tr>
+        }
+    </tbody>

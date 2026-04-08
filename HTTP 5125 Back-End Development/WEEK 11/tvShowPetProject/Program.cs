@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // API call
 builder.Services.AddHttpClient<ApiEndPointService>();
+builder.Services.AddHttpClient<ActorEndPointService>();
 // 
 var app = builder.Build();
 

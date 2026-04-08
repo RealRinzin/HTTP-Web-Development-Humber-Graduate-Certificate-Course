@@ -1,0 +1,32 @@
+@model List<tvShowPetProject.Models.Actors>
+
+@{
+    ViewData["Title"] = "Celebrities";
+}
+<h1>@ViewBag.Name</h1>
+
+<div class="container py-4">
+            <h2 class="py-2 text-center ">TV Show Actors</h2>
+
+    <div class="row">
+        @foreach (var actor in Model)
+        {
+            <div class="col-md-3 gx-5 my-5 flex">
+                <div class="card rounded-4 shadow h-100">
+                    @* <div class="img_card" style="background-image:url('@actor.image?.medium')">
+                    </div> *@
+                    <img src="@actor.image?.medium" alt="@actor.name" class="card-img-top" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">@actor.name</h5>
+                        <span class="badge text-bg-primary me-1">
+                            @actor.country?.name
+                        </span>
+                    </div>
+                    <a href="https://www.tvmaze.com/shows/250/kirby-buckets" class="btn btn-dark my-2 w-75 mx-auto"
+                       target="_blank">View</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

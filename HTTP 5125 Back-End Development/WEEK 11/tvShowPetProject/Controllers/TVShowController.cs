@@ -17,8 +17,6 @@ public class TVShowController : Controller
     {
         var content = await service.getData();
         return View(content);
-        // return View();
-
     }
 
 

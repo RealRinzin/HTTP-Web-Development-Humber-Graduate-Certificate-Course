@@ -2,63 +2,69 @@
 @{
     ViewData["Title"] = "TV Shows";
 }
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
-<div class="text-center">
-    <h1 class="display-4">TV Shows</h1>
-    <p>Here is a list of TV shows fetched from the TV Maze API.</p>
-</div>
-<div class="row">
-    @foreach (var show in Model)
+@* background-image: url("paper.gif"); *@
+@* Hero Section *@
+@{
+    Random random = new Random();
+    int number = random.Next(1, 21);
+}
+<section class="home_hero_search" style="background-image :url('@foreach (var show in Model.Take(1))
     {
-        <div class="col-md-3 my-5">
-            <div class="card rounded-4 shadow" style="width: 18rem;">
-                <img src="@show.image?.medium" alt="@show.name" class="card-img-top" />
-                <div class="card-body">
-                    <h5 class="card-title">@show.name</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card’s content.</p>
-                        @foreach (var genre in show.genres.Take(2))
-                        {
-                            <span
-                                class="badge text-bg-@(genre == "Action" ? "primary" : genre == "Drama" ? "danger" : "secondary") me-1">
-                                @genre
-                            </span>
-
-                        }
-                        @* <a href="@show.url" class="btn btn-primary" target="_blank">Go somewhere</a> *@
-                    </div>
-                </div>
+        @show.image.original
+    }
+    '
+    ">
+    <div class="position-relative py-5" style="background-color:rgba(0, 0, 0, 0.4);backdrop-filter: blur(4px);">
+        <div class="hero_text py-5">
+            <h2 class="pb-2">Find Thousands of your favourite TV shows and Movies</h2>
+            <p class="py-2">Here is a list of TV shows fetched from the TV Maze API.</p>
+        </div>
+        <div class="search_forms">
+            <form action="">
+                <input type="text" placeholder="Search Movies" class="">
+                <!-- <input type="text" placeholder="Search by Location"> -->
+                <button type="submit" class="position-absolute text-muted"><i
+                    class="fa-solid fa-magnifying-glass fa-2x"></i> </button>
+                </form>
             </div>
-        }
+        </div>
+    </section>
 
+    <div class="text-center mt-5">
+        <h3 class="display-4">TV Shows</h3>
+        <p>Here is a list of TV shows fetched from the TV Maze API.</p>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Language</th>
-                <th>Poster</th>
-                <th>Genre</th>
-            </tr>
-        </thead>
-        <tbody>
-            @* @{
-                var index = 1;
-            }
+
+    <div class="container">
+        <div class="row">
             @foreach (var show in Model)
             {
-                <tr>
-                    <td>@index</td>
-                    <td>@show.name</td>
-                    <td>@show.language</td>
-                    <td>
-                        <img src="@show.image?.medium" alt="@show.name" />
-                    </td>
-                    <td>@string.Join(", ", show.genres)</td>
-                </tr>
-                index++;
-            } *@
-        </tbody>
+                <div class="col-md-3 my-5 flex">
+                    <div class="card rounded-4 shadow h-100">
+                        <div class="img_card" style="background-image:url('@show.image?.medium')">
+                            
+                        </div>
+                        @* <img src="@show.image?.medium" alt="@show.name" class="card-img-top" /> *@
+                        <div class="card-body">
+                            <h5 class="card-title">@show.name</h5>
+                            <p class="card-text">
+                                @* @show.summary.Substring(1,10) *@
+                                @(show.summary.Length > 300
+                                    ? show.summary.Substring(10, 170)
+                                    : show.summary.Substring(1, show.summary.Length-1))
+                                @* @show.summary *@
+                            </p>
+                            @foreach (var genre in show.genres.Take(2))
+                            {
+                                <span
+                                    class="badge text-bg-@(genre == "Action" ? "primary" : genre == "Drama" ? "danger" : "secondary") me-1">
+                                    @genre
+                                </span>
+                            }
+                        </div>
+                        <a href="@show.url" class="btn btn-dark my-2 w-75 mx-auto" target="_blank">View</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

@@ -10,8 +10,10 @@ public class Shows
     public string language { get; set; }
 
     public string url { get; set; }
+    public string summary { get; set; }
     public List<string> genres { get; set; }
     public Image image { get; set; }
+
 
 }
 

@@ -1,0 +1,98 @@
+/* Custom Css */
+body,
+ul,h1,h2,h3,h4,h5,h6 {
+  font-family: poppins, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+.common_padding {
+  padding: 2em 3em;
+}
+/* Custom Css */
+#main_navigation {
+  background-color: #2A427A;
+  color: white;
+}
+#main_navigation nav {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+#main_navigation .nav_menu {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+/* Hero Section */
+main .home_hero_search {
+  background-color: #ecf0f8;
+  /* padding: 2em 3em; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+main .home_hero_search .hero_text {
+  text-align: center;
+  color:#fff;
+}
+main .home_hero_search .hero_text p {
+  color: #859dd5;
+}
+main .home_hero_search .search_forms {
+  margin: 2em 0em;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+main .home_hero_search .search_forms form {
+  /* display: flex; */
+  /* gap: 2em; */
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+main .home_hero_search .search_forms input {
+  border: none;
+  border-radius: 8px 0px 0px 8px;
+  padding: 0.5em 1em;
+  /* margin: 0.5em 0em; */
+}
+
+main .home_hero_search .search_forms button {
+  border: none;
+  align-items: center;
+  border-radius: 0px 8px 8px 0px;
+  padding: 0.2em 1em;
+  /* padding: 0.5em 1em; */
+  /* margin: 0.5em 0em; */
+  color: #2a427a;
+  background-color: white;
+}
+
+
+/* Custom Css  */
+.img_card{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  border-radius: 10px 10px 0px 0px;
+  width: 100%;
+}

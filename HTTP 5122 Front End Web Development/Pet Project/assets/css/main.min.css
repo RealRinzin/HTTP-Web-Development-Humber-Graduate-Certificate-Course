@@ -1,0 +1,110 @@
+/* CSS Style for the pet Project */
+html {
+  box-sizing: border-box; /* 1. Set box-sizing to border-box for the root element */
+  font-family: poppins, sans-serif;
+}
+*,
+*:before,
+*:after {
+  /* 1. Apply box-sizing to all elements */
+  box-sizing: inherit;
+}
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: poppins, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+.common_padding {
+  padding: 2em 3em;
+}
+/* Custom Css */
+#main_navigation {
+  background-color: #2a427a;
+  color: white;
+}
+#main_navigation nav {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+#main_navigation .nav_menu {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+/* input {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  margin: 0.5em 0em;
+} */
+/********************************** Main ***************************************** */
+main {
+  min-height: 20vh;
+}
+/* Hero Section */
+
+main .home_hero_search {
+  background-color: #ecf0f8;
+  padding: 2em 3em;
+}
+main .home_hero_search .hero_text {
+  text-align: center;
+}
+main .home_hero_search .hero_text p {
+  color: #859dd5;
+}
+main .home_hero_search .search_forms {
+  margin: 2em 0em;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+main .home_hero_search .search_forms form {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+/********************************** FOOTER ***************************************** */
+/* footer */
+footer {
+  background-color: #2a427a;
+  color: #fff;
+}
+footer .footer_navigation ul {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 0.8em;
+}
+footer a {
+  color: #ecf0f8;
+}

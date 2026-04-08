@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* All animations have the same following values */
+/* You may modify the duration if you wish */
+/* If duration modified, it should be modified in the JS as well */
+:root {
+  --time: 40s; 
+  --timing-function: linear;
+  --fill-mode: forwards;
+}
+
+body {
+  font-family:Quicksand,"sans-serif";
+  font-weight:400;
+  margin:0;
+}
+header {
+  background-color:#e4fb37;
+  border-bottom:2px solid #c211a4;
+  box-shadow: 0 0 25px rgba(238, 55, 167, 0.25);
+  padding:0.5em 1em;
+  margin-bottom:2em;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#1f0970;
+}
+.site-name {
+  font-weight:700;
+}
+
+button {
+  font-family:inherit; /* inherit Quicksand */
+  font-weight:300;
+
+  border:none;
+  font-size:1.25em;
+  padding:1em 2em;
+  margin-right:0.5em;
+  border-radius:0.5em;
+  background-color:#2f2fac;
+  color:#fff;
+  transition:0.5s;
+  
+}
+button:hover {
+  background-color:#c211a4
+}
+button:disabled {
+  background-color:#666;
+}
+.instructions {
+  text-align:center;
+  color:#d402b0;
+  font-weight:500;
+  text-shadow: 0 3px 0 rgba(0, 0, 255, 0.3), 
+               0 10px 0 rgba(173, 255, 47, 0.2);
+}
+.status {
+  text-align:center;
+  font-size:2em;
+}
+
+/* CSS ART */
+.stove {
+  width:300px;
+  height:350px;
+  margin:4em auto 2em auto;
+  background-color:#000;
+  border-bottom:100px solid #222;
+  position:relative;
+}
+/* ON light */
+.stove::after {
+  content:"";
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:radial-gradient(circle at center,#9cf59c 25%, #1fc91f);
+  display:block;
+  box-shadow:0 0 20px rgba(156, 245, 156, 0.4);
+  position:absolute;
+  bottom:-50px;
+  right:50px;
+}
+
+.pan {
+  width:390px;
+  height:390px;
+  border-radius:50%;
+  /* pan colour and edge */
+  background:radial-gradient(circle 290px at center, #1c1c1c 45%, #666 97%);
+  border:3px solid #ccc;
+  position:absolute;
+  left:-45px;
+  top:-45px;
+  display:flex;
+}
+.pan::after {
+  content:"";
+  display:block;
+  width:250px;
+  height:50px;
+  border-radius:0 25px 25px 0;
+  border:0.5px solid #888;
+  background:linear-gradient(to right, #e5e4e4 20px, #a8a7a7 40px, #8d8d8d 200px);
+  position:absolute;
+  bottom:0;
+  right:-50%;
+  transform:rotate(33deg);
+  z-index:-1;
+}
+
+/* egg white */
+#egg {
+  width: 200px;
+  height: 200px;
+  /* egg white is translucent to start */
+  background-color:rgba(255, 255, 255, 0.25); /* becomes fully opaque then darker as the egg cooks */
+  /* for border radius, the slash allows you to set different radii along the horizontal axis and the vertical axis */
+  border-radius: 50% 20% 30% 70% / 60% 30% 70% 40%;
+  border-width:4px;
+  border-style:solid;
+  border-color:#fff; /* border will become darker as the egg cooks */
+  margin:auto;
+  position:relative;
+  /* TODO: set animation */
+
+  /* TODO: animation is paused by default */
+  
+}
+/* egg yolk */
+#yolk {
+  content:"";
+  width:75px;
+  height:75px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #fff 15%, #ffcf4a 25%, #fdbe0e);
+  position:absolute;
+  top:25%;
+  left:20%;
+  opacity:1; /* becomes translucent as egg cooks so egg "white" shows through */
+
+  /* TODO: set animation to reduce opacity to blend in with egg white */
+  
+  /* TODO: animation is paused by default */
+  
+}
+
+/* TODO: Animations */
+
+/* Animation for eggwhite background and border, tweaking the keyframe locations to control when colours change */
+
+/* Animation for egg yolk */

@@ -51,15 +51,50 @@ li {
   text-decoration: none;
   list-style-type: none;
 }
-/* input {
+.job_card {
+  border-radius: 10px;
+  display: flex;
+  gap: 1em;
+  background-color: #f5f5f5;
+  padding: 1em 2em;
+  position: relative;
+  margin: 2em 0em;
+}
+input {
   border: none;
   border-radius: 8px;
   padding: 0.5em 1em;
   margin: 0.5em 0em;
-} */
+}
+.badge {
+  background-color: #2a427a;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  font-size: 0.6em;
+}
+
+.icon {
+  position: absolute;
+  right: 0;
+  top: auto;
+  padding: .2em 2em;
+}
+/********************************** Home Company logo section ***************************************** */
+#home_company_logos .logos {
+  display: flex;
+  padding: 1em 0;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  background-color: #f3f3f3;
+}
+
 /********************************** Main ***************************************** */
 main {
-  min-height: 20vh;
+  min-height: 50vh;
 }
 /* Hero Section */
 
@@ -90,6 +125,21 @@ main .home_hero_search .search_forms form {
   text-decoration: none;
   list-style-type: none;
 }
+/* Job section */
+main .home_job_list .home_job_list_wrapper {
+  width: 35%;
+  margin: 0 auto;
+  /* background-color: red; */
+}
+main .home_job_list p {
+  color: gray;
+  font-size: 0.8em;
+}
+main .home_job_list img{
+  height: 75px;
+  width: 75px;
+}
+
 /********************************** FOOTER ***************************************** */
 /* footer */
 footer {

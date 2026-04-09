@@ -1,6 +1,10 @@
 # Online Video Learning Platform | Humber
 >## Project Purpose
-> I have been developing a online interactive learning platform for the humber Gaming Department. The purpose of the project is to research the student's interactive with the online learning through video platform such as attention span, clicks, pauses, repeat watch, substitle requirements, fullscreen status and retention of the lessons on specific topics
+>The objective of this database schema design is to support the development of an online interactive learning platform for the Humber Gaming Department. This platform aims to analyze and enhance student engagement with video-based learning content.
+>
+> The system will capture and store detailed interaction data, including metrics such as attention span, click behavior, pause frequency, rewatch patterns, subtitle usage, fullscreen activity, and lesson retention across specific topics.
+>
+> By leveraging these analytics, the platform will provide instructors with meaningful insights into student learning behaviors, enabling them to optimize content delivery, improve teaching strategies, and enhance overall learning outcomes.
 
 >##  Database Tables
 > 1. users

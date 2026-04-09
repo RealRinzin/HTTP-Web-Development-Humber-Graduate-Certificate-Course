@@ -60,11 +60,22 @@ li {
   position: relative;
   margin: 2em 0em;
 }
+.job_card .job_details h4{
+
+  padding:.5em 0em;
+  color: #6d6d6d;
+
+}
+.job_card .job_details .description{
+  color:#282828;
+  font-size: 0.9em;
+}
 input {
   border: none;
-  border-radius: 8px;
-  padding: 0.5em 1em;
+  /* border-radius: 8px; */
+  padding: 1.5em 3em;
   margin: 0.5em 0em;
+  
 }
 .badge {
   background-color: #2a427a;
@@ -73,12 +84,18 @@ input {
   padding: 0.5em 1em;
   font-size: 0.6em;
 }
-
+.badge1 {
+  background-color: #859dd5;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  font-size: 0.6em;
+}
 .icon {
   position: absolute;
   right: 0;
   top: auto;
-  padding: .2em 2em;
+  padding: 0.2em 2em;
 }
 /********************************** Home Company logo section ***************************************** */
 #home_company_logos .logos {
@@ -102,11 +119,12 @@ main .home_hero_search {
   background-color: #ecf0f8;
   padding: 2em 3em;
 }
+
 main .home_hero_search .hero_text {
   text-align: center;
 }
 main .home_hero_search .hero_text p {
-  color: #859dd5;
+  color: #6d6d6d;
 }
 main .home_hero_search .search_forms {
   margin: 2em 0em;
@@ -119,12 +137,34 @@ main .home_hero_search .search_forms {
 }
 main .home_hero_search .search_forms form {
   display: flex;
-  gap: 2em;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   list-style-type: none;
 }
+main .home_hero_search .search_forms .search_title{
+  border-radius: 6px 0 0 6px;
+}
+main .home_hero_search .search_forms form button {
+  padding: 1.1em 3em;
+  margin: 0.5em 0em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #2a427a;
+  color: #fff;
+
+}
+main .home_hero_search .search_forms form button:hover {
+  cursor: pointer;
+}
+/* main .home_hero_search .search_forms form button {
+  border: none;
+  border-radius: 8px;
+  padding: 1.5em 3em;
+  margin: 0.5em 0em;
+  background-color: #2a427a;
+  color: #fff;
+} */
 /* Job section */
 main .home_job_list .home_job_list_wrapper {
   width: 35%;
@@ -135,9 +175,11 @@ main .home_job_list p {
   color: gray;
   font-size: 0.8em;
 }
-main .home_job_list img{
+main .home_job_list img {
   height: 75px;
   width: 75px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
 /********************************** FOOTER ***************************************** */

@@ -44,10 +44,20 @@
         </div>
         <div class="search_forms">
           <form action="">
-            <input type="text" placeholder="Search by Job Title"  class="search_title"/>
-            <input type="text" placeholder="Search by Company"  class="search_company"/>
+            <input
+              type="text"
+              placeholder="Search by Job Title"
+              class="search_title"
+            />
+            <input
+              type="text"
+              placeholder="Search by Company"
+              class="search_company"
+            />
             <!-- <input type="text" placeholder="Search by Location"> -->
-            <button type="submit"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+            </button>
           </form>
         </div>
       </section>
@@ -64,14 +74,31 @@
       </section>
       <!-- List Section -->
       <section class="home_job_list">
-        <div class="home_job_list_wrapper common_padding">
+        <div class="home_job_list_wrapper common_padding" id="jobs_wrapper">
+          <div id="home_filter_sort">
+            <!-- filter -->
+            <form class="sort_role_location_company_input">
+              <select name="roles" id="roles">
+                <option value="">Select Roles</option>
+              </select>
+              <select name="location" id="location">
+                <option value="">Select Locations</option>
+              </select>
+              <select name="company" id="company">
+                <option value="">Select Company</option>
+              </select>
+            </form>
+            <!-- Order -->
+            <div>
+              <p>Order | ASC | DES</p>
+            </div>
+          </div>
           <h3>Latest Job Posts</h3>
-          <p>Total 45 jobs posted : today</p>
+          <p id="home_total_jobs"></p>
           <div class="job_card_section">
             <!-- one job -->
-            <div class="job_card">
+            <!-- <div class="job_card" id="jobs">
               <i class="fa-regular fa-star icon"></i>
-              <!-- <i class="fa-solid fa-house icon"></i> -->
               <div class="logo">
                 <img src="./assets/img/company/kfc.png" alt="" />
               </div>
@@ -89,11 +116,10 @@
                   <p class="ago">3 days ago</p>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- one job -->
-            <div class="job_card">
+            <!-- <div class="job_card">
               <i class="fa-solid fa-star icon"></i>
-              <!-- <i class="fa-solid fa-house icon"></i> -->
               <div class="logo">
                 <img src="./assets/img/company/airbnb.png" alt="" />
               </div>
@@ -111,11 +137,10 @@
                   <p class="ago">hour ago</p>
                 </div>
               </div>
-            </div>
-          <!-- one job -->
-            <div class="job_card">
+            </div> -->
+            <!-- one job -->
+            <!-- <div class="job_card">
               <i class="fa-solid fa-star icon"></i>
-              <!-- <i class="fa-solid fa-house icon"></i> -->
               <div class="logo">
                 <img src="./assets/img/company/tim-hortons.png" alt="" />
               </div>
@@ -133,7 +158,7 @@
                   <p class="ago">1 day ago</p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>

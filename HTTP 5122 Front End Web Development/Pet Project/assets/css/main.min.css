@@ -60,14 +60,12 @@ li {
   position: relative;
   margin: 2em 0em;
 }
-.job_card .job_details h4{
-
-  padding:.5em 0em;
+.job_card .job_details h4 {
+  padding: 0.5em 0em;
   color: #6d6d6d;
-
 }
-.job_card .job_details .description{
-  color:#282828;
+.job_card .job_details .description {
+  color: #282828;
   font-size: 0.9em;
 }
 input {
@@ -75,7 +73,6 @@ input {
   /* border-radius: 8px; */
   padding: 1.5em 3em;
   margin: 0.5em 0em;
-  
 }
 .badge {
   background-color: #2a427a;
@@ -143,7 +140,7 @@ main .home_hero_search .search_forms form {
   text-decoration: none;
   list-style-type: none;
 }
-main .home_hero_search .search_forms .search_title{
+main .home_hero_search .search_forms .search_title {
   border-radius: 6px 0 0 6px;
 }
 main .home_hero_search .search_forms form button {
@@ -153,7 +150,6 @@ main .home_hero_search .search_forms form button {
   border-radius: 0 6px 6px 0;
   background-color: #2a427a;
   color: #fff;
-
 }
 main .home_hero_search .search_forms form button:hover {
   cursor: pointer;
@@ -168,7 +164,7 @@ main .home_hero_search .search_forms form button:hover {
 } */
 /* Job section */
 main .home_job_list .home_job_list_wrapper {
-  width: 35%;
+  width: 40%;
   margin: 0 auto;
   /* background-color: red; */
 }
@@ -182,7 +178,22 @@ main .home_job_list img {
   border-radius: 10px;
   background-color: #fff;
 }
-
+/* Home  Filter */
+main #home_filter_sort {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin: 1em 0;
+  padding: 1em;
+}
+main .sort_role_location_company_input {
+  display: flex;
+  justify-content: space-between;
+}
+main #home_filter_sort select {
+  padding: 6px;
+  border: none;
+  border-radius: 10px;
+}
 /********************************** FOOTER ***************************************** */
 /* footer */
 footer {

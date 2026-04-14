@@ -1,0 +1,158 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Associate",
+      "company": "KFC",
+      "logo": "kfc.png",
+      "location": "Toronto",
+      "type": "Part Time",
+      "description": "About KFC. KFC was founded by Colonel Sanders with a passion for great-tasting chicken. We are committed to delivering the best chicken experience to our customers every day.",
+      "posted": "3 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 2,
+      "title": "Software Engineer",
+      "company": "Shopify",
+      "logo": "adidas.jpg",
+      "location": "Ottawa",
+      "type": "Full Time",
+      "description": "About Shopify. Shopify is a leading e-commerce platform that empowers entrepreneurs around the world to build and grow their businesses online with ease.",
+      "posted": "1 day ago",
+      "bookmarked": false
+    },
+    {
+      "id": 3,
+      "title": "Marketing Coordinator",
+      "company": "Tim Hortons",
+      "logo": "tim-hortons.png",
+      "location": "Vancouver",
+      "type": "Part Time",
+      "description": "About Tim Hortons. Tim Hortons is a Canadian icon, known for its coffee and community spirit. We are looking for passionate marketers to help spread our brand values.",
+      "posted": "2 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 4,
+      "title": "Data Analyst",
+      "company": "RBC",
+      "logo": "hm.jpg",
+      "location": "Toronto",
+      "type": "Full Time",
+      "description": "About RBC. Royal Bank of Canada is one of the largest financial institutions in North America. We are looking for data-driven individuals to help shape our future.",
+      "posted": "5 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 5,
+      "title": "UX Designer",
+      "company": "Wealthsimple",
+      "logo": "lids.jpeg",
+      "location": "Toronto",
+      "type": "Full Time",
+      "description": "About Wealthsimple. Wealthsimple is a fintech company making investing simple and accessible for everyone. We design products that help Canadians grow their money.",
+      "posted": "1 week ago",
+      "bookmarked": false
+    },
+    {
+      "id": 6,
+      "title": "Customer Support Specialist",
+      "company": "Telus",
+      "logo": "home_depo.jpeg",
+      "location": "Calgary",
+      "type": "Full Time",
+      "description": "About Telus. Telus is a leading Canadian telecommunications company committed to connecting Canadians to what matters most. Join our friendly support team today.",
+      "posted": "3 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 7,
+      "title": "DevOps Engineer",
+      "company": "Hootsuite",
+      "logo": "giant_tiger.jpeg",
+      "location": "Vancouver",
+      "type": "Full Time",
+      "description": "About Hootsuite. Hootsuite is the world's most widely used social media management platform. We help organizations build their brands and grow their businesses.",
+      "posted": "4 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 8,
+      "title": "Product Manager",
+      "company": "Freshbooks",
+      "logo": "home_hardware.jpeg",
+      "location": "Toronto",
+      "type": "Full Time",
+      "description": "About Freshbooks. Freshbooks is a cloud-based accounting software company serving small business owners. We are passionate about building tools that make work easier.",
+      "posted": "6 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 9,
+      "title": "Graphic Designer",
+      "company": "Lululemon",
+      "logo": "https://logo.clearbit.com/lululemon.com",
+      "location": "Vancouver",
+      "type": "Contract",
+      "description": "About Lululemon. Lululemon is a global athletic apparel brand rooted in yoga and mindful movement. We are looking for creative designers to bring our brand to life.",
+      "posted": "2 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 10,
+      "title": "Backend Developer",
+      "company": "Cohere",
+      "logo": "https://logo.clearbit.com/cohere.com",
+      "location": "Toronto",
+      "type": "Full Time",
+      "description": "About Cohere. Cohere is an AI company building natural language processing tools for businesses. We are at the forefront of making AI accessible to developers everywhere.",
+      "posted": "1 day ago",
+      "bookmarked": false
+    },
+    {
+      "id": 11,
+      "title": "HR Coordinator",
+      "company": "Scotiabank",
+      "logo": "https://logo.clearbit.com/scotiabank.com",
+      "location": "Toronto",
+      "type": "Full Time",
+      "description": "About Scotiabank. Scotiabank is one of Canada's big five banks, committed to helping employees and customers achieve their financial goals. Join our growing HR team.",
+      "posted": "1 week ago",
+      "bookmarked": false
+    },
+    {
+      "id": 12,
+      "title": "Frontend Developer",
+      "company": "Lightspeed",
+      "logo": "https://logo.clearbit.com/lightspeedhq.com",
+      "location": "Montreal",
+      "type": "Full Time",
+      "description": "About Lightspeed. Lightspeed is a cloud-based commerce platform powering retail and restaurant businesses worldwide. We build fast, intuitive, and beautiful software.",
+      "posted": "3 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 13,
+      "title": "Operations Manager",
+      "company": "Amazon",
+      "logo": "https://logo.clearbit.com/amazon.com",
+      "location": "Mississauga",
+      "type": "Full Time",
+      "description": "About Amazon. Amazon is a global leader in e-commerce and cloud computing. We are obsessed with the customer experience and driven by a culture of innovation and speed.",
+      "posted": "5 days ago",
+      "bookmarked": false
+    },
+    {
+      "id": 14,
+      "title": "Content Writer",
+      "company": "Hootsuite",
+      "logo": "https://logo.clearbit.com/hootsuite.com",
+      "location": "Remote",
+      "type": "Part Time",
+      "description": "About Hootsuite. Hootsuite is on a mission to help people build stronger connections online. We are looking for talented writers who can create compelling content strategies.",
+      "posted": "2 days ago",
+      "bookmarked": false
+    }
+  ]
+}

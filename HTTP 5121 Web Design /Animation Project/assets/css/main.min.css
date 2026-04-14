@@ -1,0 +1,67 @@
+#ground {
+  margin: 0px auto;
+  width: 30%;
+}
+#goal_post {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+#goal_post .left-bar {
+  width: 1em;
+  height: 150px;
+  background-color: black;
+  border-radius: 10px 2px 0px 0px;
+}
+#goal_post .top-bar {
+  width: 400px;
+  height: 1em;
+  background-color: black;
+}
+#goal_post .keeper {
+  position: absolute;
+  /* color: red; */
+  bottom: -20px;
+  /* left: inherit; */
+}
+#goal_post .keeper img {
+  height: 137px;
+}
+#goal_post .right-bar {
+  width: 1em;
+  height: 150px;
+  border-radius: 0px 10px 2px 0px;
+  background-color: black;
+}
+/* Gap */
+#gap {
+  margin-top: 200px;
+}
+/* Penalty Spot */
+#penalty_spot {
+  display: flex;
+  justify-content: center;
+}
+#penalty_spot #ball {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+}
+
+/*  */
+.animate {
+  animation-name: myAnimation;
+  animation-duration: 1s;
+  animation-direction: reverse;
+  
+}
+@keyframes myAnimation {
+  from {
+    top: 0px;
+    translate: 50px 50px 50px;
+  }
+  to {
+    top: 200px;
+    translate: -100px 100px 100px;
+  }
+}

@@ -1,6 +1,12 @@
 /* Custom Css */
 body,
-ul,h1,h2,h3,h4,h5,h6 {
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: poppins, sans-serif;
   padding: 0;
   margin: 0;
@@ -17,7 +23,7 @@ li {
 }
 /* Custom Css */
 #main_navigation {
-  background-color: #2A427A;
+  background-color: #2a427a;
   color: white;
 }
 #main_navigation nav {
@@ -45,7 +51,7 @@ main .home_hero_search {
 }
 main .home_hero_search .hero_text {
   text-align: center;
-  color:#fff;
+  color: #fff;
 }
 main .home_hero_search .hero_text p {
   color: #859dd5;
@@ -86,13 +92,25 @@ main .home_hero_search .search_forms button {
   background-color: white;
 }
 
-
 /* Custom Css  */
-.img_card{
+.img_card {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 200px;
   border-radius: 10px 10px 0px 0px;
   width: 100%;
+}
+
+/* Details */
+#detail_tv_show {
+  border-radius: 10px;
+}
+
+#detail_tv_show .img_banner {
+  border-radius: 10px;
+  background-position: center;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

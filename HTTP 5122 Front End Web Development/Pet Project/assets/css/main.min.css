@@ -106,7 +106,11 @@ input {
   list-style-type: none;
   background-color: #f3f3f3;
 }
-
+#home_company_logos .logos img{
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+}
 /********************************** Main ***************************************** */
 main {
   min-height: 50vh;

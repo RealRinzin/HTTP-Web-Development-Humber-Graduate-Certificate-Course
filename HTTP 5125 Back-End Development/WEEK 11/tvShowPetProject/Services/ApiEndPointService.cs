@@ -41,5 +41,10 @@ namespace tvShowPetProject.Services
             }
         }
 
+        public async Task<Shows> GetShowById(int id)
+        {
+            var data = await getData(); // your existing method
+            return data.FirstOrDefault(x => x.id == id);
+        }
     }
 }

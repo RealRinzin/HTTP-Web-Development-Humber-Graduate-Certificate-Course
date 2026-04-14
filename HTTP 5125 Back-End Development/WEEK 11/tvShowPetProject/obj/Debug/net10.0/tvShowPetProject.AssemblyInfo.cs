@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tvShowPetProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9db93935974957231e3bb030d619a7f431baa153")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f62e02cd8cfcd55f1b2625af059b40bc444248d")]
 [assembly: System.Reflection.AssemblyProductAttribute("tvShowPetProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tvShowPetProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -19,6 +19,18 @@ public class TVShowController : Controller
         return View(content);
     }
 
+    public async Task<IActionResult> Detail(int id)
+    {
+        var show = await service.GetShowById(id);
+
+        if (show == null)
+        {
+            return NotFound(); // good practice
+        }
+
+        return View(show);
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

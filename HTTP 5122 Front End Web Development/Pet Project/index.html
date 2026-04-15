@@ -79,13 +79,13 @@
           <div id="home_filter_sort">
             <!-- filter -->
             <form class="sort_role_location_company_input">
-              <select name="roles" id="roles">
+              <select name="roles" id="roleList">
                 <option value="">Select Roles</option>
               </select>
-              <select name="location" id="location">
+              <select name="locations" id="locationList" onchange="jobSort(this)">
                 <option value="">Select Locations</option>
               </select>
-              <select name="company" id="company">
+              <select name="companys" id="companyList">
                 <option value="">Select Company</option>
               </select>
             </form>

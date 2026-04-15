@@ -18,7 +18,7 @@ public class TVShowController : Controller
         var content = await service.getData();
         return View(content);
     }
-
+    // Deta
     public async Task<IActionResult> Detail(int id)
     {
         var show = await service.GetShowById(id);
@@ -31,6 +31,21 @@ public class TVShowController : Controller
         return View(show);
     }
 
+    public async Task<IActionResult> Search(string keyword)
+    {
+
+        Console.WriteLine(keyword);
+        var shows = await service.getData();
+
+        if (!string.IsNullOrEmpty(keyword))
+        {
+            shows = shows
+                .Where(s => s.name.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        return View(shows);
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

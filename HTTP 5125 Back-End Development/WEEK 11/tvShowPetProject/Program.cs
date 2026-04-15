@@ -10,9 +10,9 @@ builder.Services.AddHttpClient<ActorEndPointService>();
 // 
 var app = builder.Build();
 // App Rooute
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=TVShow}/{action=Detail}/{id?}");
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=TVShow}/{action=Detail}/{id?}");
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

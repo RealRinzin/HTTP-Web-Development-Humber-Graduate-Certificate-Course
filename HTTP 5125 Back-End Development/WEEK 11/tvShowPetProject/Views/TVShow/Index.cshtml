@@ -19,6 +19,12 @@
             <h2 class="pb-2">Find Thousands of your favourite TV shows and Movies</h2>
             <p class="py-2">Here is a list of TV shows fetched from the TV Maze API.</p>
         </div>
+        <form  method="get" asp-action="Search"  style="position: relative" class="w-25 mx-auto">
+            <input type="text" placeholder="Search Movies"  style="width: 100%; padding: 1em; border-radius: 10px; border:none;">
+            <button  type="submit" style="position: absolute; top: 20%; right: 2%; border:none; background-color: white; display: flex; justify-content: center;">
+                <i class="fa-solid fa-magnifying-glass fa-2x" style=""></i>
+            </button>
+        </form>
         <div class="search_forms">
             <form method="get" asp-action="Search">
                 <input type="text" name="keyword" placeholder="Search Movies" class="">

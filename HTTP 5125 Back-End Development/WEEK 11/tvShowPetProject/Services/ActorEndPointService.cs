@@ -27,7 +27,15 @@ namespace tvShowPetProject.Services
                 };
                 var result = JsonSerializer.Deserialize<List<Actors>>(body, parameters);
                 return result;
-            }    
+            }
+        }
+
+        // Details
+
+        public async Task<Actors> GetShowById(int id)
+        {
+            var data = await getData(); // your existing method
+            return data.FirstOrDefault(x => x.Id == id);
         }
     }
-}   
+}

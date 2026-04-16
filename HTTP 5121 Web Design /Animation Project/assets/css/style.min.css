@@ -1,0 +1,123 @@
+body {
+  background-color: green;
+}
+/* Score board */
+#score_board{
+  border-radius: 10px;
+  background-color: bisque;
+}
+#penalty_area {
+  width: 400px;
+  height: 400px;
+  /* background-color: red; */
+  border: solid 2px white;
+  margin: 0px auto;
+  position: relative;
+}
+
+#penalty_area .goal_keeper {
+  text-align: center;
+}
+#penalty_area .goal_keeper img {
+  height: 100px;
+  margin-top: -100px;
+}
+#penalty_area #shoot_area {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  /* background-color:#f3f6f4; */
+}
+#penalty_area #shoot_area img {
+  height: 30px;
+  padding: 1em;
+}
+
+#shoot_area .shoot_wrapper {
+  text-align: center;
+}
+
+#shoot_area .shoot_area_angles .center {
+  transform: rotate(24deg);
+}
+
+#shoot_area .shoot_area_angles .right_direction {
+  transform: rotate(60deg);
+}
+
+/* Ball animations */
+.ball_left_animation {
+  animation-name: shoot_left;
+  animation-duration: 1s;
+}
+
+.ball_center_animation {
+  animation-name: shoot_center;
+  animation-duration: 1s;
+}
+
+.ball_right_animation {
+  animation-name: shoot_right;
+  animation-duration: 1s;
+}
+/* Keeper jump animation class */
+.keeper_dive_right {
+  animation-name: keeper_dive_right;
+  animation-duration: 1s;
+}
+.hide {
+  display: none;
+}
+
+/* ================= Keyframes for ball animation==================== */
+/* Keyframes */
+@keyframes shoot_left {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(-100px, -450%);
+  }
+}
+@keyframes shoot_center {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(0, -450%);
+  }
+}
+
+@keyframes shoot_right {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(100px, -450%);
+  }
+}
+
+/* ================= Keyframes for keeper jump animation==================== */
+@keyframes keeper_dive_right {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(100px, -10%);
+  }
+}

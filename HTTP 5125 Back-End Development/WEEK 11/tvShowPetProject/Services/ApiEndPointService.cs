@@ -20,10 +20,6 @@ namespace tvShowPetProject.Services
                 Method = HttpMethod.Get,
                 RequestUri = new Uri("https://api.tvmaze.com/shows?page=1"),
             };
-
-            // var req = new HttpRequestMessage(HttpMethod.Get,
-            //     "https://api.tvmaze.com/search/shows?q=girls");
-
             // ✅ Correct way to add header
             // req.Headers.Add("Accept", "application/json");
             using (var res = await client.SendAsync(req))

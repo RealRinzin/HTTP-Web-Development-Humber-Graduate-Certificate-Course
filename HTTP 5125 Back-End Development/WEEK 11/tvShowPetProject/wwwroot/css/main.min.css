@@ -23,7 +23,7 @@ li {
 }
 /* Custom Css */
 #main_navigation {
-  background-color: #2a427a;
+  background-color: #000033;
   color: white;
 }
 #main_navigation nav {
@@ -77,7 +77,7 @@ main .home_hero_search .search_forms form {
 main .home_hero_search .search_forms input {
   border: none;
   border-radius: 8px 0px 0px 8px;
-  padding: 0.5em 1em;
+  padding: 1.2em 1em;
   /* margin: 0.5em 0em; */
 }
 
@@ -85,7 +85,7 @@ main .home_hero_search .search_forms button {
   border: none;
   align-items: center;
   border-radius: 0px 8px 8px 0px;
-  padding: 0.2em 1em;
+  padding: .9em 1em;
   /* padding: 0.5em 1em; */
   /* margin: 0.5em 0em; */
   color: #2a427a;

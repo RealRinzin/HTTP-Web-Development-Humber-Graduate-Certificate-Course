@@ -3,3 +3,6 @@
 /space-demo/dist
 /space-demo/.vscode
 
+# Ignore the ASP.NET files
+**/bin/
+**/obj/

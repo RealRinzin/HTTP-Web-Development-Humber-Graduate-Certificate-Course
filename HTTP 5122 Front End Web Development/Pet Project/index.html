@@ -24,7 +24,7 @@
           <li>
             <a href="/"><i class="fa-solid fa-house fa-2x"></i></a>
           </li>
-          <li><a href="/">Add Job</a></li>
+          <li><a href="job.html?job=45">Add Job</a></li>
           <li><a href="/">Add Role</a></li>
           <li><a href="/">Add Company</a></li>
           <li><a href="/">Contact</a></li>
@@ -75,17 +75,17 @@
       </section>
       <!-- List Section -->
       <section class="home_job_list">
-        <div class="home_job_list_wrapper common_padding" id="jobs_wrapper">
+        <div class="home_job_list_wrapper common_padding">
           <div id="home_filter_sort">
             <!-- filter -->
-            <form class="sort_role_location_company_input">
-              <select name="roles" id="roleList">
+            <form class="sort_role_location_company_input" >
+              <select name="roles" id="roleList" onchange="jobFilter()">
                 <option value="">Select Roles</option>
               </select>
-              <select name="locations" id="locationList" onchange="jobSort(this)">
+              <select name="locations" id="locationList" onchange="jobFilter()">
                 <option value="">Select Locations</option>
               </select>
-              <select name="companys" id="companyList">
+              <select name="companys" id="companyList" onchange="jobFilter()">
                 <option value="">Select Company</option>
               </select>
             </form>
@@ -96,7 +96,7 @@
           </div>
           <h3>Latest Job Posts</h3>
           <p id="home_total_jobs"></p>
-          <div class="job_card_section">
+          <div class="job_card_section"  id="jobs_wrapper">
           </div>
         </div>
       </section>

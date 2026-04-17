@@ -173,8 +173,8 @@ main .home_job_list .home_job_list_wrapper {
   /* background-color: red; */
 }
 main .home_job_list p {
-  color: gray;
-  font-size: 0.8em;
+  color: rgb(73, 72, 72);
+  font-size: 0.9em;
 }
 main .home_job_list img {
   height: 75px;

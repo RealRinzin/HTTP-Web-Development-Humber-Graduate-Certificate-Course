@@ -2,7 +2,7 @@
   "jobs": [
     {
       "id": 1,
-      "title": "Associate",
+      "role": "Associate",
       "company": "KFC",
       "logo": "kfc.png",
       "location": "Toronto",
@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "title": "Software Engineer",
+      "role": "Software Engineer",
       "company": "Shopify",
       "logo": "adidas.jpg",
       "location": "Ottawa",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "title": "Marketing Coordinator",
+      "role": "Marketing Coordinator",
       "company": "Tim Hortons",
       "logo": "tim-hortons.png",
       "location": "Vancouver",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "title": "Data Analyst",
+      "role": "Data Analyst",
       "company": "RBC",
       "logo": "hm.jpg",
       "location": "Toronto",
@@ -46,7 +46,7 @@
     },
     {
       "id": 5,
-      "title": "UX Designer",
+      "role": "UX Designer",
       "company": "Wealthsimple",
       "logo": "lids.jpeg",
       "location": "Toronto",
@@ -57,7 +57,7 @@
     },
     {
       "id": 6,
-      "title": "Customer Support Specialist",
+      "role": "Customer Support Specialist",
       "company": "Telus",
       "logo": "home_depo.jpeg",
       "location": "Calgary",
@@ -68,7 +68,7 @@
     },
     {
       "id": 7,
-      "title": "DevOps Engineer",
+      "role": "DevOps Engineer",
       "company": "Hootsuite",
       "logo": "giant_tiger.jpeg",
       "location": "Vancouver",
@@ -79,7 +79,7 @@
     },
     {
       "id": 8,
-      "title": "Product Manager",
+      "role": "Product Manager",
       "company": "Freshbooks",
       "logo": "home_hardware.jpeg",
       "location": "Toronto",
@@ -90,7 +90,7 @@
     },
     {
       "id": 9,
-      "title": "Graphic Designer",
+      "role": "Graphic Designer",
       "company": "Lululemon",
       "logo": "second_cup.jpeg",
       "location": "Vancouver",
@@ -101,7 +101,7 @@
     },
     {
       "id": 10,
-      "title": "Backend Developer",
+      "role": "Backend Developer",
       "company": "Cohere",
       "logo": "https://logo.clearbit.com/cohere.com",
       "location": "Toronto",
@@ -112,7 +112,7 @@
     },
     {
       "id": 11,
-      "title": "HR Coordinator",
+      "role": "HR Coordinator",
       "company": "Scotiabank",
       "logo": "https://logo.clearbit.com/scotiabank.com",
       "location": "Toronto",
@@ -123,7 +123,7 @@
     },
     {
       "id": 12,
-      "title": "Frontend Developer",
+      "role": "Frontend Developer",
       "company": "Lightspeed",
       "logo": "https://logo.clearbit.com/lightspeedhq.com",
       "location": "Montreal",
@@ -134,7 +134,7 @@
     },
     {
       "id": 13,
-      "title": "Operations Manager",
+      "role": "Operations Manager",
       "company": "Amazon",
       "logo": "https://logo.clearbit.com/amazon.com",
       "location": "Mississauga",
@@ -145,7 +145,7 @@
     },
     {
       "id": 14,
-      "title": "Content Writer",
+      "role": "Content Writer",
       "company": "Hootsuite",
       "logo": "https://logo.clearbit.com/hootsuite.com",
       "location": "Remote",

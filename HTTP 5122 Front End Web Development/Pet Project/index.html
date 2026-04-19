@@ -43,16 +43,20 @@
           <p>Your career journey starts here</p>
         </div>
         <div class="search_forms">
-          <form action="">
+          <form action="search.html" method="GET">
             <input
               type="text"
-              placeholder="Search by Job Title"
+              name="role"
+              placeholder="Search by Job Role"
               class="search_title"
+              required
             />
             <input
               type="text"
+              name="company"
               placeholder="Search by Company"
               class="search_company"
+              required
             />
             <!-- <input type="text" placeholder="Search by Location"> -->
             <button type="submit">
@@ -89,13 +93,12 @@
                 <option value="">Select Company</option>
               </select>
             </form>
-            <!-- Order -->
-            <div>
-              <p>Order | ASC | DES</p>
-            </div>
           </div>
           <h3>Latest Job Posts</h3>
           <p id="home_total_jobs"></p>
+          <!-- filter words -->
+          <div id="filtered_keywords">
+          </div>
           <div class="job_card_section"  id="jobs_wrapper">
           </div>
         </div>

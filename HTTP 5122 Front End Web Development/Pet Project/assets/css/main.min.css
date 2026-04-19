@@ -172,6 +172,31 @@ main .home_job_list .home_job_list_wrapper {
   margin: 0 auto;
   /* background-color: red; */
 }
+main #filtered_keywords{
+  font-size: .7em;
+  font-weight: 500;
+}
+main #filtered_keywords .location_badge{
+  background-color: #323232;
+  border-radius:7px;
+  padding: 3px 10px;
+  color:white
+
+}
+main #filtered_keywords .role_badge{
+  background-color: #3d85c6;
+  border-radius:7px;
+  padding: 3px 10px;
+  color:white
+
+}
+main #filtered_keywords .company_badge{
+  background-color: #f1c232;
+  border-radius:7px;
+  padding: 3px 10px;
+  color:white
+
+}
 main .home_job_list p {
   color: rgb(73, 72, 72);
   font-size: 0.9em;

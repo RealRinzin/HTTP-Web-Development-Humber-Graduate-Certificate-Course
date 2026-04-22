@@ -1,0 +1,55 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Dark Modern",
+  "php.validate.executablePath": "/opt/homebrew/bin/php",
+
+  // PHP / Laravel
+  "intelephense.environment.phpVersion": "8.3.0",
+  "intelephense.files.maxSize": 5000000,
+  "intelephense.telemetry.enabled": false,
+
+  // Editor suggestions
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true,
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.wordBasedSuggestions": "off",
+
+  // Formatters
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "files.autoSave": "off",
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
+  "[jsonc]": {
+    "intelephense.format.enable": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  // Codeium
+  "codeium.enableConfig": {
+    "*": true,
+    "typescriptreact": false,
+  },
+
+  // Other
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "mdb.mcp.server": "autoStartEnabled",
+  "liveServer.settings.donotShowInfoMsg": true,
+}

@@ -1,17 +1,82 @@
+/* ===================== CSS VARIABLES ===================== */
+:root {
+  --pitch-green: #2d7a1f;
+  --pitch-dark: #1e5c13;
+  --pitch-light: #3a9627;
+  --grass-stripe: rgba(0, 0, 0, 0.06);
+  --goal-white: #f0f0f0;
+  --board-bg: #0a0a0a;
+  --board-accent: #f0c040;
+  --board-text: #ffffff;
+  --board-dim: #888;
+  --neon-glow: rgba(240, 192, 64, 0.6);
+  --shadow-deep: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --radius: 12px;
+}
 body {
-  background-color: green;
+  background-color: var(--pitch-green);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      var(--grass-stripe) 0px,
+      var(--grass-stripe) 40px,
+      transparent 40px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--grass-stripe) 0px,
+      var(--grass-stripe) 40px,
+      transparent 40px,
+      transparent 80px
+    );
+
+  font-family: "Barlow Condensed", sans-serif;
+  padding: 1rem;
+}
+.text-white {
+  color: var(--board-text);
 }
 /* Score board */
-#score_board{
+#score_board {
   border-radius: 10px;
+  min-width: 400px;
   background-color: bisque;
+  border-radius: 1em;
 }
+
+/* Post bar */
+#goal_post {
+  justify-content: center;
+  display: flex;
+}
+#goal_post .left_bar {
+  width: 2%;
+  height: 100px;
+  background: white;
+  margin-top: 10px;
+  border-radius: 1em 0;
+}
+#goal_post .top_bar {
+  width: 90%;
+  height: 10px;
+  background: white;
+  margin-top: 10px;
+}
+#goal_post .right_bar {
+  width: 2%;
+  height: 100px;
+  background: white;
+  border-radius: 0 1em;
+  margin-top: 10px;
+}
+/*  */
 #penalty_area {
   width: 400px;
   height: 400px;
   /* background-color: red; */
   border: solid 2px white;
-  margin: 0px auto;
+  /* margin: 0px auto; */
   position: relative;
 }
 
@@ -68,8 +133,59 @@ body {
   animation-name: keeper_dive_right;
   animation-duration: 1s;
 }
+.keeper_dive_left {
+  animation-name: keeper_dive_left;
+  animation-duration: 1s;
+}
+
+.keeper_dive_center {
+  animation-name: keeper_dive_center;
+  animation-duration: 1s;
+}
 .hide {
   display: none;
+}
+/* position: absolute;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px; */
+/* Goal message */
+.goal_status_success {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--pitch-green);
+  background-color: var(--goal-white);
+  padding: 1em 2em;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-deep);
+}
+
+.goal_status_failed {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--board-text);
+  background-color: #a00;
+  padding: 1em 2em;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-deep);
+}
+
+/* Goal Status message */
+.fade-in {
+  animation: fadeIn 1s forwards; /* 'forwards' keeps the element visible at the end */
+}
+
+.fade-out {
+  animation: fadeInOut 2s ease-in-out;
 }
 
 /* ================= Keyframes for ball animation==================== */
@@ -82,7 +198,7 @@ body {
     transform: translate(-50px, -250%);
   } */
   100% {
-    transform: translate(-100px, -450%);
+    transform: translate(-180px, -390%);
   }
 }
 @keyframes shoot_center {
@@ -93,7 +209,7 @@ body {
     transform: translate(-50px, -250%);
   } */
   100% {
-    transform: translate(0, -450%);
+    transform: translate(0, -390%);
   }
 }
 
@@ -105,7 +221,7 @@ body {
     transform: translate(-50px, -250%);
   } */
   100% {
-    transform: translate(100px, -450%);
+    transform: translate(180px, -390%);
   }
 }
 
@@ -118,6 +234,49 @@ body {
     transform: translate(-50px, -250%);
   } */
   100% {
-    transform: translate(100px, -10%);
+    transform: translate(160px, -10%);
+  }
+}
+
+@keyframes keeper_dive_center {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(0px, -15%);
+  }
+}
+
+@keyframes keeper_dive_left {
+  0% {
+    transform: translate(0, 0);
+  }
+  /* 50% {
+    transform: translate(-50px, -250%);
+  } */
+  100% {
+    transform: translate(-160px, -10%);
+  }
+}
+
+/* Goal Message */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

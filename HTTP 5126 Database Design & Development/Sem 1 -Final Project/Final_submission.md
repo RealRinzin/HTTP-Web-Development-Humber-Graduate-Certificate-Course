@@ -115,7 +115,3 @@ DELIMITER ;
 SELECT get_video_stats(1);
 
 ```
-
-### DATABASE ERD - DIAGRAM
-
-![alt text](ERD.png)

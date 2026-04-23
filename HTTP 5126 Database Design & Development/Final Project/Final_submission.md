@@ -4,7 +4,7 @@
 ## 1. INNER JOIN
 ```sql
 -- Check how many students has watch this video and what is the total watch hour for the video
-SELECT v.title AS 'Title',COUNT(*) AS 'Total Watch', SEC_TO_TIME(SUM(TIME_TO_SEC(v.duration))) AS 'Total Duration' from user_video_metrics as m INNER JOIN users as u ON u.id = m.user_id INNER JOIN videos as v ON v.id = m.video_id WHERE m.video_id =1;
+SELECT v.title AS 'Title',COUNT(*) AS 'Total Watch', SEC_TO_TIME(SUM(TIME_TO_SEC(v.duration))) AS 'Total Duration' from user_video_metrics as m INNER JOIN users AS u ON u.id = m.user_id INNER JOIN videos AS v ON v.id = m.video_id WHERE m.video_id =1;
 
 -- Output table
 | title           | Total Watch | Total Duration |

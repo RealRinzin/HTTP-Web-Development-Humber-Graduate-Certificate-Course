@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toronto Survival Jobs</title>
     <link rel="stylesheet" href="assets/css/main.min.css" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon/favicon-96x96.png" sizes="96x96" />
+
   </head>
   <body>
     <!-- Navigations -->
@@ -33,11 +35,18 @@
     </header>
 
     <main>
-      <h1>Search Results</h1>
-      <p id="output"></p>
+      <section class="home_job_list">
+        <div class="home_job_list_wrapper common_padding">
+          <h3>Search Results: <span id="total_results"></span></h3>
+          <div id="search_keywords"></div>
+          <h3 style="color: red" id="error"></h3>
+          <p id="home_total_jobs"></p>
+          <!-- filter words -->
+          <div id="filtered_keywords"></div>
+          <div class="job_card_section" id="jobs_wrapper"></div>
+        </div>
+      </section>
     </main>
-    <!-- Hero -->
-    Job details
     <!-- footer -->
     <footer class="common_padding">
       <nav class="footer_navigation">
@@ -52,6 +61,6 @@
       src="https://kit.fontawesome.com/f15d50a24d.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/js/job_description.min.js"></script>
+    <script src="assets/js/search.min.js"></script>
   </body>
 </html>

@@ -106,14 +106,14 @@ input {
   list-style-type: none;
   background-color: #f3f3f3;
 }
-#home_company_logos .logos img{
+#home_company_logos .logos img {
   height: 45px;
   width: 45px;
   border-radius: 10px;
 }
 /********************************** Main ***************************************** */
 main {
-  min-height: 50vh;
+  min-height: 100vh;
 }
 /* Hero Section */
 
@@ -172,30 +172,27 @@ main .home_job_list .home_job_list_wrapper {
   margin: 0 auto;
   /* background-color: red; */
 }
-main #filtered_keywords{
-  font-size: .7em;
+main #filtered_keywords {
+  font-size: 0.7em;
   font-weight: 500;
 }
-main #filtered_keywords .location_badge{
+main #filtered_keywords .location_badge {
   background-color: #323232;
-  border-radius:7px;
+  border-radius: 7px;
   padding: 3px 10px;
-  color:white
-
+  color: white;
 }
-main #filtered_keywords .role_badge{
+main #filtered_keywords .role_badge {
   background-color: #3d85c6;
-  border-radius:7px;
+  border-radius: 7px;
   padding: 3px 10px;
-  color:white
-
+  color: white;
 }
-main #filtered_keywords .company_badge{
+main #filtered_keywords .company_badge {
   background-color: #f1c232;
-  border-radius:7px;
+  border-radius: 7px;
   padding: 3px 10px;
-  color:white
-
+  color: white;
 }
 main .home_job_list p {
   color: rgb(73, 72, 72);
@@ -240,4 +237,71 @@ footer .footer_navigation ul {
 }
 footer a {
   color: #ecf0f8;
+}
+
+/* Errors */
+.input_error::placeholder {
+  color: red;
+}
+
+.input_error {
+  border: 1px solid red;
+}
+
+/* Add new Job Button */
+#add_new_job_btn {
+  position: fixed;
+  right: 1%;
+  color: #2a427a;
+  font-weight: 600;
+  background: #ffd202;
+  padding: 0.5em 1em;
+  top: 40%;
+  border-radius: 4px;
+}
+#add_new_job_btn:hover {
+  cursor: pointer;
+}
+
+/* Add  */
+
+#add_job_form {
+  width: 50%;
+  background-color: #4c4b4b;
+  position: fixed;
+  display: none;
+  color: white;
+  top: 40%;
+  left: 20%;
+  padding: 2em;
+  border-radius: 10px;
+}
+#add_job_form h4 {
+  border-bottom: 1px dotted white;
+  padding-bottom: 10px;
+}
+#add_job_form select {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+#add_job_form label {
+  font-size: 0.8em;
+  color: #dfdede;
+}
+#add_job_form label span {
+  color: #970000;
+  padding-top: 2px;
+}
+#add_job_form input {
+  border-radius: 10px;
+}
+
+#add_job_form button {
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  border: none;
+  background: #ffd202;
+  font-weight: 800;
 }

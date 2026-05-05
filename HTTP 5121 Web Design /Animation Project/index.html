@@ -7,89 +7,85 @@
     <link rel="stylesheet" href="./assets/css/style.min.css" />
   </head>
   <body>
-    <p id="goal_message" class="hide goal_status_success">GOAL.......</p>
-    <p id="miss_goal_message" class="hide goal_status_failed ">
-      MISS GOAL......
-    </p>
-    <div class="text-white" style="text-align: center; margin-bottom: 2em">
-      <h1>Penalty Shootout Game</h1>
-      <p>Try to score as many goals as you can before taking 10 shots!</p>
-    </div>
-    <div style="display: flex; justify-content: center">
-      <div id="penalty_area">
-        <div class="goal_keeper">
-          <div id="goal_post">
-            <div class="left_bar"></div>
-            <div class="top_bar"></div>
-            <div class="right_bar"></div>
+    <main>
+      <p id="goal_message" class="hide goal_status_success">GOAL.......</p>
+      <p id="miss_goal_message" class="hide goal_status_failed">
+        MISS GOAL......
+      </p>
+      <div class="text-white" id="game_name">
+        <h1>Penalty Shootout Game</h1>
+        <p>Try to score as many goals as you can before taking 10 shots!</p>
+      </div>
+      <div id="outer_wrapper">
+        <div id="penalty_area">
+          <div class="goal_keeper">
+            <div id="goal_post">
+              <div class="left_bar"></div>
+              <div class="top_bar"></div>
+              <div class="right_bar"></div>
+            </div>
+            <div id="keeper_wrapper">
+              <img
+                id="left"
+                src="./assets/img/keeper_dive_left.png"
+                alt="penalty shoot game"
+                class="hide keeper_dive_left"
+              />
+              <img
+                id="stand"
+                src="./assets/img/goal-keeper.png"
+                alt="penalty shoot game"
+              />
+              <img
+                id="center"
+                src="./assets/img/keeper_jump.png"
+                alt="penalty shoot game"
+                class="hide keeper_dive_center"
+              />
+              <img
+                id="right"
+                src="./assets/img/keeper_dive_right.png"
+                alt="penalty shoot game"
+                class="hide keeper_dive_right"
+              />
+            </div>
           </div>
-          <div id="keeper_wrapper">
-            <img
-              id="left"
-              src="./assets/img/keeper_dive_left.png"
-              alt=""
-              class="hide keeper_dive_left"
-            />
-            <img id="stand" src="./assets/img/goal-keeper.png" alt="" />
-            <img
-              id="center"
-              src="./assets/img/keeper_jump.png"
-              alt=""
-              class="hide keeper_dive_center"
-            />
-            <img
-              id="right"
-              src="./assets/img/keeper_dive_right.png"
-              alt=""
-              class="hide keeper_dive_right"
-            />
+          <div id="shoot_area">
+            <div class="shoot_wrapper">
+              <div class="shoot_area_angles">
+                <span id="shoot_left">
+                  <i class="fa-solid fa-arrow-pointer fa-2x left"></i
+                ></span>
+                <span id="shoot_center">
+                  <i class="fa-solid fa-arrow-pointer fa-2x center"></i
+                ></span>
+                <span id="shoot_right">
+                  <i class="fa-solid fa-arrow-pointer fa-2x right_direction"></i
+                ></span>
+              </div>
+              <div id="ball">
+                <img src="./assets/img/ball.png" alt="penalty shoot game" />
+              </div>
+              <p class="text-white">
+                Click on the left, center, or right arrow to shoot the ball in
+                that direction.
+              </p>
+            </div>
           </div>
         </div>
-        <div id="shoot_area">
-          <div class="shoot_wrapper">
-            <div class="shoot_area_angles">
-              <span id="shoot_left">
-                <i class="fa-solid fa-arrow-pointer fa-2x left"></i
-              ></span>
-              <span id="shoot_center">
-                <i class="fa-solid fa-arrow-pointer fa-2x center"></i
-              ></span>
-              <span id="shoot_right">
-                <i class="fa-solid fa-arrow-pointer fa-2x right_direction"></i
-              ></span>
-            </div>
-            <div id="ball">
-              <img src="./assets/img/ball.png" alt="" />
-            </div>
-            <p class="text-white">
-              Click on the left, center, or right arrow to shoot the ball in
-              that direction.
-            </p>
-          </div>
+        <div id="score_board">
+          <h2>Score Board</h2>
+          <p><span id="goal_counter"></span> / 10</p>
+          <ul id="goal_counter_balls"></ul>
         </div>
       </div>
-      <div id="score_board">
-        <h4>Score Board</h4>
-        <p><span id="goal_counter"></span> / 10</p>
-        <ul
-          id="goal_counter_balls"
-          style="display: flex; gap: 2em; list-style: none"
-        ></ul>
-      </div>
-    </div>
-    <audio
-      id="ballKick"
-      src="./assets/audios/ball-kick.mp3"
-    ></audio>
-    <audio
-      id="stadiumNoise"
-      src="./assets/audios/stadium-noise.mp3"
-
-    ></audio>
-    <audio
-      id="keeperJumpSound"
-      src="./assets/audios/keeper-jump-sound.mp3"
-    ></audio>
+      <audio id="ballKick" src="./assets/audios/ball-kick.mp3"></audio>
+      <audio id="stadiumNoise" src="./assets/audios/stadium-noise.mp3"></audio>
+      <audio
+        id="keeperJumpSound"
+        src="./assets/audios/keeper-jump-sound.mp3"
+      ></audio>
+    </main>
     <script src="./assets/js/script.min.js"></script>
     <!-- font awesome icons -->
     <script

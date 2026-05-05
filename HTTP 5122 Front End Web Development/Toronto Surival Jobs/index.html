@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toronto Survival Jobs</title>
     <link rel="stylesheet" href="assets/css/main.min.css" />
+    <link rel="icon" type="image/png" href="./assets/img/favicon/favicon-96x96.png" sizes="96x96" />
   </head>
   <body>
     <!-- Navigations -->
-
     <header id="main_navigation" class="common_padding">
       <nav class="navbar">
         <ul class="nav_logo">
@@ -42,24 +42,30 @@
           </p>
           <p>Your career journey starts here</p>
         </div>
-        
+
         <div class="search_forms">
-          <form action="search.html" method="GET" id="search_form">
+          <form
+            action="search.html"
+            method="GET"
+            id="search_form"
+            name="search_form"
+          >
             <input
               type="text"
               name="role"
               placeholder="Search by Job Role"
               class="search_title"
-              required
+              list="role_suggestions"
             />
+            <datalist id="role_suggestions"></datalist>
             <input
               type="text"
-              name="company"
-              placeholder="Search by Company"
+              name="location"
+              placeholder="Search by Location"
               class="search_company"
-              required
+              list="location_suggestions"
             />
-            <!-- <input type="text" placeholder="Search by Location"> -->
+            <datalist id="location_suggestions"></datalist>
             <button type="submit">
               <i class="fa-solid fa-magnifying-glass fa-2x"></i>
             </button>
@@ -83,7 +89,7 @@
         <div class="home_job_list_wrapper common_padding">
           <div id="home_filter_sort">
             <!-- filter -->
-            <form class="sort_role_location_company_input" >
+            <form class="sort_role_location_company_input">
               <select name="roles" id="roleList" onchange="jobFilter()">
                 <option value="">Select Roles</option>
               </select>
@@ -98,12 +104,84 @@
           <h3>Latest Job Posts</h3>
           <p id="home_total_jobs"></p>
           <!-- filter words -->
-          <div id="filtered_keywords">
-          </div>
-          <div class="job_card_section"  id="jobs_wrapper">
-          </div>
+          <div id="filtered_keywords"></div>
+          <div class="job_card_section" id="jobs_wrapper"></div>
         </div>
       </section>
+
+      <!-- Add New Job form -->
+      <p id="add_new_job_btn" onclick="showHideForm()">ADD NEW JOB</p>
+
+      <form action="" id="add_job_form">
+        <i class="fa-solid fa-circle-xmark" onclick="showHideForm()"></i>
+        <h4>Add New Jobs</h4>
+        <!--  -->
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 1em;
+          "
+        >
+        <!-- Role -->
+          <div style="display: flex; flex-direction: column;width: 100%;">
+            <label for="add_roleList">Role <span>*</span></label>
+            <select name="add_roles" id="add_roleList" onchange="jobFilter()">
+              <option value="">Select Roles</option>
+            </select>
+          </div>
+          <!-- company -->
+          <div style="display: flex; flex-direction: column;width: 100%;">
+            <label for="add_locationList">Company <span>*</span></label>
+            <select
+              name="add_company"
+              id="add_company"
+              onchange="jobFilter()"
+            >
+              <option value="">Select Company</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- N -->
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            gap: 1em;
+          "
+        >
+        <!-- Location -->
+          <div style="display: flex; flex-direction: column;width: 100%;">
+            <label for="add_location">Location<span>*</span></label>
+            <select name="add_locations" id="add_location" onchange="jobFilter()">
+              <option value="">Select Location</option>
+            </select>
+          </div>
+          <div style="display: flex; flex-direction: column;width: 100%;">
+
+            <label for="add_locationList">Types<span>*</span></label>
+
+            <select
+              name="add_types"
+              id="add_types"
+            >
+              <option value="">Select Type</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Contract ">Contract </option>
+            </select>
+          </div>
+        </div>
+        <!-- Description -->
+         <div style="width: 100%;">
+          <label for="">Description<span>*</span></label>
+          <input type="textarea" style="width: 100%;" name="description">
+         </div>
+         <button type="submit" >Add Job</button>
+      </form>
     </main>
     <!-- footer -->
     <footer class="common_padding">

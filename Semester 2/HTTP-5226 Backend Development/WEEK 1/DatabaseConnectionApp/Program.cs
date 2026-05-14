@@ -1,7 +1,20 @@
+using DatabaseConnectionApp.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Connection string
+builder.Services.AddDbContext<AppointmentDBContext>(
+    Options => Options.UseMySql(
+        "server=localhost;port=8889;database=appointmentManager;user=root;password=root;",
+        ServerVersion.AutoDetect("server=localhost;port=8889;database=appointmentManager;user=root;password=root;"
+        ))
+);
+
 
 var app = builder.Build();
 

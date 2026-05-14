@@ -10,7 +10,8 @@ namespace DatabaseConnectionApp.Models
         {
             // 
         }
-
+        
+        // 
         public DbSet<Client> clientList { get; set; } // creating a table for the client list 
     }
 }

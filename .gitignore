@@ -6,3 +6,5 @@
 # Ignore the ASP.NET files
 **/bin/
 **/obj/
+bin/
+obj/

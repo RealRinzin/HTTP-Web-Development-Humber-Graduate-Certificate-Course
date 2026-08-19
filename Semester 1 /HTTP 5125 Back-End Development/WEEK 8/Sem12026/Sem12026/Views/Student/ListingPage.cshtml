@@ -1,0 +1,29 @@
+﻿@model Sem12026.Models.ViewModel.ListingPageModel; 
+
+
+<h1>Listing page</h1>
+
+
+<ul>
+@foreach (var Student in Model.studentList)
+{
+        <li>@Student.Name, @Student.Email, @Student.Phone</li>
+    }
+</ul>
+
+<ul>
+    @foreach (var Course in Model.courseList)
+    {
+        <li>@Course.Name</li>
+    }
+</ul>
+
+
+<p1>@Model.course.Name</p1>
+
+@* adding course to a list *@
+<form asp-controller="Student" asp-action="AddCourse" method="post">
+    <label asp-for="course.Name"></label>
+    <input asp-for="course.Name"/>
+    <button type = "submit">Submit </button>
+</form>

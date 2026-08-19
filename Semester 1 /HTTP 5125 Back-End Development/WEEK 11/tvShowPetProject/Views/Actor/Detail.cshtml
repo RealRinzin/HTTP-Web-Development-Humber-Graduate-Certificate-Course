@@ -1,0 +1,33 @@
+@* @model Shows *@
+@* <h2>@Model.name</h2>
+<p>ID: @Model.id</p> *@
+@{
+    ViewData["Title"] = "Testing";
+}
+@* <div class="container" id="detail_tv_show">
+    <div class="row mx-auto pt-5">
+        <div class="cols-4">
+            <div class="card">
+                <div class="img_banner" style="background-image :url(@Model.image.original)">
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">@Model.name</h1>
+                    <div class="types">
+                        <p class="badge bg-primary">@Model.language</p>
+                        <p class="badge bg-secondary">@Model.premiered</p>
+                        @foreach (var genre in Model.genres.Take(2))
+                        {
+                            <span
+                                class="badge text-bg-@(genre == "Action" ? "primary" : genre == "Drama" ? "danger" : "secondary") me-1">
+                                @genre
+                            </span>
+                        }
+                    </div>
+                    <p class="card-text">
+                        @Model.summary
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@

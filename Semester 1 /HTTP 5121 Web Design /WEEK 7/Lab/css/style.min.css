@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* 1. GENERAL/DEFAULT STYLES */
+/* 2. HEADER */
+/* -- 2a. Site name and logo */
+/* -- 2b. Navigation */
+/* 3. MAIN CONTENT */
+/* -- 3a. Hero */
+/* -- 3b. Other sections */
+/* 4. FOOTER */
+/* -- 4a. Navigation */
+html {
+  box-sizing: border-box; /* 1. Set box-sizing to border-box for the root element */
+}
+*,
+*:before,
+*:after {
+  /* 1. Apply box-sizing to all elements */
+  box-sizing: inherit;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  /* CSS Variables for colors and fonts */
+  --font-color: #3a0707;
+  --pink-color: #eb0079;
+}
+/* ul{
+  padding: 0;
+  margin: 0;
+} */
+/*  */
+header {
+  /* 2. HEADER */
+  display: flex;
+  font-family: "Bellota", sans-serif;
+  color: var(--font-color);
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1em;
+}
+header h1 {
+  /* -- 2a. Site name and logo */
+  font-size: 2em; /* 32px */
+}
+a {
+  /* -- 2b. Navigation */
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: 1.25em;
+}
+
+nav ul li {
+  /* -- 4a. Navigation in the footer */
+  font-family: poppins, sans-serif;
+  font-weight: 200;
+  padding: 0 1em;
+  font-size: 1em;
+  list-style: none;
+}
+nav ul li a:hover{
+  text-shadow: 1px 1px 0 var(--font-color);
+  transition: 0.3s;
+}
+#main-content {
+  background: url("../images/macarons.jpg") center center no-repeat;
+  background-size: cover;
+  padding: 15em 0;
+}
+.hero-section h2 {
+  font-family: "Bellota", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  font-size: 5em;
+  text-shadow: 5px 5px 0 var(--font-color);
+  line-height: 0.5em;
+}
+.hero-section .button {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25em;
+  border: var(--pink-color) 4px solid;
+  color: var(--pink-color);
+  border-radius: 2em;
+  padding: 0.7em 1.6em;
+  background-color: #fff;
+  font-weight: 500;
+}
+/* Custom Class */
+.menu {
+  display: flex;
+}
+.text-centered {
+  text-align: center;
+}
+.center-items {
+  margin: 0 auto;
+}
+/* 
+ Poppins, Light, 14px, #3A0707
+ */
+footer .copyright {
+  font-family: poppins, sans-serif;
+  font-weight: 300;
+  color: var(--font-color);
+  font-size: 0.875em;
+  padding: 0 4em
+}

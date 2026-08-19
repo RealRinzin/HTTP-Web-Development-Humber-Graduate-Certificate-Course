@@ -1,0 +1,30 @@
+/* 
+selector 
+Difference between san-serif vs serif is the sharp edge of the fonts.
+ */
+body{
+    /* If the first font does not exit, it will fallback on the second font and so on with third forth */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0px;
+    text-decoration: none;
+}
+ul li{
+    list-style: none;
+}
+ul li a{
+    text-decoration:none;
+}
+/* Select all heading elements from h1 to h6 */
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+}
+
+/* 
+    px: Absolute unite
+    em: 
+    rem: 
+ */
+main h1{
+font-style: oblique;
+font-size: 3em; 
+}

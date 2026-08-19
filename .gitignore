@@ -1,0 +1,8 @@
+# Build output / dependencies (matches recursively everywhere)
+bin/
+obj/
+node_modules/
+vendor/
+
+# Environment configuration
+env.php

@@ -1,0 +1,110 @@
+/**************************************
+ * TABLE OF CONTENTS
+ * =================
+ * 1. Default styling (drawing)
+ * 2. Your styling here
+ **************************************/
+
+/* 1. Default styling (drawing) */
+body {
+  margin: 0; /* remove default margin */
+  height: 100vh;
+  display: flex; /* just to center drawing */
+  flex-direction: column;
+}
+#drawing {
+  margin: auto; /* center drawing within flex container */
+  position: relative;
+  z-index: 1;
+}
+#hat {
+  /* hat top */
+  width: 180px;
+  height: 50px;
+  background-color: #333;
+  border-bottom: 30px solid #000; /* ribbon */
+  margin: 0 auto; /* horizontally center block element */
+  position: relative;
+  top: 40px; /* to place hat on head */
+}
+#hat::after {
+  /* hat brim */
+  content: ""; /* to make this pseudo element show */
+  display: block;
+  width: 350px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+  bottom: -45px; /* go below ribbon (border) */
+  left: 50%;
+  transform: translateX(-50%);
+}
+#head {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: yellow;
+  position: relative;
+  z-index: -1; /* make sure head is drawn underneath hat (i.e. layer-wise) */
+}
+#features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+  position: absolute;
+  top: 80px;
+  width: 100%; /* prevent width of div from shrinking due to absolute positioning */
+}
+#eyes {
+  display: flex;
+  justify-content: center; /* center eyes in head */
+  column-gap: 30px; /* space between eyes */
+  position: relative;
+  z-index: 20; /* make sure eyes in front */
+}
+.eye {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: relative;
+}
+.eye::after {
+  /* eye pupils */
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000;
+  position: absolute;
+  bottom: 5px; /* looking down a little */
+  left: calc(50% - 10px); /* center pupil horizontally */
+}
+#mouth {
+  width: 50px;
+  height: 20px;
+  background-color: #fc7ab9;
+  border-radius: 0 0 20px 20px;
+}
+#bowtie {
+  /* make use of mitered corners for borders and transparent borders to make bowtie shape */
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  border-left: 40px solid red;
+  border-right: 40px solid red;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+#bowtie::after {
+  /* bowtie knot */
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+/* 2. Your styling here */

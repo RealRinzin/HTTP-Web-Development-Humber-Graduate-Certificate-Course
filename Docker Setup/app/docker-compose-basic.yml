@@ -1,0 +1,12 @@
+services:
+  nginx:
+    image: nginx
+
+  php:
+    image: php:8.2-fpm
+
+  node:
+    image: node:18
+
+  db:
+    image: mysql:8

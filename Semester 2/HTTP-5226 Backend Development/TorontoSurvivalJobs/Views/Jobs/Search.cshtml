@@ -1,0 +1,169 @@
+@model List<TorontoSurvivalJobs.Models.Job>
+
+@{
+    ViewData["Title"] = "Search Jobs";
+}
+
+<div class="container mx-auto px-4 py-8">
+
+    <!-- SEARCH -->
+
+    <form method="get"
+          asp-controller="Jobs"
+          asp-action="Search"
+          class="max-w-xl mx-auto bg-white p-1.5 rounded-full shadow-sm border border-gray-200/80 flex items-center justify-between text-xs">
+
+        <div class="flex items-center space-x-2 w-full divide-x divide-gray-200">
+
+            <!-- WHAT -->
+
+            <div class="flex items-center space-x-2 px-4 w-1/2">
+
+                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-gray-400">
+                    WHAT
+                </span>
+
+                <input type="text"
+                       name="query"
+                       value="@ViewBag.Query"
+                       placeholder="Job title or keyword"
+                       class="w-full bg-transparent focus:outline-none text-gray-800 placeholder-gray-400 text-xs" />
+
+            </div>
+
+
+            <!-- WHERE -->
+
+            <div class="flex items-center space-x-2 px-4 w-1/2">
+
+                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-gray-400">
+                    WHERE
+                </span>
+
+                <input type="text"
+                       name="location"
+                       value="@ViewBag.Location"
+                       placeholder="Remote or City"
+                       class="w-full bg-transparent focus:outline-none text-gray-800 placeholder-gray-400 text-xs" />
+
+            </div>
+
+        </div>
+
+
+        <button type="submit"
+                class="bg-[#527863] text-white px-6 py-2.5 rounded-full font-medium text-xs hover:bg-[#436451] transition shrink-0">
+
+            Search
+
+        </button>
+
+    </form>
+
+
+    <!-- RESULTS -->
+
+    <div class="mt-10">
+
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">
+            @Model.Count job(s) found
+        </h2>
+
+
+        @if (Model.Any())
+        {
+            <div class="space-y-4">
+
+                @foreach (var job in Model)
+                {
+                    <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
+
+                        <div class="flex justify-between">
+
+                            <div>
+
+                                <h3 class="text-lg font-semibold text-gray-900">
+                                    @job.Title
+                                </h3>
+
+                                <p class="text-sm text-gray-600">
+                                    @job.Company?.Name
+                                </p>
+
+                            </div>
+
+                            <span class="text-sm text-gray-500">
+                                @job.Location?.Name
+                            </span>
+
+                        </div>
+
+
+                        @if (!string.IsNullOrWhiteSpace(job.Description))
+                        {
+                            <p class="mt-3 text-sm text-gray-600">
+                                @job.Description
+                            </p>
+                        }
+
+
+                        <div class="mt-4 flex gap-3">
+
+                            @if (job.SalaryMin.HasValue)
+                            {
+                                <span class="text-sm font-medium">
+                                    $@job.SalaryMin
+
+                                    @if (job.SalaryMax.HasValue &&
+                                         job.SalaryMax != job.SalaryMin)
+                                    {
+                                        @: - $@job.SalaryMax
+                                    }
+                                </span>
+                            }
+
+                            @if (!string.IsNullOrWhiteSpace(job.JobType))
+                            {
+                                <span class="text-sm text-gray-500">
+                                    @job.JobType
+                                </span>
+                            }
+
+                        </div>
+
+
+                        <div class="mt-4">
+
+                            <a asp-action="Details"
+                               asp-route-id="@job.JobId"
+                               class="text-sm font-medium text-[#527863]">
+
+                                View Job →
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+
+                <h3 class="font-semibold text-gray-800">
+                    No jobs found
+                </h3>
+
+                <p class="text-sm text-gray-500 mt-2">
+                    Try another job title or location.
+                </p>
+
+            </div>
+        }
+
+    </div>
+
+</div>

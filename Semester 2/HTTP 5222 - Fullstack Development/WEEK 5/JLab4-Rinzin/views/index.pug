@@ -1,0 +1,12 @@
+extends common/layout
+
+block layout-content 
+  .main-content 
+    h1.page-title Movie List
+    each movie in movies 
+      div 
+        h2 #{movie.title}
+        div Release: #{movie.year} 
+        div Rating: #{movie.rating}
+        div
+          img(src=movie.poster, alt=movie.title)

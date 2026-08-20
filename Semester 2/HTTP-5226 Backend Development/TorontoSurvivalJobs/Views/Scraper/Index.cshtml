@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Job Scraper";
+}
+
+<h1>Toronto Job Scraper</h1>
+
+<p>
+    Click the button below to scrape the sample Toronto jobs page.
+</p>
+
+<form asp-action="Scrape" method="post">
+
+    <button type="submit"
+            class="btn btn-primary">
+        Scrape Jobs
+    </button>
+
+</form>

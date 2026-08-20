@@ -1,0 +1,39 @@
+@model Post
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="w-25 p-3 mx-auto shadow-md">
+    <h5 class="fs-2">Add New Client</h1>
+
+        <form asp-action="AddPost" method="post">
+            <div class="mb-3">
+                <label asp-for="FeaturedImage" class="form-label">
+                    FeaturedImage
+                </label>
+                <input asp-for="FeaturedImage" class="form-control" data-val="true" data-val-required="Name is required"
+                       data-val-email="Invalid Name" />
+                <span asp-validation-for="FeaturedImage" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">
+                    Title
+                </label>
+                <input asp-for="Title" class="form-control" data-val="true" data-val-required="Name is required"
+                       data-val-email="Invalid Name" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="Summary" class="form-label">Summary</label>
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Post</button>
+        </form>
+
+    </div>

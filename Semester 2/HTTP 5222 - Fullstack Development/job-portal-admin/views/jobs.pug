@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  h2 Jobs
+
+  if companies.length === 0
+    p Please add a company first before adding a job.
+  else
+    form.add-form(action="/jobs" method="POST")
+      label(for="title") Job Title
+      input(type="text" id="title" name="title" required)
+
+      label(for="role") Role
+      input(type="text" id="role" name="role" required)
+
+      label(for="description") Description
+      textarea(id="description" name="description" required)
+
+      label(for="company") Company
+      select(id="company" name="company" required)
+        each company in companies
+          option(value=company._id)= company.name
+
+      button(type="submit") Add Job
+
+  h3 All Jobs
+  table
+    thead
+      tr
+        th Title
+        th Role
+        th Description
+        th Company
+        th
+    tbody
+      each job in jobs
+        tr
+          td= job.title
+          td= job.role
+          td= job.description
+          td= job.company ? job.company.name : "N/A"
+          td
+            form(action=`/jobs/${job._id}/delete` method="POST")
+              button.delete-btn(type="submit") Delete

@@ -1,0 +1,9 @@
+extends layout 
+
+block main-content 
+  h1.page-title Trending Shows
+  each s in shows 
+    h2 #{s.show.title} 
+    p Year released: #{s.show.year} 
+    div: a(href=`/show/${s.show.ids.trakt}`) View show 
+    img(src=`//${s.show.images.poster[0]}`, height="250")

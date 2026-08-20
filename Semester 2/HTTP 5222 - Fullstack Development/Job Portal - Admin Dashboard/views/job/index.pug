@@ -1,0 +1,29 @@
+extends ../common/layout 
+
+block layout-content
+    div.row
+        h1 Job List
+        table
+            thead
+                tr
+                    th(scope="col") #
+                    th(scope="col") Comany
+                    th(scope="col") Role
+                    th(scope="col") Description
+                    th(scope="col") Posted On
+                    th(scope="col") View
+                    th(scope="col") Edit
+                    th(scope="col") Delete
+            tbody
+                each job,index in jobs
+                    tr
+                        th(scope="row") #{index+1}
+                        td
+                            img(src="/assets/img/logo/" + job.logo, alt=job.role,height="60")
+                        td #{job.role}
+                        td #{job.description}
+                        td #{job.posted}
+                        td 
+                            a(href="/jobs/" + job.id style="color:inherit") <i class="fa-solid fa-eye"></i>
+                        td <i class="fa-solid fa-pen-to-square text-primary"></i>
+                        td <i class="fa-solid fa-trash-can text-danger"></i>

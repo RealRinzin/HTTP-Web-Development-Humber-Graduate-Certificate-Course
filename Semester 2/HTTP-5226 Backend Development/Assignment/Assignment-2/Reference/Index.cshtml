@@ -1,0 +1,69 @@
+@model MiniReddit.Models.Post
+@{
+    ViewData["Title"] = "Post";
+    bool isLoggedIn = User.Identity != null && User.Identity.IsAuthenticated;
+    bool isAdmin = User.IsInRole("Admin");
+    string? myId = ViewBag.CurrentUserId as string; // set by a small base-controller filter, see note below
+}
+
+<div class="post-box">
+    <h2>@Model.Title</h2>
+    <p>@Model.Body</p>
+</div>
+
+<div class="comments-box">
+    <h3>Comments</h3>
+
+    @foreach (var comment in Model.Comments.OrderByDescending(c => c.CreatedAt))
+    {
+        bool isOwnComment = isLoggedIn && comment.AuthorId == myId;
+
+        <div class="comment">
+            <strong>@comment.Author?.UserName:</strong> @comment.Text
+            <span class="likes">👍 @comment.Likes</span>
+
+            @* --- Role-based action buttons --- *@
+
+            @if (isLoggedIn)
+            {
+                <form asp-controller="Comments" asp-action="Like" method="post" style="display:inline">
+                    <input type="hidden" name="commentId" value="@comment.Id" />
+                    <button type="submit">Like</button>
+                </form>
+            }
+
+            @if (isOwnComment || isAdmin)
+            {
+                <a href="#" onclick="showEditForm(@comment.Id)">Edit</a>
+            }
+
+            @if (isAdmin)
+            {
+                <form asp-controller="Comments" asp-action="Delete" method="post" style="display:inline">
+                    <input type="hidden" name="commentId" value="@comment.Id" />
+                    <button type="submit">Delete</button>
+                </form>
+                <form asp-controller="Admin" asp-action="Ban" method="post" style="display:inline">
+                    <input type="hidden" name="userId" value="@comment.AuthorId" />
+                    <button type="submit">Ban this user</button>
+                </form>
+            }
+        </div>
+    }
+
+    @* --- Comment box: only Users and Admins get one --- *@
+    @if (isLoggedIn)
+    {
+        <form asp-controller="Comments" asp-action="Create" method="post">
+            <input type="hidden" name="postId" value="@Model.Id" />
+            <textarea name="text" placeholder="Comment...."></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+    }
+    else
+    {
+        <div class="guest-prompt">
+            <a asp-controller="Account" asp-action="Login">Log in to comment</a>
+        </div>
+    }
+</div>

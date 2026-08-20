@@ -1,0 +1,172 @@
+@model TorontoSurvivalJobs.Models.Job
+
+@{
+    ViewData["Title"] = "Edit Job";
+}
+
+<!-- Main Section -->
+<main class="max-w-3xl mx-auto px-6 py-12 w-full">
+
+    <!-- Header Title & Back Link -->
+    <div class="mb-8 flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-bold tracking-tight text-brand-text">Edit Job Posting</h1>
+            <p class="text-sm text-brand-muted mt-1">Update job listing parameters and details below.</p>
+        </div>
+        <a href="#" class="text-xs font-medium text-brand-muted hover:text-brand-text transition-colors">
+            &larr; Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Edit Form Card -->
+    <form asp-action="Edit" method="post"
+          class="bg-brand-card p-8 rounded-2xl border border-brand-border/80 shadow-sm space-y-6">
+
+        <input type="hidden" asp-for="JobId" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-xs font-medium text-red-600 bg-red-50 p-3 rounded-lg border border-red-200"></div>
+
+        <!-- Job Title -->
+        <div>
+            <label asp-for="Title"
+                   class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+            <input asp-for="Title"
+                   class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+            <span asp-validation-for="Title" class="text-xs text-red-600 mt-1 block"></span>
+        </div>
+
+        <!-- Company & Category Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label asp-for="CompanyId"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2">Company</label>
+                <select asp-for="CompanyId"
+                        class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all appearance-none cursor-pointer">
+                    <option value="">-- Select Company --</option>
+                    @if (ViewBag.Companies != null)
+                    {
+                        @foreach (var company in ViewBag.Companies)
+                        {
+                            <option value="@company.CompanyId">@company.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="CompanyId" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+
+            <div>
+                <label asp-for="CategoryId"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2">Category</label>
+                <select asp-for="CategoryId"
+                        class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all appearance-none cursor-pointer">
+                    <option value="">-- Select Category --</option>
+                    @if (ViewBag.Categories != null)
+                    {
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.CategoryId">@category.Name</option>
+                        }
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+        </div>
+
+        <!-- Postal Code, Job Type, & Experience Level Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+                <label asp-for="PostalCode"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="PostalCode"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all uppercase" />
+                <span asp-validation-for="PostalCode" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+
+            <div>
+                <label asp-for="JobType"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="JobType"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+                <span asp-validation-for="JobType" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+
+            <div>
+                <label asp-for="ExperienceLevel"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="ExperienceLevel"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+                <span asp-validation-for="ExperienceLevel" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+        </div>
+
+        <!-- Salary Range Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label asp-for="SalaryMin"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="SalaryMin" type="number" step="0.01"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+                <span asp-validation-for="SalaryMin" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+
+            <div>
+                <label asp-for="SalaryMax"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="SalaryMax" type="number" step="0.01"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+                <span asp-validation-for="SalaryMax" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+            <label asp-for="Description"
+                   class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+            <textarea asp-for="Description" rows="4"
+                      class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all resize-none"></textarea>
+            <span asp-validation-for="Description" class="text-xs text-red-600 mt-1 block"></span>
+        </div>
+
+        <!-- URL & Source Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2">
+                <label asp-for="Url"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="Url" type="url"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all truncate" />
+                <span asp-validation-for="Url" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+
+            <div>
+                <label asp-for="Source"
+                       class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+                <input asp-for="Source"
+                       class="w-full bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+                <span asp-validation-for="Source" class="text-xs text-red-600 mt-1 block"></span>
+            </div>
+        </div>
+
+        <!-- Date Posted -->
+        <div>
+            <label asp-for="DatePosted"
+                   class="block text-xs font-semibold uppercase tracking-wider text-brand-muted mb-2"></label>
+            <input asp-for="DatePosted" type="date"
+                   class="w-full md:w-1/2 bg-brand-bg/50 border border-brand-border rounded-xl px-4 py-3 text-sm text-brand-text font-medium focus:outline-none focus:ring-2 focus:ring-brand-focus focus:bg-white transition-all" />
+            <span asp-validation-for="DatePosted" class="text-xs text-red-600 mt-1 block"></span>
+        </div>
+
+        <!-- Actions -->
+        <div class="pt-6 border-t border-brand-border/60 flex justify-between items-center space-x-4">
+            <button type="submit"
+                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm px-6 py-3 rounded-full transition-all shadow-sm">
+                Save Changes
+            </button>
+            <a asp-action="Index"
+               class="bg-stone-800 text-white hover:bg-stone-100 text-brand-muted hover:text-brand-text font-medium text-sm px-6 py-3 rounded-full transition-all inline-block">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+</main>

@@ -1,0 +1,11 @@
+
+#slideshow {
+    position: relative;
+    width: 800px;
+    height: 400px;
+}
+.slide {
+    position: absolute;
+    top: 0; 
+    left: 0;
+}

@@ -1,0 +1,29 @@
+@model User
+<div class="flex justify-center">
+    <div class="w-1/6 my-6">
+    <h1 class="bg-blue-800 py-3 px-2 shadow-md text-xl text-white">Add New User</h1>
+        <form asp-action="Edit" method="post" class="flex flex-col gap-4 rounded-md shadow-md px-4 py-6">
+            <div class="flex flex-col gap-2">
+                <label asp-for="name" class="text-gray-500 px-1">Name</label>
+                <input asp-for="name" class="border border-gray-200 w-full rounded-md px-4 py-1"
+                       placeholder="Role Name" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label asp-for="username" class="text-gray-500 px-1">Username</label>
+                <input asp-for="username" class="border border-gray-200 w-full rounded-md px-4 py-1"
+                       placeholder="Company Name" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label asp-for="password" class="text-gray-500 px-1">Password</label>
+                <input asp-for="password" class="border border-gray-200 w-full rounded-md px-4 py-1"
+                       placeholder="Logo Name" />
+            </div>
+            <div class="flex flex-col gap-2">
+                <label asp-for="role" class="text-gray-500 px-1">Role Type</label>
+                <input asp-for="role" class="border border-gray-200 w-full rounded-md px-4 py-1"
+                       placeholder="Location Name" />
+            </div>
+            <button type="submit" class="bg-blue-700 text-white px-3 py-2 w-full uppercase">Update User </button>
+        </form>
+    </div>
+</div>

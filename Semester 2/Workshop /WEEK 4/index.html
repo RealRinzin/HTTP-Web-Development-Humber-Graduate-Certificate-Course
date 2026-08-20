@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banana Counter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-yellow-100 font-sans">
+
+  <!-- Top section with checkered background -->
+  <div class="relative min-h-[60vh] p-12 overflow-hidden">
+
+    <!-- Checkered grid overlay -->
+    <div class="absolute inset-0 grid grid-cols-4 grid-rows-3 z-0">
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div></div>
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div></div>
+      <div></div>
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div></div>
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div></div>
+      <div class="bg-yellow-300 opacity-40"></div>
+      <div></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="relative z-10 flex flex-col justify-center">
+      <h1 class="text-5xl font-black tracking-wider text-gray-900 mb-4">
+        BANANA COUNTER
+      </h1>
+      <p class="text-sm font-bold tracking-widest text-gray-700 mb-2">
+        SINCE 1970-1-1
+      </p>
+      <p class="text-6xl font-black text-gray-900">
+        100,232,121,23
+      </p>
+    </div>
+  </div>
+</body>
+</html>

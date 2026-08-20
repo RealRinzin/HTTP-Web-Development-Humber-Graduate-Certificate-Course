@@ -1,0 +1,21 @@
+{
+  "name": "testapp-a",
+  "version": "1.0.0",
+  "description": "My first Express app",
+  "license": "ISC",
+  "author": "Joanna K",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

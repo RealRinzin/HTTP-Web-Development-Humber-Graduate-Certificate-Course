@@ -1,0 +1,31 @@
+@model List<DatabaseConnectionApp.Models.Client>
+<h1>Client</h1>
+<p>The lis of cliecnt</p>
+
+<a class="btn btn-primary" asp-action="AddClient">
+  <span class="sr-only">Add New CLient</span>
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var client in Model)
+            {
+           <tr>
+                <th scope="row">@client.Id</th>
+                <td>@client.first_name</td>
+                <td>@client.last_name</td>
+                <td><button class="btn btn-info">Edit</button></td>
+                <td><button class="btn btn-danger">Delete</button></td>
+            </tr>
+            }
+
+    </tbody>
+</table>

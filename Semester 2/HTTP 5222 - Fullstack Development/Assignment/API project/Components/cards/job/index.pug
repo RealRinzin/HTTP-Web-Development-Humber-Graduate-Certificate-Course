@@ -1,0 +1,8 @@
+mixin JobCard(job)
+    .rounded-md.shadow-md.bg-gray-100.p-4.my-2
+        h1.text-gray-700.font-extrabold.text-lg=job.title
+        h1.text-gray-600.font-semibold.text-md=job.company_name
+        ul.flex.gap-4.text-sm.font-medium.text-gray-500
+            li=job.category
+            li=job.salary
+            li=job.candidate_required_location

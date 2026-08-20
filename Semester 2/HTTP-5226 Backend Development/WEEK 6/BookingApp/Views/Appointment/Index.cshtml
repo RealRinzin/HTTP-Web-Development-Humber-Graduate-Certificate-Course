@@ -1,0 +1,39 @@
+@model IEnumerable<BookingApp.Models.Appointment>
+@{
+    ViewData["Title"] = "Appointment List";
+}
+
+<div class="container mt-4">
+    <h2>Appointment List</h2>
+
+    <table class="table table-striped table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(item.Client != null ? item.Client.name : "N/A")</td>
+                    <td>@(item.Service != null ? item.Service.name : "N/A")</td>
+                    <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@item.Time.ToString(@"hh\:mm")</td>
+                    <td>@item.UpdatedAt.ToString("g")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this appointment?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Add" class="btn btn-success mt-2">Add Appointment</a>
+</div>

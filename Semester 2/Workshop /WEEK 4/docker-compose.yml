@@ -1,0 +1,30 @@
+version: "3"
+services:
+    www:
+      depends_on:
+      - mysql
+      image: php:8.3.21-apache
+      ports:
+      - 89:80
+      - 443:443
+      volumes:
+      - ./firebase/:/var/www/html
+  # MSQL SERVER
+    mysql:
+      image: mysql:latest
+      environment:
+        - MYSQL_DATABASE=demo
+        - MYSQL_USER=demo
+        - MYSQL_PASSWORD=password
+        - MYSQL_ALLOW_EMPTY_PASSWORD=1
+
+  # PHPMYADMIN
+    phpmyadmin:
+      depends_on:
+        - mysql
+      image: phpmyadmin:latest
+      ports:
+      - 81:80
+      environment:
+        PMA_HOST: mysql
+        PMA_PORT: 3306

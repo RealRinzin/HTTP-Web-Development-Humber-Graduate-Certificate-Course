@@ -1,0 +1,307 @@
+/* CSS Style for the pet Project */
+html {
+  box-sizing: border-box; /* 1. Set box-sizing to border-box for the root element */
+  font-family: poppins, sans-serif;
+}
+*,
+*:before,
+*:after {
+  /* 1. Apply box-sizing to all elements */
+  box-sizing: inherit;
+}
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: poppins, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+.common_padding {
+  padding: 2em 3em;
+}
+/* Custom Css */
+#main_navigation {
+  background-color: #2a427a;
+  color: white;
+}
+#main_navigation nav {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+#main_navigation .nav_menu {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+.job_card {
+  border-radius: 10px;
+  display: flex;
+  gap: 1em;
+  background-color: #f5f5f5;
+  padding: 1em 2em;
+  position: relative;
+  margin: 2em 0em;
+}
+.job_card .job_details h4 {
+  padding: 0.5em 0em;
+  color: #6d6d6d;
+}
+.job_card .job_details .description {
+  color: #282828;
+  font-size: 0.9em;
+}
+input {
+  border: none;
+  /* border-radius: 8px; */
+  padding: 1.5em 3em;
+  margin: 0.5em 0em;
+}
+.badge {
+  background-color: #2a427a;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  font-size: 0.6em;
+}
+.badge1 {
+  background-color: #859dd5;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  font-size: 0.6em;
+}
+.icon {
+  position: absolute;
+  right: 0;
+  top: auto;
+  padding: 0.2em 2em;
+  font-size: 1.3em;
+}
+/********************************** Home Company logo section ***************************************** */
+#home_company_logos .logos {
+  display: flex;
+  padding: 1em 0;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  background-color: #f3f3f3;
+}
+#home_company_logos .logos img {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+}
+/********************************** Main ***************************************** */
+main {
+  min-height: 100vh;
+}
+/* Hero Section */
+
+main .home_hero_search {
+  background-color: #ecf0f8;
+  padding: 2em 3em;
+}
+
+main .home_hero_search .hero_text {
+  text-align: center;
+}
+main .home_hero_search .hero_text p {
+  color: #6d6d6d;
+}
+main .home_hero_search .search_forms {
+  margin: 2em 0em;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+main .home_hero_search .search_forms form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+}
+main .home_hero_search .search_forms .search_title {
+  border-radius: 6px 0 0 6px;
+}
+main .home_hero_search .search_forms form button {
+  padding: 1.1em 3em;
+  margin: 0.5em 0em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #2a427a;
+  color: #fff;
+}
+main .home_hero_search .search_forms form button:hover {
+  cursor: pointer;
+}
+/* main .home_hero_search .search_forms form button {
+  border: none;
+  border-radius: 8px;
+  padding: 1.5em 3em;
+  margin: 0.5em 0em;
+  background-color: #2a427a;
+  color: #fff;
+} */
+/* Job section */
+main .home_job_list .home_job_list_wrapper {
+  width: 40%;
+  margin: 0 auto;
+  /* background-color: red; */
+}
+main #filtered_keywords {
+  font-size: 0.7em;
+  font-weight: 500;
+}
+main #filtered_keywords .location_badge {
+  background-color: #323232;
+  border-radius: 7px;
+  padding: 3px 10px;
+  color: white;
+}
+main #filtered_keywords .role_badge {
+  background-color: #3d85c6;
+  border-radius: 7px;
+  padding: 3px 10px;
+  color: white;
+}
+main #filtered_keywords .company_badge {
+  background-color: #f1c232;
+  border-radius: 7px;
+  padding: 3px 10px;
+  color: white;
+}
+main .home_job_list p {
+  color: rgb(73, 72, 72);
+  font-size: 0.9em;
+}
+main .home_job_list img {
+  height: 75px;
+  width: 75px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+/* Home  Filter */
+main #home_filter_sort {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin: 1em 0;
+  padding: 1em;
+}
+main .sort_role_location_company_input {
+  display: flex;
+  justify-content: space-between;
+}
+main #home_filter_sort select {
+  padding: 6px;
+  border: none;
+  border-radius: 10px;
+}
+/********************************** FOOTER ***************************************** */
+/* footer */
+footer {
+  background-color: #2a427a;
+  color: #fff;
+}
+footer .footer_navigation ul {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 0.8em;
+}
+footer a {
+  color: #ecf0f8;
+}
+
+/* Errors */
+.input_error::placeholder {
+  color: red;
+}
+
+.input_error {
+  border: 1px solid red;
+}
+
+/* Add new Job Button */
+#add_new_job_btn {
+  position: fixed;
+  right: 1%;
+  color: #2a427a;
+  font-weight: 600;
+  background: #ffd202;
+  padding: 0.5em 1em;
+  top: 40%;
+  border-radius: 4px;
+}
+#add_new_job_btn:hover {
+  cursor: pointer;
+}
+
+/* Add  */
+
+#add_job_form {
+  width: 50%;
+  background-color: #4c4b4b;
+  position: fixed;
+  display: none;
+  color: white;
+  top: 40%;
+  left: 20%;
+  padding: 2em;
+  border-radius: 10px;
+}
+#add_job_form h4 {
+  border-bottom: 1px dotted white;
+  padding-bottom: 10px;
+}
+#add_job_form select {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+#add_job_form label {
+  font-size: 0.8em;
+  color: #dfdede;
+}
+#add_job_form label span {
+  color: #970000;
+  padding-top: 2px;
+}
+#add_job_form input {
+  border-radius: 10px;
+}
+
+#add_job_form button {
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  border: none;
+  background: #ffd202;
+  font-weight: 800;
+}

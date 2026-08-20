@@ -1,0 +1,151 @@
+@model TorontoSurvivalJobs.Models.Job
+
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<!-- Top Timestamp -->
+<div class="flex justify-end mb-4">
+    <div class="flex items-center space-x-2 text-xs font-mono text-brand-muted tracking-widest uppercase">
+        <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+        <span>Updated 2m ago</span>
+    </div>
+</div>
+<!-- Page Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+    <!-- Left Column: Job Content -->
+    <section class="lg:col-span-2 space-y-10">
+
+        <!-- Job Header & Metadata -->
+        <div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-brand-text mb-4">
+                @Model.Title
+            </h1>
+
+            <div class="flex flex-wrap items-center gap-3 text-sm text-brand-muted mb-6">
+                <span class="font-medium">@Model.Company?.Name</span>
+                <span>•</span>
+
+                <span>@Model.Location?.Name</span>
+                <span>•</span>
+                @if (Model.SalaryMin.HasValue && Model.SalaryMax.HasValue)
+                {
+                    @($"{Model.SalaryMin:C} - {Model.SalaryMax:C}")
+                }
+                else if (Model.SalaryMin.HasValue)
+                {
+                    @($"{Model.SalaryMin:C}+")
+                }
+                else
+                {
+                    <span>Not specified</span>
+                }
+                <span>•</span>
+                <span
+                class="bg-brand-pill text-brand-pillText font-mono text-xs px-2.5 py-0.5 rounded-md font-medium uppercase tracking-wide">@Model.JobType</span>
+            </div>
+
+            <a href="@Model.Url"
+               class="inline-block bg-emerald-800 hover:bg-brand-greenHover text-white font-medium text-sm px-7 py-3 rounded-full transition-all shadow-sm">
+                Apply Now
+            </a>
+        </div>
+
+        <!-- Job Description -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-brand-text">Job Description</h2>
+            <div class="text-brand-muted space-y-4 leading-relaxed text-sm md:text-base">
+                @Model.Description
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="space-y-4">
+            <h2 class="text-xl font-bold text-brand-text">Benefits</h2>
+            <div class="space-y-3 text-sm md:text-base text-brand-muted">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-brand-green flex-shrink-0" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>401k Matching</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-brand-green flex-shrink-0" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Flexible Hours</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-brand-green flex-shrink-0" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Work from Home stipend</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Right Column: Company Info & Similar Openings -->
+    <aside class="space-y-8">
+
+        <!-- Company Profile Card -->
+        <div class="bg-brand-card p-6 rounded-2xl border border-brand-border/60 shadow-sm space-y-4">
+            <h3 class="text-lg font-bold text-brand-text">Company Profile</h3>
+
+            <div class="flex items-center space-x-3">
+                <div
+                    class="w-10 h-10 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center font-bold text-stone-700 text-sm">
+                    <img src="@Model?.Company?.Logo" alt="">
+                </div>
+                <span class="font-bold text-brand-text">@Model?.Company?.Name</span>
+            </div>
+
+            <p class="text-xs text-brand-muted leading-relaxed">
+                Linear is a directory of opportunities in design, engineering, and product management from world-class
+                teams and companies.
+            </p>
+
+            <a href="#"
+               class="inline-flex items-center space-x-1 text-xs font-medium text-brand-muted hover:text-brand-text transition-colors">
+                <span>View all Linear jobs</span>
+                <span>&rarr;</span>
+            </a>
+        </div>
+
+        <!-- Similar Openings Sidebar -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-bold text-brand-text">Similar Openings</h3>
+            <div class="space-y-3">
+                @foreach (var job in ((IEnumerable<Job>)ViewBag.Jobs).Take(3))
+
+                {
+                    <!-- Job Card 1 -->
+                    <a href="/jobs/details/@job.JobId"
+                       class="block bg-brand-card p-4 rounded-xl border border-brand-border/60 hover:border-brand-green/40 transition-all shadow-sm group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-9 h-9 rounded-md bg-stone-100 flex items-center justify-center text-[10px] font-mono font-bold text-stone-400 uppercase">
+                                    Logo
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <h4
+                                        class="text-sm font-semibold text-brand-text group-hover:text-brand-green transition-colors">
+                                        @job?.Title</h4>
+                                        <p class="text-sm text-gray-600 font-semibold">@job?.Category?.Name</p>
+                                        <p class="text-xs text-gray-600 font-medium">@job?.Location?.Name</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+
+                </aside>
+
+            </div>
+        </main>

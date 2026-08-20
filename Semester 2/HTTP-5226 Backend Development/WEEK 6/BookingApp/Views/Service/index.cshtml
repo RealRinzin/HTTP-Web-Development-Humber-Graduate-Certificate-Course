@@ -1,0 +1,42 @@
+@model List<Service>
+<a asp-action="Index" asp-controller="Home">Back to Home</a>
+
+<h5 class="fs-3">Client List</h1>
+    <a asp-action="Add" class="btn btn-success">Add Service</a>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Description</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+            }
+
+            @foreach (var services in Model)
+            {
+                <tr>
+                    <th scope="row">@index</th>
+                    <td>@services.name</td>
+                    <td>@services.price</td>
+                    <td>@services.description</td>
+                    <th scope="col">
+                        <a asp-action="Edit" asp-route-id="@services.Id"><i class="fa fa-2x fa-pencil-square"
+                                                                                aria-hidden="true"></i></a>
+                        </th>
+                        <th scope="col">
+                            <form asp-action="Delete" asp-route-id="@services.Id" method="post">
+                                <button type="submit"> <i class="fa  fa-trash" aria-hidden="true"></i></button>
+                            </form>
+                        </th>
+                    </tr>
+                    index++;
+                }
+            </tbody>
+        </table>

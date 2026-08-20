@@ -1,0 +1,92 @@
+@model List<TorontoSurvivalJobs.Models.ScrapedJob>
+@{
+    ViewData["Title"] = "Scraped Jobs";
+}
+
+<h1>Scraped Jobs</h1>
+
+<p>
+    Jobs found:
+    <strong>@Model.Count</strong>
+</p>
+
+@if (Model.Any())
+{
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Url</th>
+                <th>Job Type</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var job in Model)
+            {
+                <tr>
+                    <td>
+                        @job.Title
+                    </td>
+
+                    <td>
+                        @job?.CompanyId
+                    </td>
+
+                    <td>
+                        @job.LocationId
+                    </td>
+
+                    <td>
+                        @if (job.SalaryMin.HasValue)
+                        {
+                            if (job.SalaryMax.HasValue &&
+                                job.SalaryMax != job.SalaryMin)
+                            {
+                                @($"${job.SalaryMin} - ${job.SalaryMax}")
+                            }
+                            else
+                            {
+                                @($"${job.SalaryMin}")
+                            }
+                        }
+                        else
+                        {
+                            <span>Not listed</span>
+                        }
+                    </td>
+                    <td>
+                        @job.Url
+                    </td>
+                    <td>
+                        @job.JobType
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No jobs were found.
+    </div>
+}
+
+<a asp-action="Index" class="btn btn-secondary">
+    Back to Scraper
+</a>
+<form asp-action="Save" method="post" class="mt-3">
+
+    <button type="submit" class="btn btn-success">
+        Save Jobs to Database
+    </button>
+
+</form>

@@ -1,0 +1,38 @@
+@model BookingApp.Models.AppointmentViewModel
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Add Appointment</h2>
+
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <form asp-action="AddNew" method="post">
+        <div class="mb-3">
+            <label asp-for="Appointment.ClientId" class="form-label">Client</label>
+            <select asp-for="Appointment.ClientId" class="form-select"
+                    asp-items="@(new SelectList(Model.Clients, "Id", "name"))">
+                <option value="">-- Select Client --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Appointment.ServiceId" class="form-label">Service</label>
+            <select asp-for="Appointment.ServiceId" class="form-select"
+                    asp-items="@(new SelectList(Model.Services, "Id", "name"))">
+                <option value="">-- Select Service --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Appointment.Date" class="form-label">Date</label>
+            <input asp-for="Appointment.Date" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Appointment.Time" class="form-label">Time</label>
+            <input asp-for="Appointment.Time" type="time" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

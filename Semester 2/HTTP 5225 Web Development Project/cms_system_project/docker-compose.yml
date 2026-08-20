@@ -1,0 +1,46 @@
+version: "3"
+services:
+  www:
+    depends_on:
+      - mysql
+    build: . # We can use the build in case we need to build the libraries before load like mysqli etc
+    # image: php:8.3.21-apache // we are changing this because we need to run MYSQLI for the connection docker compose down
+    ports:
+      - 99:80
+    # - 443:443
+    volumes:
+      - ./:/var/www/html
+  # NEW: Browsersync service to watch files and auto-reload
+  browsersync:
+    depends_on:
+      - www
+    image: node:lts-alpine
+    working_dir: /src
+    volumes:
+      - ./:/src
+    ports:
+      - "3030:3000"
+      - "3031:3001"
+    # Proxies the 'www' service and watches all PHP, CSS, and JS files
+    command: >
+      sh -c "npm install -g browser-sync && 
+             browser-sync start --proxy 'www:80' --files '**/*.php, **/*.css, **/*.js' --port 3000"
+  # MSQL SERVER
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=cms_news_db
+      - MYSQL_USER=rinzin
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+
+  # PHPMYADMIN
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin:latest
+    ports:
+      - 81:80
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laravel API Evolution: v5.8 → v12</title>
+  <style>
+    :root {
+      --red: #F05340;
+      --bg: #0f1117;
+      --surface: #161b27;
+      --card: #1e2535;
+      --border: #2a3147;
+      --text: #e8ecf4;
+      --muted: #8993a8;
+      --accent: #7c8dff;
+      --green: #43d98c;
+      --yellow: #f5c842;
+      --code-bg: #0d1018;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    .hero { background: linear-gradient(135deg, #1a0a06 0%, #2d0f08 40%, #1a1a2e 100%); padding: 60px 40px 50px; text-align: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(240,83,64,0.15) 0%, transparent 70%); }
+    .hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(240,83,64,0.15); border: 1px solid rgba(240,83,64,0.4); color: var(--red); padding: 4px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 span { color: var(--red); }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto 28px; }
+    .hero-meta { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+    .hero-meta span { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .hero-meta span::before { content: '●'; color: var(--green); font-size: 0.5rem; }
+    .toc-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 40px; overflow-x: auto; white-space: nowrap; }
+    .toc-bar a { display: inline-block; padding: 14px 16px; color: var(--muted); text-decoration: none; font-size: 0.83rem; font-weight: 500; border-bottom: 2px solid transparent; transition: all 0.2s; }
+    .toc-bar a:hover { color: var(--text); border-color: var(--red); }
+    .layout { max-width: 1100px; margin: 0 auto; padding: 50px 40px; }
+    .section { margin-bottom: 70px; scroll-margin-top: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .version-badge { background: var(--red); color: white; font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; }
+    .version-badge.v6 { background: #e8541b; }
+    .version-badge.v7 { background: #c05030; }
+    .version-badge.v8 { background: #a04838; }
+    .version-badge.v9 { background: #884040; }
+    .version-badge.v10 { background: #704848; }
+    .version-badge.v11 { background: #584848; }
+    .version-badge.v12 { background: #484050; }
+    .section-header h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+    .release-date { margin-left: auto; font-size: 0.78rem; color: var(--muted); background: var(--card); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
+    .card:hover { border-color: rgba(240,83,64,0.4); }
+    .card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+    .card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .tag { display: inline-block; font-size: 0.72rem; padding: 2px 8px; border-radius: 4px; margin-top: 10px; font-weight: 600; }
+    .tag.new { background: rgba(67,217,140,0.12); color: var(--green); }
+    .tag.improved { background: rgba(124,141,255,0.12); color: var(--accent); }
+    .tag.changed { background: rgba(245,200,66,0.12); color: var(--yellow); }
+    .tag.breaking { background: rgba(240,83,64,0.15); color: #ff6b6b; }
+    .code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px; margin: 16px 0; overflow: hidden; }
+    .code-header { background: rgba(255,255,255,0.03); padding: 8px 16px; font-size: 0.75rem; color: var(--muted); border-bottom: 1px solid var(--border); font-family: monospace; }
+    .code-header span { color: var(--red); }
+    .code-block pre { padding: 18px 20px; overflow-x: auto; font-size: 0.83rem; font-family: 'Cascadia Code', 'Fira Code', monospace; line-height: 1.7; }
+    .kw { color: #ff79c6; }
+    .fn { color: #50fa7b; }
+    .st { color: #f1fa8c; }
+    .cm { color: #6272a4; font-style: italic; }
+    .cl { color: #8be9fd; }
+    .nu { color: #bd93f9; }
+    .callout { background: rgba(124,141,255,0.08); border: 1px solid rgba(124,141,255,0.25); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px 20px; margin: 20px 0; font-size: 0.88rem; color: #bcc5e0; }
+    .callout.warn { background: rgba(245,200,66,0.06); border-color: rgba(245,200,66,0.25); border-left-color: var(--yellow); }
+    .callout.success { background: rgba(67,217,140,0.06); border-color: rgba(67,217,140,0.25); border-left-color: var(--green); }
+    .callout strong { color: var(--text); }
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .timeline-item { position: relative; margin-bottom: 24px; }
+    .timeline-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--red); border: 2px solid var(--bg); }
+    .timeline-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .timeline-item p { font-size: 0.83rem; color: var(--muted); }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 20px 0; }
+    .compare-table th { background: var(--card); padding: 12px 16px; text-align: left; font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--border); }
+    .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--muted); }
+    .compare-table td:first-child { color: var(--text); font-weight: 500; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .yes { color: var(--green); font-weight: 700; }
+    .no { color: #555; }
+    .partial { color: var(--yellow); }
+    .quick-ref { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+    .quick-ref h3 { font-size: 1rem; margin-bottom: 16px; color: var(--red); }
+    hr.divider { border: none; border-top: 1px dashed var(--border); margin: 32px 0; }
+    .footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
+    .footer a { color: var(--red); text-decoration: none; }
+    @media (max-width: 680px) { .layout { padding: 30px 20px; } .hero { padding: 40px 20px 36px; } .cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Developer Documentation</div>
+    <h1>Laravel <span>API Evolution</span><br>v5.8 &rarr; v12</h1>
+    <p>A comprehensive guide to every significant API change, new programming pattern, and authentication evolution across all major Laravel versions.</p>
+    <div class="hero-meta">
+      <span>Versions 5.8 through 12</span>
+      <span>Authentication &amp; Security</span>
+      <span>Routing &amp; Resources</span>
+      <span>Best Practices</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc-bar">
+  <a href="#overview">Overview</a>
+  <a href="#v58">v5.8</a>
+  <a href="#v60">v6.0</a>
+  <a href="#v70">v7.0</a>
+  <a href="#v80">v8.0</a>
+  <a href="#v90">v9.0</a>
+  <a href="#v100">v10.0</a>
+  <a href="#v110">v11.0</a>
+  <a href="#v120">v12.0</a>
+  <a href="#auth-compare">Auth Comparison</a>
+  <a href="#best-practices">Best Practices</a>
+</nav>
+
+<div class="layout">
+
+  <section class="section" id="overview">
+    <div class="section-header">
+      <h2>Overview: The API Journey</h2>
+    </div>
+    <p style="color:var(--muted); margin-bottom: 20px;">Laravel's API capabilities have evolved dramatically since version 5.8. From basic token guards and Passport-only OAuth, to the lightweight Sanctum, to the streamlined opt-in structure of Laravel 11/12 &mdash; each version brought meaningful improvements to how developers build and secure APIs.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>v5.8 (Feb 2019) &mdash; SHA-256 Token Hashing</h4>
+        <p>Basic token guard updated to support hashed token storage for improved security.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v6.0 (Sep 2019) &mdash; Semantic Versioning, Vapor Support, Lazy Collections</h4>
+        <p>Framework aligned to semver; lazy collections improved large API dataset handling. First LTS after 5.x.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v7.0 (Mar 2020) &mdash; Sanctum, HTTP Client, Route Caching</h4>
+        <p>Laravel Sanctum debuted as a lightweight SPA/token auth alternative to Passport. New Http:: facade for consuming external APIs.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v8.0 (Sep 2020) &mdash; Model Factories, Job Batching, Improved Rate Limiting</h4>
+        <p>Massive improvements to testing and background processing patterns for APIs. Dynamic rate limiting per user.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v9.0 (Feb 2022) &mdash; Symfony 6 Components, Scoped Bindings, Enum Support</h4>
+        <p>Native PHP 8.1 enum support in routes and scoped nested resource bindings.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v10.0 (Feb 2023) &mdash; PHP 8.1 Minimum, Pennant Feature Flags</h4>
+        <p>Feature flags with Pennant for API feature rollouts; full PHP 8.1 native types throughout.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v11.0 (Mar 2024) &mdash; Slim Skeleton, Opt-in API, Per-Second Rate Limiting</h4>
+        <p>Biggest structural change: api.php removed by default, installed on demand. Centralized bootstrap/app.php.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>v12.0 (Feb 2025) &mdash; Starter Kits, WorkOS AuthKit, Stability Release</h4>
+        <p>New React/Vue/Livewire starter kits with modern auth including passkeys and SSO support.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- V5.8 -->
+  <section class="section" id="v58">
+    <div class="section-header">
+      <div class="version-badge">v5.8</div>
+      <h2>Laravel 5.8 &mdash; API Security Foundations</h2>
+      <div class="release-date">February 2019</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F512;</div>
+        <h3>SHA-256 Token Hashing</h3>
+        <p>The built-in token guard now supports storing API tokens as SHA-256 hashes instead of plain text, significantly improving security for simple token-based APIs.</p>
+        <span class="tag improved">Security Improvement</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4E7;</div>
+        <h3>Improved Email Validation</h3>
+        <p>Adopted the egulias/email-validator package, fixing edge cases in API input validation where valid international email addresses were rejected.</p>
+        <span class="tag improved">Improved</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F517;</div>
+        <h3>Eloquent hasOneThrough</h3>
+        <p>New relationship type allowing navigation through intermediate models in a single query &mdash; useful for deeply nested API resource relationships.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4CB;</div>
+        <h3>Token Guard Still Basic</h3>
+        <p>The simple token guard remained the only built-in lightweight option. Passport was the recommended solution for production APIs. Sanctum would not arrive until v7.0.</p>
+        <span class="tag changed">Context</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>config/auth.php</span> &mdash; SHA-256 Token Hashing (v5.8)</div>
+      <pre><code><span class="cm">// Enable hashed token storage in your guard config</span>
+<span class="st">'api'</span> => [
+    <span class="st">'driver'</span>   => <span class="st">'token'</span>,
+    <span class="st">'provider'</span> => <span class="st">'users'</span>,
+    <span class="st">'hash'</span>     => <span class="kw">true</span>, <span class="cm">// NEW in v5.8 - stores SHA-256 hash</span>
+],
+
+<span class="cm">// When creating a token:</span>
+<span class="cl">$token</span> = <span class="fn">Str</span>::<span class="fn">random</span>(<span class="nu">60</span>);
+<span class="cl">$user</span>->forceFill([
+    <span class="st">'api_token'</span> => <span class="fn">hash</span>(<span class="st">'sha256'</span>, <span class="cl">$token</span>),
+])->save();
+
+<span class="cm">// Return the plain token to the client (hash is stored in DB)</span>
+<span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>([<span class="st">'token'</span> => <span class="cl">$token</span>]);</code></pre>
+    </div>
+    <div class="callout warn">
+      <strong>Recommendation in v5.8:</strong> The built-in token guard was always meant for simple use cases. Laravel already recommended Passport (OAuth2) for production APIs. Sanctum arrives in v7.0 as the ideal middle ground.
+    </div>
+  </section>
+
+  <!-- V6.0 -->
+  <section class="section" id="v60">
+    <div class="section-header">
+      <div class="version-badge v6">v6.0 LTS</div>
+      <h2>Laravel 6.0 &mdash; Lazy Collections, Vapor &amp; Policy Responses</h2>
+      <div class="release-date">September 2019</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x26A1;</div>
+        <h3>Lazy Collections</h3>
+        <p>New LazyCollection class using PHP generators to stream large database result sets through API responses without loading everything into memory at once.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x2601;&#xFE0F;</div>
+        <h3>Laravel Vapor Compatibility</h3>
+        <p>Full compatibility with serverless deployment on AWS Lambda, making scalable API infrastructure dramatically simpler with SQS, Redis, and CloudFront support.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F510;</div>
+        <h3>Authorization Policy Responses</h3>
+        <p>Policies can now return detailed error messages via Response::deny(), giving API clients meaningful 403 responses rather than generic "Forbidden" messages.</p>
+        <span class="tag improved">Improved</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4E6;</div>
+        <h3>Semantic Versioning (semver)</h3>
+        <p>laravel/framework now follows semver. API dependency upgrades are now predictable &mdash; you know exactly when breaking changes occur.</p>
+        <span class="tag changed">Changed</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>App\Policies\PostPolicy.php</span> &mdash; Richer API Auth Responses (v6.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Auth\Access\Response</span>;
+
+<span class="kw">public function</span> <span class="fn">update</span>(<span class="cl">User</span> <span class="cl">$user</span>, <span class="cl">Post</span> <span class="cl">$post</span>): <span class="cl">Response</span>
+{
+    <span class="kw">return</span> <span class="cl">$user</span>->id === <span class="cl">$post</span>->user_id
+        ? <span class="cl">Response</span>::<span class="fn">allow</span>()
+        : <span class="cl">Response</span>::<span class="fn">deny</span>(<span class="st">'You do not own this post.'</span>);
+    <span class="cm">// API clients now receive: {"message": "You do not own this post."} with 403</span>
+}</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>Api/ExportController.php</span> &mdash; Lazy Collections for large API datasets (v6.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">App\Models\Post</span>;
+
+<span class="cm">// Stream 100,000+ records without memory explosion</span>
+<span class="kw">public function</span> <span class="fn">export</span>()
+{
+    <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">streamDownload</span>(<span class="kw">function</span> () {
+        <span class="cm">// cursor() returns a LazyCollection - one record at a time</span>
+        <span class="cl">Post</span>::<span class="fn">cursor</span>()->each(<span class="kw">function</span> (<span class="cl">$post</span>) {
+            <span class="kw">echo</span> <span class="fn">json_encode</span>(<span class="cl">$post</span>) . <span class="st">"\n"</span>;
+        });
+    }, <span class="st">'posts.jsonl'</span>);
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- V7.0 -->
+  <section class="section" id="v70">
+    <div class="section-header">
+      <div class="version-badge v7">v7.0</div>
+      <h2>Laravel 7.0 &mdash; Sanctum Born, HTTP Client Arrives</h2>
+      <div class="release-date">March 2020</div>
+    </div>
+    <div class="callout success">
+      <strong>Major API Release:</strong> Laravel 7 introduced Sanctum &mdash; a lightweight authentication package that became the go-to solution for SPA and mobile API authentication, replacing the need for full OAuth2 via Passport in most cases.
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F6E1;&#xFE0F;</div>
+        <h3>Laravel Sanctum</h3>
+        <p>A featherweight authentication system for SPAs, mobile apps, and token-based APIs. Supports both cookie-based session auth and personal API tokens without OAuth2 overhead.</p>
+        <span class="tag new">New Package</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F310;</div>
+        <h3>HTTP Client (Http:: Facade)</h3>
+        <p>New first-party Http facade wrapping Guzzle. Consuming external APIs from Laravel is now clean and testable with built-in fake/mock support &mdash; no more raw Guzzle boilerplate.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4DD;</div>
+        <h3>Fluent String Operations</h3>
+        <p>New Str::of() object-oriented string manipulation, useful for transforming API response data in a clean, chainable way.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F504;</div>
+        <h3>Route Model Binding Custom Resolution</h3>
+        <p>Custom resolution logic for route model bindings, allowing APIs to resolve models by any attribute (slug, uuid, etc.), not just the primary key id.</p>
+        <span class="tag improved">Improved</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>routes/api.php</span> &mdash; Sanctum Authentication Setup (v7.0)</div>
+      <pre><code><span class="cm">// 1. Install: composer require laravel/sanctum</span>
+<span class="cm">// 2. Add HasApiTokens trait to User model</span>
+<span class="kw">use</span> <span class="cl">Laravel\Sanctum\HasApiTokens</span>;
+
+<span class="kw">class</span> <span class="cl">User</span> <span class="kw">extends</span> <span class="cl">Authenticatable</span>
+{
+    <span class="kw">use</span> <span class="cl">HasApiTokens</span>, <span class="cl">HasFactory</span>, <span class="cl">Notifiable</span>;
+}
+
+<span class="cm">// 3. Issue a scoped token on login</span>
+<span class="cl">Route</span>::<span class="fn">post</span>(<span class="st">'/login'</span>, <span class="kw">function</span> (<span class="cl">Request</span> <span class="cl">$request</span>) {
+    <span class="cm">// ... validate credentials ...</span>
+    <span class="cm">// Create token with abilities (scopes)</span>
+    <span class="cl">$token</span> = <span class="cl">$request</span>-><span class="fn">user</span>()-><span class="fn">createToken</span>(<span class="st">'mobile-app'</span>, [<span class="st">'posts:read'</span>, <span class="st">'posts:write'</span>]);
+    <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>([<span class="st">'token'</span> => <span class="cl">$token</span>->plainTextToken]);
+});
+
+<span class="cm">// 4. Protect routes with Sanctum middleware</span>
+<span class="cl">Route</span>::<span class="fn">middleware</span>(<span class="st">'auth:sanctum'</span>)->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/user'</span>, <span class="kw">fn</span> (<span class="cl">Request</span> <span class="cl">$r</span>) => <span class="cl">$r</span>-><span class="fn">user</span>());
+    <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'posts'</span>, <span class="cl">PostController</span>::class);
+});
+
+<span class="cm">// 5. Check token abilities in controllers</span>
+<span class="kw">if</span> (! <span class="cl">$request</span>-><span class="fn">user</span>()-><span class="fn">tokenCan</span>(<span class="st">'posts:write'</span>)) {
+    <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>([<span class="st">'error'</span> => <span class="st">'Insufficient token scope'</span>], <span class="nu">403</span>);
+}</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>App\Services\</span> &mdash; Fluent HTTP Client for external APIs (v7.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Support\Facades\Http</span>;
+
+<span class="cm">// Old way: raw Guzzle, verbose and hard to test</span>
+<span class="cm">// New way: clean, fluent, fully testable</span>
+<span class="cl">$response</span> = <span class="cl">Http</span>::<span class="fn">withToken</span>(<span class="cl">$apiToken</span>)
+    -><span class="fn">retry</span>(<span class="nu">3</span>, <span class="nu">100</span>)          <span class="cm">// Retry 3 times, 100ms delay</span>
+    -><span class="fn">timeout</span>(<span class="nu">10</span>)            <span class="cm">// 10 second timeout</span>
+    -><span class="fn">acceptJson</span>()
+    -><span class="fn">get</span>(<span class="st">'https://api.example.com/users'</span>, [
+        <span class="st">'page'</span>  => <span class="nu">1</span>,
+        <span class="st">'limit'</span> => <span class="nu">50</span>,
+    ]);
+
+<span class="kw">if</span> (<span class="cl">$response</span>-><span class="fn">successful</span>()) {
+    <span class="kw">return</span> <span class="cl">$response</span>-><span class="fn">json</span>();
+}
+<span class="cl">$response</span>-><span class="fn">throw</span>(); <span class="cm">// Throws HttpClientException on error</span>
+
+<span class="cm">// In tests:</span>
+<span class="cl">Http</span>::<span class="fn">fake</span>([<span class="st">'api.example.com/*'</span> => <span class="cl">Http</span>::<span class="fn">response</span>([<span class="st">'data'</span> => []])]);</code></pre>
+    </div>
+  </section>
+
+  <!-- V8.0 -->
+  <section class="section" id="v80">
+    <div class="section-header">
+      <div class="version-badge v8">v8.0</div>
+      <h2>Laravel 8.0 &mdash; Factories, Job Batching &amp; Dynamic Rate Limiting</h2>
+      <div class="release-date">September 2020</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F3ED;</div>
+        <h3>Class-Based Model Factories</h3>
+        <p>Factories moved from functions to dedicated classes with HasFactory trait. Makes API testing far more expressive with factory states, sequences, and relationships.</p>
+        <span class="tag changed">Redesigned</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4E6;</div>
+        <h3>Job Batching</h3>
+        <p>Bus::batch() allows dispatching groups of API-processing jobs and tracking collective completion, progress, and failure with callbacks.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F6A6;</div>
+        <h3>Dynamic Rate Limiting</h3>
+        <p>Rate limits dynamically computed per user. Premium users get higher limits, free users get lower &mdash; all configured elegantly without custom middleware.</p>
+        <span class="tag improved">Improved</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F3A8;</div>
+        <h3>Route Controller Groups</h3>
+        <p>New Route::controller() groups routes by controller class, dramatically reducing repetition in large api.php files.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F9E9;</div>
+        <h3>Invokable Validation Rules</h3>
+        <p>Custom API validation rules can now be simple invokable classes instead of requiring passes() and message() methods separately.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F527;</div>
+        <h3>Maintenance Mode Bypass</h3>
+        <p>Maintenance mode supports bypass tokens, so API clients with a secret key can continue operating during maintenance windows.</p>
+        <span class="tag improved">Improved</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>App\Providers\RouteServiceProvider.php</span> &mdash; Dynamic Rate Limiting (v8.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Cache\RateLimiting\Limit</span>;
+<span class="kw">use</span> <span class="cl">Illuminate\Support\Facades\RateLimiter</span>;
+
+<span class="kw">protected function</span> <span class="fn">configureRateLimiting</span>(): <span class="kw">void</span>
+{
+    <span class="cl">RateLimiter</span>::<span class="fn">for</span>(<span class="st">'api'</span>, <span class="kw">function</span> (<span class="cl">Request</span> <span class="cl">$request</span>) {
+        <span class="cm">// Dynamic limit based on user plan</span>
+        <span class="kw">return</span> <span class="cl">Limit</span>::<span class="fn">perMinute</span>(
+            <span class="cl">$request</span>-><span class="fn">user</span>()?->is_premium ? <span class="nu">1000</span> : <span class="nu">60</span>
+        )-><span class="fn">by</span>(<span class="cl">$request</span>-><span class="fn">user</span>()?->id ?: <span class="cl">$request</span>-><span class="fn">ip</span>());
+    });
+}
+
+<span class="cm">// Apply in routes/api.php</span>
+<span class="cl">Route</span>::<span class="fn">middleware</span>([<span class="st">'auth:sanctum'</span>, <span class="st">'throttle:api'</span>])->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'posts'</span>, <span class="cl">PostController</span>::class);
+});</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>routes/api.php</span> &mdash; Route Controller Grouping (v8.0)</div>
+      <pre><code><span class="cm">// Before v8.0 — repetitive controller class references</span>
+<span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/posts'</span>,        [<span class="cl">PostController</span>::class, <span class="st">'index'</span>]);
+<span class="cl">Route</span>::<span class="fn">post</span>(<span class="st">'/posts'</span>,       [<span class="cl">PostController</span>::class, <span class="st">'store'</span>]);
+<span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/posts/{post}'</span>, [<span class="cl">PostController</span>::class, <span class="st">'show'</span>]);
+
+<span class="cm">// v8.0+ — cleaner grouping by controller</span>
+<span class="cl">Route</span>::<span class="fn">controller</span>(<span class="cl">PostController</span>::class)->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/posts'</span>,          <span class="st">'index'</span>);
+    <span class="cl">Route</span>::<span class="fn">post</span>(<span class="st">'/posts'</span>,         <span class="st">'store'</span>);
+    <span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/posts/{post}'</span>,   <span class="st">'show'</span>);
+    <span class="cl">Route</span>::<span class="fn">put</span>(<span class="st">'/posts/{post}'</span>,   <span class="st">'update'</span>);
+    <span class="cl">Route</span>::<span class="fn">delete</span>(<span class="st">'/posts/{post}'</span>,<span class="st">'destroy'</span>);
+});</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>database/factories/PostFactory.php</span> &mdash; Class-Based Factories for API Testing (v8.0)</div>
+      <pre><code><span class="kw">class</span> <span class="cl">PostFactory</span> <span class="kw">extends</span> <span class="cl">Factory</span>
+{
+    <span class="kw">public function</span> <span class="fn">definition</span>(): <span class="kw">array</span>
+    {
+        <span class="kw">return</span> [
+            <span class="st">'title'</span>      => <span class="cl">$this</span>->faker->sentence,
+            <span class="st">'body'</span>       => <span class="cl">$this</span>->faker->paragraphs(<span class="nu">3</span>, <span class="kw">true</span>),
+            <span class="st">'user_id'</span>    => <span class="cl">User</span>::<span class="fn">factory</span>(),
+            <span class="st">'published'</span>  => <span class="kw">false</span>,
+        ];
+    }
+
+    <span class="cm">// Factory state for published posts</span>
+    <span class="kw">public function</span> <span class="fn">published</span>(): <span class="kw">static</span>
+    {
+        <span class="kw">return</span> <span class="cl">$this</span>-><span class="fn">state</span>(<span class="kw">fn</span> () => [<span class="st">'published'</span> => <span class="kw">true</span>]);
+    }
+}
+
+<span class="cm">// In API tests:</span>
+<span class="cl">Post</span>::<span class="fn">factory</span>()-><span class="fn">count</span>(<span class="nu">5</span>)-><span class="fn">published</span>()-><span class="fn">create</span>();</code></pre>
+    </div>
+  </section>
+
+  <!-- V9.0 -->
+  <section class="section" id="v90">
+    <div class="section-header">
+      <div class="version-badge v9">v9.0</div>
+      <h2>Laravel 9.0 &mdash; Enums, Scoped Bindings &amp; Symfony 6</h2>
+      <div class="release-date">February 2022</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F522;</div>
+        <h3>PHP 8.1 Enum Route Binding</h3>
+        <p>Route model binding natively supports PHP 8.1 backed enums. Pass an enum value in the URL and Laravel resolves it automatically, returning 404 for invalid values.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F517;</div>
+        <h3>Scoped Route Model Binding</h3>
+        <p>Automatically scope nested resource routes. /users/{user}/posts/{post} ensures the post belongs to the user, eliminating manual ownership checks in API controllers.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4E8;</div>
+        <h3>Symfony Mailer Upgrade</h3>
+        <p>Replaced SwiftMailer with Symfony Mailer, bringing modern email transport support. Important for APIs that trigger transactional email notifications.</p>
+        <span class="tag breaking">Breaking Change</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F5C3;&#xFE0F;</div>
+        <h3>Implicit Enum Casting in Models</h3>
+        <p>Eloquent models can now cast attributes to PHP enums. API responses automatically serialize enums to their string/integer values.</p>
+        <span class="tag new">New</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>routes/api.php</span> &mdash; Enum Route Binding (v9.0)</div>
+      <pre><code><span class="cm">// Define a PHP 8.1 backed enum</span>
+<span class="kw">enum</span> <span class="cl">Status</span>: <span class="kw">string</span>
+{
+    <span class="kw">case</span> Active   = <span class="st">'active'</span>;
+    <span class="kw">case</span> Inactive = <span class="st">'inactive'</span>;
+    <span class="kw">case</span> Banned   = <span class="st">'banned'</span>;
+}
+
+<span class="cm">// Route with enum binding — invalid values auto-return 404</span>
+<span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/users/status/{status}'</span>, <span class="kw">function</span> (<span class="cl">Status</span> <span class="cl">$status</span>) {
+    <span class="kw">return</span> <span class="cl">User</span>::<span class="fn">where</span>(<span class="st">'status'</span>, <span class="cl">$status</span>-><span class="kw">value</span>)-><span class="fn">paginate</span>();
+});
+
+<span class="cm">// GET /api/users/status/active  -> 200 OK with users</span>
+<span class="cm">// GET /api/users/status/unknown -> 404 Not Found (automatic)</span></code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>routes/api.php</span> &mdash; Scoped Route Bindings (v9.0)</div>
+      <pre><code><span class="cm">// Automatically ensures {comment} belongs to {post}</span>
+<span class="cm">// No need for manual $post->comments()->findOrFail($comment) checks</span>
+<span class="cl">Route</span>::<span class="fn">scopeBindings</span>()->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'/posts/{post}/comments/{comment}'</span>, [
+        <span class="cl">CommentController</span>::class, <span class="st">'show'</span>
+    ]);
+    <span class="cl">Route</span>::<span class="fn">put</span>(<span class="st">'/posts/{post}/comments/{comment}'</span>, [
+        <span class="cl">CommentController</span>::class, <span class="st">'update'</span>
+    ]);
+});
+
+<span class="cm">// GET /api/posts/5/comments/99</span>
+<span class="cm">// -> 404 if comment 99 doesn't belong to post 5</span>
+<span class="cm">// -> 200 if it does</span></code></pre>
+    </div>
+  </section>
+
+  <!-- V10.0 -->
+  <section class="section" id="v100">
+    <div class="section-header">
+      <div class="version-badge v10">v10.0</div>
+      <h2>Laravel 10.0 &mdash; Pennant Feature Flags, Process Facade &amp; Native Types</h2>
+      <div class="release-date">February 2023</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F6A9;</div>
+        <h3>Laravel Pennant (Feature Flags)</h3>
+        <p>First-party feature flag package. Roll out new API endpoints to a percentage of users, specific users, or based on custom logic &mdash; without deploying separate code branches.</p>
+        <span class="tag new">New Package</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F524;</div>
+        <h3>Native PHP Type Declarations</h3>
+        <p>All Laravel framework code now uses native PHP type declarations throughout. Better IDE autocompletion, static analysis support, and safer API controller development.</p>
+        <span class="tag changed">Changed</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x23F1;&#xFE0F;</div>
+        <h3>Process Facade</h3>
+        <p>New Process facade for running shell commands. Useful in API workflows that trigger CLI tools or external processes, with full fake/test support built in.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F4CA;</div>
+        <h3>Test Profiling</h3>
+        <p>php artisan test --profile reveals the slowest tests. Essential for keeping large API integration test suites fast as they grow.</p>
+        <span class="tag new">New</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>App\Providers\AppServiceProvider.php</span> &mdash; Pennant Feature Flags (v10.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Laravel\Pennant\Feature</span>;
+
+<span class="cm">// Define feature flags in AppServiceProvider</span>
+<span class="kw">public function</span> <span class="fn">boot</span>(): <span class="kw">void</span>
+{
+    <span class="cm">// 20% rollout of new recommendations engine</span>
+    <span class="cl">Feature</span>::<span class="fn">define</span>(<span class="st">'new-recommendations-engine'</span>, <span class="kw">fn</span> (<span class="cl">User</span> <span class="cl">$user</span>) =>
+        <span class="cl">$user</span>->is_beta_tester || <span class="fn">random_int</span>(<span class="nu">1</span>, <span class="nu">100</span>) <= <span class="nu">20</span>
+    );
+
+    <span class="cm">// Always active for premium users</span>
+    <span class="cl">Feature</span>::<span class="fn">define</span>(<span class="st">'advanced-analytics'</span>, <span class="kw">fn</span> (<span class="cl">User</span> <span class="cl">$user</span>) =>
+        <span class="cl">$user</span>->subscription === <span class="st">'premium'</span>
+    );
+}
+
+<span class="cm">// In an API controller:</span>
+<span class="kw">public function</span> <span class="fn">recommendations</span>(<span class="cl">Request</span> <span class="cl">$request</span>): <span class="cl">JsonResponse</span>
+{
+    <span class="kw">if</span> (<span class="cl">Feature</span>::<span class="fn">active</span>(<span class="st">'new-recommendations-engine'</span>)) {
+        <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>(
+            <span class="cl">NewRecommendationService</span>::<span class="fn">for</span>(<span class="cl">$request</span>-><span class="fn">user</span>())
+        );
+    }
+    <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">json</span>(
+        <span class="cl">LegacyRecommendationService</span>::<span class="fn">for</span>(<span class="cl">$request</span>-><span class="fn">user</span>())
+    );
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- V11.0 -->
+  <section class="section" id="v110">
+    <div class="section-header">
+      <div class="version-badge v11">v11.0</div>
+      <h2>Laravel 11.0 &mdash; The Slim API Structure Revolution</h2>
+      <div class="release-date">March 2024</div>
+    </div>
+    <div class="callout success">
+      <strong>Biggest API Change Yet:</strong> Laravel 11 completely reimagined how API apps are structured. routes/api.php no longer exists by default &mdash; it is created on demand via artisan. Sanctum is also opt-in. This is the most significant structural API change since Laravel 5.
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F4C2;</div>
+        <h3>Opt-In API Routing</h3>
+        <p>routes/api.php is no longer present in new projects. Run php artisan install:api to scaffold it along with Sanctum configuration automatically.</p>
+        <span class="tag breaking">New Projects</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x26A1;</div>
+        <h3>Per-Second Rate Limiting</h3>
+        <p>Rate limiters now support per-second granularity with perSecond() &mdash; critical for high-throughput API endpoints that need burst protection alongside per-minute limits.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F504;</div>
+        <h3>Revamped bootstrap/app.php</h3>
+        <p>All routing, middleware, exception handling, and service providers now configured in a single file, replacing the scattered configuration of previous versions.</p>
+        <span class="tag changed">Redesigned</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F3E5;</div>
+        <h3>Health Check Endpoint /up</h3>
+        <p>Built-in GET /up route for monitoring services, load balancer health checks, and uptime monitoring &mdash; no custom route or controller required.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F511;</div>
+        <h3>Encryption Key Rotation</h3>
+        <p>Define previous encryption keys alongside the current key, allowing zero-downtime key rotation for encrypted API tokens and cookies.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F9EA;</div>
+        <h3>once() Memoization Helper</h3>
+        <p>New once() helper memoizes the result of a closure for the lifetime of a request. Ideal for expensive operations called multiple times in an API response pipeline.</p>
+        <span class="tag new">New</span>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>terminal</span> &mdash; Setting up API in a new Laravel 11 project</div>
+      <pre><code><span class="cm"># Create new Laravel 11 project</span>
+composer create-project laravel/laravel my-api
+
+<span class="cm"># Install API scaffolding (all-in-one command)</span>
+php artisan install:api
+
+<span class="cm"># This single command:</span>
+<span class="cm">#  - Creates routes/api.php</span>
+<span class="cm">#  - Registers api.php in bootstrap/app.php</span>
+<span class="cm">#  - Installs and configures Laravel Sanctum</span>
+<span class="cm">#  - Runs Sanctum migrations (personal_access_tokens table)</span>
+<span class="cm">#  - Reminds you to add HasApiTokens to your User model</span>
+
+<span class="cm"># Install broadcasting separately if needed</span>
+php artisan install:broadcasting</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>bootstrap/app.php</span> &mdash; New centralized app configuration (v11.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Foundation\Application</span>;
+<span class="kw">use</span> <span class="cl">Illuminate\Foundation\Configuration\Exceptions</span>;
+<span class="kw">use</span> <span class="cl">Illuminate\Foundation\Configuration\Middleware</span>;
+
+<span class="kw">return</span> <span class="cl">Application</span>::<span class="fn">configure</span>(basePath: <span class="fn">dirname</span>(__DIR__))
+    -><span class="fn">withRouting</span>(
+        web:    __DIR__.<span class="st">'/../routes/web.php'</span>,
+        api:    __DIR__.<span class="st">'/../routes/api.php'</span>, <span class="cm">// Added by install:api</span>
+        health: <span class="st">'/up'</span>,                         <span class="cm">// Built-in health endpoint</span>
+    )
+    -><span class="fn">withMiddleware</span>(<span class="kw">function</span> (<span class="cl">Middleware</span> <span class="cl">$middleware</span>) {
+        <span class="cm">// Append custom middleware to API group</span>
+        <span class="cl">$middleware</span>-><span class="fn">api</span>(append: [
+            <span class="cl">EnsureApiVersion</span>::class,
+            <span class="cl">ForceJsonResponse</span>::class,
+        ]);
+    })
+    -><span class="fn">withExceptions</span>(<span class="kw">function</span> (<span class="cl">Exceptions</span> <span class="cl">$exceptions</span>) {
+        <span class="cm">// Return JSON for all API routes automatically</span>
+        <span class="cl">$exceptions</span>-><span class="fn">shouldRenderJsonWhen</span>(
+            <span class="kw">fn</span> (<span class="cl">Request</span> <span class="cl">$r</span>) => <span class="cl">$r</span>-><span class="fn">is</span>(<span class="st">'api/*'</span>) || <span class="cl">$r</span>-><span class="fn">wantsJson</span>()
+        );
+    })
+    -><span class="fn">create</span>();</code></pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><span>App\Providers\AppServiceProvider.php</span> &mdash; Per-Second Rate Limiting (v11.0)</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Cache\RateLimiting\Limit</span>;
+<span class="kw">use</span> <span class="cl">Illuminate\Support\Facades\RateLimiter</span>;
+
+<span class="kw">public function</span> <span class="fn">boot</span>(): <span class="kw">void</span>
+{
+    <span class="cl">RateLimiter</span>::<span class="fn">for</span>(<span class="st">'api'</span>, <span class="kw">function</span> (<span class="cl">Request</span> <span class="cl">$request</span>) {
+        <span class="kw">return</span> [
+            <span class="cl">Limit</span>::<span class="fn">perSecond</span>(<span class="nu">10</span>),     <span class="cm">// Burst protection - NEW in v11</span>
+            <span class="cl">Limit</span>::<span class="fn">perMinute</span>(<span class="nu">200</span>)    <span class="cm">// Sustained throughput limit</span>
+                -><span class="fn">by</span>(<span class="cl">$request</span>-><span class="fn">user</span>()?->id ?: <span class="cl">$request</span>-><span class="fn">ip</span>()),
+        ];
+    });
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- V12.0 -->
+  <section class="section" id="v120">
+    <div class="section-header">
+      <div class="version-badge v12">v12.0</div>
+      <h2>Laravel 12.0 &mdash; Modern Starter Kits &amp; WorkOS Auth</h2>
+      <div class="release-date">February 2025</div>
+    </div>
+    <div class="callout">
+      <strong>Stability-Focused Release:</strong> Laravel 12 is intentionally a low-breaking-change release. Most applications can upgrade with zero code changes. The focus was on dependency upgrades and shipping new modern starter kits.
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">&#x1F3A8;</div>
+        <h3>New Starter Kits (React, Vue, Livewire)</h3>
+        <p>Completely rebuilt starter kits for React, Vue, and Livewire. Each ships with full authentication scaffolding and API integration out of the box, replacing Breeze and Jetstream as the recommended starting point.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F510;</div>
+        <h3>WorkOS AuthKit Integration</h3>
+        <p>Optional WorkOS variant of starter kits provides social authentication, passkeys, and enterprise SSO &mdash; a major upgrade for APIs requiring enterprise-grade auth without building it from scratch.</p>
+        <span class="tag new">New</span>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#x1F504;</div>
+        <h3>Breeze &amp; Jetstream Maintenance Mode</h3>
+        <p>Breeze and Jetstream enter maintenance-only status. All new feature development moved to the new starter kits. Existing projects using Breeze/Jetstream continue to work normally.</p>
+        <span class="tag changed">Changed</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- AUTH COMPARISON -->
+  <section class="section" id="auth-compare">
+    <div class="section-header">
+      <h2>Authentication: Choosing the Right Tool</h2>
+    </div>
+    <p style="color:var(--muted); margin-bottom: 20px;">Laravel's authentication landscape evolved from a single simple token guard to three distinct solutions, each with a clear purpose.</p>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature / Scenario</th>
+          <th>Token Guard (v5.x)</th>
+          <th>Laravel Passport</th>
+          <th>Laravel Sanctum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Introduced in</td><td>Laravel 5.2</td><td>Laravel 5.3</td><td>Laravel 7.0</td></tr>
+        <tr><td>OAuth2 Support</td><td class="no">No</td><td class="yes">Full OAuth2</td><td class="no">No</td></tr>
+        <tr><td>SPA Authentication</td><td class="no">No</td><td class="partial">Partial</td><td class="yes">Yes (cookie-based)</td></tr>
+        <tr><td>Mobile App Tokens</td><td class="partial">Basic only</td><td class="yes">Yes</td><td class="yes">Yes (recommended)</td></tr>
+        <tr><td>Token Scopes/Abilities</td><td class="no">No</td><td class="yes">Full scopes</td><td class="yes">Abilities</td></tr>
+        <tr><td>Token Revocation</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Refresh Tokens</td><td class="no">No</td><td class="yes">Yes</td><td class="no">No</td></tr>
+        <tr><td>Third-Party API Access</td><td class="no">No</td><td class="yes">Yes (via OAuth)</td><td class="no">Not intended</td></tr>
+        <tr><td>Setup Complexity</td><td>Very Simple</td><td>Complex (5+ DB tables)</td><td>Simple (1 DB table)</td></tr>
+        <tr><td>Best For</td><td>Simple internal tools</td><td>OAuth2 &amp; enterprise APIs</td><td>SPAs, mobile, first-party APIs</td></tr>
+      </tbody>
+    </table>
+    <div class="code-block">
+      <div class="code-header"><span>Decision Guide</span> &mdash; Which authentication to use?</div>
+      <pre><code><span class="cm">Does your API need to allow THIRD-PARTY apps to act on behalf of users?</span>
+    <span class="kw">YES</span> -> Use <span class="cl">Laravel Passport</span> (OAuth2 Authorization Code Grant)
+    <span class="kw">NO</span>  |
+
+<span class="cm">Is it a first-party SPA (Vue, React, Next.js) on same/subdomain?</span>
+    <span class="kw">YES</span> -> Use <span class="cl">Laravel Sanctum</span> (cookie-based session auth + CSRF)
+    <span class="kw">NO</span>  |
+
+<span class="cm">Is it a mobile app or API consumer needing long-lived tokens?</span>
+    <span class="kw">YES</span> -> Use <span class="cl">Laravel Sanctum</span> (personal access tokens)
+    <span class="kw">NO</span>  |
+
+<span class="cm">Simple internal tool with low security requirements?</span>
+    <span class="kw">YES</span> -> Token Guard works, but consider Sanctum anyway</code></pre>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- BEST PRACTICES -->
+  <section class="section" id="best-practices">
+    <div class="section-header">
+      <h2>Modern API Best Practices (Laravel 11+)</h2>
+    </div>
+    <p style="color:var(--muted); margin-bottom: 24px;">A reference for building production-grade APIs incorporating all patterns introduced across versions 5.8 through 12.</p>
+
+    <div class="code-block">
+      <div class="code-header"><span>App\Http\Resources\PostResource.php</span> &mdash; API Resources (best practice, all versions)</div>
+      <pre><code><span class="kw">namespace</span> <span class="cl">App\Http\Resources</span>;
+
+<span class="kw">use</span> <span class="cl">Illuminate\Http\Resources\Json\JsonResource</span>;
+
+<span class="kw">class</span> <span class="cl">PostResource</span> <span class="kw">extends</span> <span class="cl">JsonResource</span>
+{
+    <span class="kw">public function</span> <span class="fn">toArray</span>(<span class="cl">Request</span> <span class="cl">$request</span>): <span class="kw">array</span>
+    {
+        <span class="kw">return</span> [
+            <span class="st">'id'</span>         => <span class="cl">$this</span>->id,
+            <span class="st">'title'</span>      => <span class="cl">$this</span>->title,
+            <span class="st">'body'</span>       => <span class="cl">$this</span>->body,
+            <span class="st">'status'</span>     => <span class="cl">$this</span>->status->value, <span class="cm">// Enum serialization (v9+)</span>
+            <span class="st">'author'</span>     => <span class="kw">new</span> <span class="cl">UserResource</span>(<span class="cl">$this</span>-><span class="fn">whenLoaded</span>(<span class="st">'user'</span>)),
+            <span class="st">'tags'</span>       => <span class="cl">TagResource</span>::<span class="fn">collection</span>(<span class="cl">$this</span>-><span class="fn">whenLoaded</span>(<span class="st">'tags'</span>)),
+            <span class="st">'created_at'</span> => <span class="cl">$this</span>->created_at-><span class="fn">toISOString</span>(),
+            <span class="cm">// Conditionally include admin-only fields</span>
+            <span class="cl">$this</span>-><span class="fn">mergeWhen</span>(<span class="cl">$request</span>-><span class="fn">user</span>()?->is_admin, [
+                <span class="st">'internal_notes'</span> => <span class="cl">$this</span>->internal_notes,
+                <span class="st">'ip_address'</span>     => <span class="cl">$this</span>->author_ip,
+            ]),
+        ];
+    }
+}</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header"><span>App\Http\Controllers\Api\PostController.php</span> &mdash; Complete Modern API Controller</div>
+      <pre><code><span class="kw">namespace</span> <span class="cl">App\Http\Controllers\Api</span>;
+
+<span class="kw">use</span> <span class="cl">App\Http\Requests\StorePostRequest</span>;
+<span class="kw">use</span> <span class="cl">App\Http\Requests\UpdatePostRequest</span>;
+<span class="kw">use</span> <span class="cl">App\Http\Resources\PostResource</span>;
+<span class="kw">use</span> <span class="cl">App\Models\Post</span>;
+<span class="kw">use</span> <span class="cl">Illuminate\Http\Resources\Json\AnonymousResourceCollection</span>;
+
+<span class="kw">class</span> <span class="cl">PostController</span> <span class="kw">extends</span> <span class="cl">Controller</span>
+{
+    <span class="kw">public function</span> <span class="fn">index</span>(): <span class="cl">AnonymousResourceCollection</span>
+    {
+        <span class="cl">$posts</span> = <span class="cl">Post</span>::<span class="fn">with</span>([<span class="st">'user'</span>, <span class="st">'tags'</span>])    <span class="cm">// Eager load to avoid N+1</span>
+            -><span class="fn">latest</span>()
+            -><span class="fn">paginate</span>(<span class="nu">15</span>);                    <span class="cm">// Always paginate API lists</span>
+        <span class="kw">return</span> <span class="cl">PostResource</span>::<span class="fn">collection</span>(<span class="cl">$posts</span>);
+    }
+
+    <span class="kw">public function</span> <span class="fn">store</span>(<span class="cl">StorePostRequest</span> <span class="cl">$request</span>): <span class="cl">PostResource</span>
+    {
+        <span class="cm">// Form Request handles all validation</span>
+        <span class="cl">$post</span> = <span class="cl">$request</span>-><span class="fn">user</span>()->posts()-><span class="fn">create</span>(<span class="cl">$request</span>-><span class="fn">validated</span>());
+        <span class="kw">return</span> (<span class="kw">new</span> <span class="cl">PostResource</span>(<span class="cl">$post</span>))
+            -><span class="fn">response</span>()
+            -><span class="fn">setStatusCode</span>(<span class="nu">201</span>);             <span class="cm">// 201 Created</span>
+    }
+
+    <span class="kw">public function</span> <span class="fn">show</span>(<span class="cl">Post</span> <span class="cl">$post</span>): <span class="cl">PostResource</span>
+    {
+        <span class="kw">return</span> <span class="kw">new</span> <span class="cl">PostResource</span>(<span class="cl">$post</span>-><span class="fn">load</span>([<span class="st">'user'</span>, <span class="st">'tags'</span>]));
+    }
+
+    <span class="kw">public function</span> <span class="fn">update</span>(<span class="cl">UpdatePostRequest</span> <span class="cl">$request</span>, <span class="cl">Post</span> <span class="cl">$post</span>): <span class="cl">PostResource</span>
+    {
+        <span class="cl">$post</span>-><span class="fn">update</span>(<span class="cl">$request</span>-><span class="fn">validated</span>());
+        <span class="kw">return</span> <span class="kw">new</span> <span class="cl">PostResource</span>(<span class="cl">$post</span>-><span class="fn">fresh</span>([<span class="st">'user'</span>, <span class="st">'tags'</span>]));
+    }
+
+    <span class="kw">public function</span> <span class="fn">destroy</span>(<span class="cl">Post</span> <span class="cl">$post</span>): <span class="cl">\Illuminate\Http\Response</span>
+    {
+        <span class="cl">$this</span>-><span class="fn">authorize</span>(<span class="st">'delete'</span>, <span class="cl">$post</span>);     <span class="cm">// Policy authorization</span>
+        <span class="cl">$post</span>-><span class="fn">delete</span>();
+        <span class="kw">return</span> <span class="fn">response</span>()-><span class="fn">noContent</span>();       <span class="cm">// 204 No Content</span>
+    }
+}</code></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header"><span>routes/api.php</span> &mdash; API Versioning Best Practice</div>
+      <pre><code><span class="kw">use</span> <span class="cl">Illuminate\Support\Facades\Route</span>;
+
+<span class="cm">// Version 1 API</span>
+<span class="cl">Route</span>::<span class="fn">prefix</span>(<span class="st">'v1'</span>)-><span class="fn">name</span>(<span class="st">'v1.'</span>)->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">middleware</span>(<span class="st">'auth:sanctum'</span>)->group(<span class="kw">function</span> () {
+        <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'posts'</span>,    <span class="cl">V1\PostController</span>::class);
+        <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'comments'</span>, <span class="cl">V1\CommentController</span>::class);
+    });
+    <span class="cm">// Public routes (no auth)</span>
+    <span class="cl">Route</span>::<span class="fn">get</span>(<span class="st">'posts'</span>, [<span class="cl">V1\PostController</span>::class, <span class="st">'index'</span>]);
+});
+
+<span class="cm">// Version 2 API (new features)</span>
+<span class="cl">Route</span>::<span class="fn">prefix</span>(<span class="st">'v2'</span>)-><span class="fn">name</span>(<span class="st">'v2.'</span>)->group(<span class="kw">function</span> () {
+    <span class="cl">Route</span>::<span class="fn">middleware</span>(<span class="st">'auth:sanctum'</span>)->group(<span class="kw">function</span> () {
+        <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'posts'</span>,    <span class="cl">V2\PostController</span>::class);
+        <span class="cl">Route</span>::<span class="fn">apiResource</span>(<span class="st">'reactions'</span>, <span class="cl">V2\ReactionController</span>::class);
+    });
+});</code></pre>
+    </div>
+
+    <div class="quick-ref">
+      <h3>Quick Reference: Feature Availability by Version</h3>
+      <table class="compare-table" style="margin:0;">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>5.8</th><th>6.0</th><th>7.0</th><th>8.0</th><th>9.0</th><th>10.0</th><th>11.0</th><th>12.0</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>API Resources</td>
+            <td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Laravel Sanctum</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Http:: Client Facade</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Dynamic Rate Limiting</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Enum Route Binding</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Scoped Route Bindings</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Feature Flags (Pennant)</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Per-Second Rate Limit</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>Opt-In API Routing</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td><td class="yes">&#x2713;</td>
+          </tr>
+          <tr>
+            <td>WorkOS / Passkey Auth</td>
+            <td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="no">&#x2715;</td><td class="yes">&#x2713;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>Laravel API Evolution Documentation &bull; Compiled February 2026</p>
+  <p style="margin-top:6px;">Covers Laravel v5.8 through v12.0 &bull; Based on <a href="https://laravel.com/docs" target="_blank">official Laravel documentation</a></p>
+</footer>
+
+</body>
+</html>

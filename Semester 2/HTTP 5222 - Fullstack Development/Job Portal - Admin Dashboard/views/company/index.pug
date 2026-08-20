@@ -1,0 +1,26 @@
+extends ../common/layout 
+
+block layout-content
+    div.row
+        h1 Companies List
+        table
+            thead
+                tr
+                    th(scope="col") #
+                    th(scope="col") Logo
+                    th(scope="col") Name
+                    th(scope="col") Description
+                    th(scope="col") Edit
+                    th(scope="col") Delete
+
+            tbody
+                each company,index in companies
+                    //- div #{company.name}
+                    tr
+                        th(scope="row") #{index+1}
+                        td
+                            img(src="/assets/img/logo/" + company.logo, alt=company.name,height="60")
+                        td #{company.name}
+                        td #{company.description}
+                        td <i class="fa-solid fa-pen-to-square text-primary"></i>
+                        td <i class="fa-solid fa-trash-can text-danger"></i>

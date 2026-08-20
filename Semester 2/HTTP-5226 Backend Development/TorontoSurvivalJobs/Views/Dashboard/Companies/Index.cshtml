@@ -1,0 +1,74 @@
+@model IEnumerable<TorontoSurvivalJobs.Models.Company>
+
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<h1>Companies</h1>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<p>
+    <a asp-action="Create"
+       class="btn btn-primary">
+        Add Company
+    </a>
+</p>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Jobs</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var company in Model)
+        {
+            <tr>
+                <td>
+                    @company.Name
+                </td>
+
+                <td>
+                    @company.Location
+                </td>
+
+                <td>
+                    @company.Jobs.Count
+                </td>
+
+                <td>
+                    <a asp-action="Details"
+                       asp-route-id="@company.CompanyId">
+                        Details
+                    </a>
+
+                    <span> | </span>
+
+                    <a asp-action="Edit"
+                       asp-route-id="@company.CompanyId">
+                        Edit
+                    </a>
+
+                    <span> | </span>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@company.CompanyId">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

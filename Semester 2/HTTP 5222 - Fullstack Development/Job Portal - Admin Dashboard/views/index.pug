@@ -1,0 +1,26 @@
+extends common/layout 
+block layout-content
+    section.home_job_list
+        div.home_job_list_wrapper.common_padding
+            h5 Recent Posted Jobs
+            div.job_card_section#jobs_wrapper
+                each job in jobs
+                    a(
+                        href="/jobs/" + job.id
+                        style="color:inherit"
+                    )
+                        .job_card
+                            i.fa-regular.fa-star.icon
+                            .logo
+                                img(
+                                    src="/assets/img/logo/" + job.logo
+                                    alt=job.company
+                                )
+                            .job_details
+                                h3= job.role
+                                h4.company= job.company
+                                .location_type
+                                    span.badge= job.location
+                                    span.badge1= job.type
+                                    p.description= job.description
+                                    p.ago= job.postedƒ

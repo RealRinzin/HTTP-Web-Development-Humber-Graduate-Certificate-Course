@@ -1,0 +1,247 @@
+/* ── Reset & Base ─────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+header {
+  background: linear-gradient(135deg, #1a365d, #2b6cb0);
+  color: #fff;
+  padding: 40px 20px 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* ── Filter Bar ───────────────────────────────────────── */
+.filter-bar {
+  background: #fff;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-bar label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.filter-bar select {
+  padding: 8px 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #f7fafc;
+  cursor: pointer;
+}
+
+.filter-bar a {
+  padding: 8px 16px;
+  background: #2b6cb0;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.filter-bar a:hover {
+  background: #1a365d;
+}
+
+/* ── Main Layout ──────────────────────────────────────── */
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px 40px;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 18px;
+}
+
+/* ── Job Cards Grid ───────────────────────────────────── */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.job-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border-top: 4px solid #2b6cb0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Card colour accents by category */
+.job-card[data-category="Pet Care"] {
+  border-top-color: #48bb78;
+}
+.job-card[data-category="Child Care"] {
+  border-top-color: #ed8936;
+}
+.job-card[data-category="Creative"] {
+  border-top-color: #9f7aea;
+}
+.job-card[data-category="Delivery"] {
+  border-top-color: #f6ad55;
+}
+.job-card[data-category="Cleaning"] {
+  border-top-color: #4fd1c5;
+}
+.job-card[data-category="Education"] {
+  border-top-color: #fc8181;
+}
+.job-card[data-category="Transport"] {
+  border-top-color: #63b3ed;
+}
+.job-card[data-category="Outdoor"] {
+  border-top-color: #68d391;
+}
+.job-card[data-category="Hospitality"] {
+  border-top-color: #f687b3;
+}
+.job-card[data-category="Admin"] {
+  border-top-color: #667eea;
+}
+.job-card[data-category="Labour"] {
+  border-top-color: #e53e3e;
+}
+.job-card[data-category="Trades"] {
+  border-top-color: #d69e2e;
+}
+.job-card[data-category="Customer Service"] {
+  border-top-color: #38b2ac;
+}
+
+.job-card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.badge-category {
+  background: #ebf4ff;
+  color: #2b6cb0;
+}
+
+.badge-remote {
+  background: #f0fff4;
+  color: #276749;
+}
+
+.badge-onsite {
+  background: #fff5f5;
+  color: #c53030;
+}
+
+.badge-beginner {
+  background: #fefcbf;
+  color: #744210;
+}
+
+.badge-intermediate {
+  background: #faf5ff;
+  color: #553c9a;
+}
+
+.job-rate {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #276749;
+}
+
+.job-rate span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #718096;
+}
+
+.job-description {
+  font-size: 0.88rem;
+  color: #4a5568;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+.job-date {
+  font-size: 0.78rem;
+  color: #a0aec0;
+  border-top: 1px solid #edf2f7;
+  padding-top: 8px;
+}
+
+/* ── No Results ───────────────────────────────────────── */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a0aec0;
+  font-size: 1.1rem;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #a0aec0;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+}

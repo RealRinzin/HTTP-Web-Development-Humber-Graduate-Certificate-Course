@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en-ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab: ARIA</title>
+    <style>
+      img {
+        padding: 0 15px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        margin-bottom: 0;
+      }
+      p {
+        margin-top: 0;
+      }
+      #menu {
+        display: none;
+      }
+      #confirm {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img src="http5221-logo.png" width="75" alt="HTTP-5221 logo" />
+        Coding for Accessibility
+        <img src="checkmark.png" alt="" />
+      </h1>
+      <nav>
+        <button
+          id="hamburger"
+          aria-label="Open Navigation menu"
+          aria-controls="menu"
+          aria-expanded="false"
+        >
+          &#8801;
+        </button>
+        <ul id="menu" role="navigation" aria-hidden="true">
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#signup">Find Out More!</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2 id="intro">Accessibility</h2>
+      <p>
+        The intention of the Internet is to provide access to resources. Web
+        accessibility is the measure of how effectively all people, including
+        those with disabilities, are able to access and use electronic
+        information.
+      </p>
+      <p>
+        <q
+          >The power of the Web is in its universality. Access by everyone
+          regardless of disability is an essential aspect.</q
+        >&mdash; Sir Tim Berners Lee (inventor of the Internet)
+      </p>
+
+      <section>
+        <h3 id="resources">Our Responsibility</h3>
+        <p>
+          For web developers, accessibility should not be an afterthought or
+          something applied when the primary coding has been completed, it needs
+          to be baked in to every line of code from the beginning.
+        </p>
+
+        <p>
+          Fortunately, we have numerous tools at our disposal to help us find
+          potential usability issues. One such tool is the
+          <a
+            href="https://developer.chrome.com/docs/lighthouse/accessibility/scoring"
+            target="_blank"
+            >Lighthouse tool</a
+          >
+          embeded in Google Chrome &ldquo;Dev&rdquo; Tools. You can have this
+          tool generate an accessibility report.
+        </p>
+
+        <p>
+          The Web Accessibility Evaluation Tool (<a
+            href="https://wave.webaim.org/"
+            target="_blank"
+            >WebAIM</a
+          >) is another useful resource for our toolbox.
+        </p>
+        <figure>
+          <img
+            src="WAVE-tool-screenshot.png"
+            width="400"
+            alt="A screenshot of the WAVE Web Accessibility Evaluation Tool displaying results of an accessibility assessment."
+          />
+          <figcaption>Fig.1 &mdash; The WAVE tool in action.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h3 id="confirm" role="alert" aria-hidden="true">
+          Thank you, your request has been sent.
+        </h3>
+        <h3 id="signup">Want to Learn More?</h3>
+        <form action="#" method="POST">
+          <fieldset>
+            <legend>Sign Up For Our Newsletter</legend>
+
+            <p>
+              <label for="form__name">Name: *</label>
+              <input id="form__name" type="text" required autocomplete="name" />
+            </p>
+            <p>
+              <label for="form__email">Email: *</label>
+              <input
+                id="form__email"
+                type="email"
+                required
+                autocomplete="email"
+              />
+            </p>
+            <p>
+              <button type="submit" aria-label="Submit newsletter signup form">
+                Join Us!
+              </button>
+            </p>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2026. ARIA Lab Original design by Andrei Navumau; modified
+        version by Sean Doyle. All rights reserved.
+      </p>
+    </footer>
+    <script>
+      //Get Elements
+      const menuBtn = document.getElementById("hamburger");
+      const emailform = document.forms[0];
+      const navList = document.getElementById("menu");
+      const output = document.getElementById("confirm");
+      //Logic variable
+      var menuVisable = false;
+
+      //Show/hide menu
+      function toggleMenu() {
+        if (menuVisable === false) {
+          navList.style.display = "block";
+          navList.setAttribute("aria-hidden", "false");
+          menuBtn.setAttribute("aria-expanded", "true");
+          menuVisable = true;
+        } else {
+          navList.style.display = "none";
+          navList.setAttribute("aria-hidden", "true");
+          menuBtn.setAttribute("aria-expanded", "false");
+          menuVisable = false;
+        }
+      }
+      //Handle form submission
+      function processForm() {
+        emailform.style.display = "none";
+        emailform.setAttribute("aria-hidden","true");
+        output.style.display = "block";
+        output.setAttribute("aria-hidden", "false");
+        return false;
+      }
+
+      //Set listeners
+      menuBtn.onclick = toggleMenu;
+      emailform.onsubmit = processForm;
+    </script>
+  </body>
+</html>

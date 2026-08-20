@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h2 Companies
+
+  form.add-form(action="/companies" method="POST")
+    label(for="name") Name
+    input(type="text" id="name" name="name" required)
+
+    label(for="description") Description
+    textarea(id="description" name="description" required)
+
+    button(type="submit") Add Company
+
+  h3 All Companies
+  table
+    thead
+      tr
+        th Name
+        th Description
+        th
+    tbody
+      each company in companies
+        tr
+          td= company.name
+          td= company.description
+          td
+            form(action=`/companies/${company._id}/delete` method="POST")
+              button.delete-btn(type="submit") Delete

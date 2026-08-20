@@ -1,0 +1,7 @@
+header#header 
+  h2.site-name 
+    a(href="/") My Express App 
+  nav#main-nav 
+    ul.menu 
+      each link in menu 
+        li: a(href=link.path) #{link.name}

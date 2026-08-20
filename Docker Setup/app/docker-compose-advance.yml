@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"  # Access via localhost:8080
+    volumes:
+      - ./backend:/var/www/backend
+      - ./frontend:/var/www/frontend
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      - node
+
+  php:
+    image: php:8.2-fpm
+    volumes:
+      - ./backend:/var/www/backend
+
+  node:
+    image: node:18
+    working_dir: /var/www/frontend
+    volumes:
+      - ./frontend:/var/www/frontend
+    command: ["npm", "start"]
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"

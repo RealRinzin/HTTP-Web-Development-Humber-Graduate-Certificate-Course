@@ -1,0 +1,10 @@
+extends layout 
+
+block main-content 
+  h1.bg-red-100 Trending movies
+  h2: a(href=`/trending_shows`) Trending Shows
+  each m in movies 
+    h2 #{m.movie.title} 
+    p Year released: #{m.movie.year} 
+    div: a(href=`/movie/${m.movie.ids.slug}/studios`) View movie studios
+    img(src=`//${m.movie.images.poster[0]}`, height="250")

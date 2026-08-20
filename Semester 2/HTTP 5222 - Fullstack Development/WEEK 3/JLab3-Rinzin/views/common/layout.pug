@@ -1,0 +1,15 @@
+doctype html 
+html(lang="en")
+  //This is an HTML comment
+  //-This is a Pug-only comment
+  head 
+    meta(charset="utf-8")
+    title #{title} | My Express App
+    link(rel="stylesheet", href="/css/styles.css")
+    block scripts 
+      script(async, defer, src="/js/common.js")
+  body
+    include includes/header.pug
+    block layout-content
+    footer#footer 
+      div(id=title) &copy; Copyright HTTP5222, 2026.

@@ -1,0 +1,35 @@
+@model Client
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="w-25 p-3 mx-auto shadow-md">
+            <h5 class="fs-2">Add New Client</h1>
+
+    <form asp-action="AddNew" method="post">
+        <div class="mb-3">
+            <label asp-for="name" class="form-label">Name</label>
+            <input asp-for="name" class="form-control" data-val="true" data-val-required="Name is required"
+                   data-val-email="Invalid Name" />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="email" class="form-label">Email</label>
+            <input asp-for="email" class="form-control" asp-type="email"/>
+            <span asp-validation-for="email" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="phone" class="form-label" >Phone</label>
+            <input asp-for="phone" class="form-control"/>
+            <span asp-validation-for="phone" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="address" class="form-label">Address</label>
+            <input asp-for="address" class="form-control" />
+            <span asp-validation-for="address" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Client</button>
+    </form>
+
+</div>

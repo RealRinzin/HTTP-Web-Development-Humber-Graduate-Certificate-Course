@@ -1,0 +1,17 @@
+extends layout
+
+block main-content
+  -
+    let libName = library.querySelector("name").textContent;
+    let libAddress = library.querySelector("address").textContent;
+    let libPhone = library.querySelector("phoneNumber").textContent;
+    let coordinates = library.querySelector("coordinates").textContent;
+  h1 #{libName}
+  p Address: #{libAddress}
+  p Contact: #{libPhone}
+
+  h2 Location
+  p
+    The coordinates for the #{libName} is #{coordinates}
+  p
+    a(href="/") < Home

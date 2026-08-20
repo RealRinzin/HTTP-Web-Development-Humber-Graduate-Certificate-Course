@@ -1,0 +1,13 @@
+doctype html
+html
+head
+    title= title
+    //- link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css")
+    link(rel="stylesheet" href="../assets/css/main.min.css")
+    link(rel="stylesheet" href="../assets/css/table.css")
+body
+    include includes/header.pug
+    main   
+        block layout-content
+    include includes/footer.pug
+    script(src="https://kit.fontawesome.com/f15d50a24d.js" crossorigin="anonymous")

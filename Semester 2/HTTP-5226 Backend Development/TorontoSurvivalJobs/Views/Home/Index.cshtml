@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Main Content Container -->
+<main class="max-w-3xl mx-auto w-full px-6 py-10 flex-1 space-y-16">
+
+    <!-- Hero Section -->
+    <section class="text-center space-y-6">
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
+            First Survive...<br />
+            <span class="text-[#527863]">Then Thrive...</span>
+        </h1>
+        <p class="max-w-lg mx-auto text-gray-500 text-xs font-medium sm:text-sm leading-relaxed">
+            For students, newcomers, and youth — wherever you're starting from.
+        </p>
+
+        <!-- Search Bar Form -->
+        <form method="get" asp-controller="Jobs" asp-action="Search"
+              class="max-w-xl mx-auto bg-white p-1.5 rounded-full shadow-sm border border-gray-200/80 flex items-center justify-between text-xs">
+            <div class="flex items-center space-x-2 w-full divide-x divide-gray-200">
+                <!-- What Input -->
+                <div class="flex items-center space-x-2 px-4 w-1/2">
+                    <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-gray-400">WHAT</span>
+                    <input type="text" name="query" placeholder="Job title or keyword"
+                           class="w-full bg-transparent focus:outline-none text-gray-800 placeholder-gray-400 text-xs" />
+                </div>
+                <!-- Where Input -->
+                <div class="flex items-center space-x-2 px-4 w-1/2">
+                    <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-gray-400">WHERE</span>
+                    <input type="text" name="location" placeholder="Remote or City"
+                           class="w-full bg-transparent focus:outline-none text-gray-800 placeholder-gray-400 text-xs" />
+                </div>
+            </div>
+            <button type="submit"
+                    class="bg-[#527863] text-white px-6 py-2.5 rounded-full font-medium text-xs hover:bg-[#436451] transition shrink-0">
+                Search
+            </button>
+        </form>
+
+        <!-- Trending Keywords -->
+        <div
+            class="flex items-center justify-center space-x-2 text-[10px] font-mono tracking-wider text-gray-400 uppercase">
+            <span>TRENDING:</span>
+            @foreach (var category in ((IEnumerable<Category>)ViewBag.Categories).Take(3))
+            {
+
+                <a href="/categories" class="hover:text-gray-700 font-semibold transition uppercase">@category.Name</a>
+                <span>/</span>
+            }
+
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="space-y-4">
+        <div class="flex items-center justify-between">
+            <h2 class="text-md font-bold text-gray-900">Featured Categories</h2>
+            <a href="/categories" class="text-xs font-medium text-gray-500 hover:text-gray-900 transition">Browse
+                all</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach (var category in ((IEnumerable<Category>)ViewBag.Categories).Take(3))
+                {
+                    <!-- Category 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                        <h3 class="text-sm font-bold text-gray-900 mt-2">@category.Name</h3>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Total Jobs @category.Jobs.Count</p>
+                    </div>
+                }
+            </div>
+        </section>
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-md font-bold text-gray-900">Featured Locations</h2>
+                <a href="/location" class="text-xs font-medium text-gray-500 hover:text-gray-900 transition">Browse
+                    all</a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    @foreach (var location in ((IEnumerable<Location>)ViewBag.Locations).Take(3))
+                    {
+                        <!-- Category 1 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <h3 class="text-sm font-bold text-gray-900 mt-2">@location.Name</h3>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Total Jobs @location.Jobs.Count</p>
+                        </div>
+                    }
+                </div>
+            </section>
+            <section class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-md font-bold text-gray-900">Featured Companies</h2>
+                    <a href="/companies" class="text-xs font-medium text-gray-500 hover:text-gray-900 transition">Browse all</a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    @foreach (var company in ((IEnumerable<Company>)ViewBag.Companies).Take(3))
+                    {
+                        <!-- Category 1 -->
+                        <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <h3 class="text-sm font-bold text-gray-900 mt-2">@company.Name</h3>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Total Jobs @company.Jobs.Count</p>
+                        </div>
+                    }
+                </div>
+            </section>
+            <!-- Recent Openings -->
+            <section class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-bold text-gray-900">Recent Openings</h2>
+                    <div class="flex items-center space-x-1.5 text-[10px] font-mono tracking-wider text-gray-400 uppercase">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        <span>UPDATED 2M AGO</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <!-- Job Card 1 -->
+                    @foreach (var job in ViewBag.Jobs)
+                    {
+                        <div
+                            class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md transition my-8">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-[10px] font-bold text-gray-400 uppercase tracking-widest shrink-0">
+                                    <img src="@job.Company.Logo" alt="logo">
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-700">
+                                        <a href="/jobs/details/@job.JobId">
+                                            @job.Title
+                                        </a>
+                                    </h3>
+                                    <p class="text-md font-medium text-gray-600 mt-0.5">@job.Company?.Name</p>
+                                    <p class="text-xs font-medium text-gray-500 mt-0.5">@job.Location?.Name</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span
+                                class="bg-[#EBF4EC] text-[#2D6A4F] text-[9px] font-bold tracking-wider px-2.5 py-1 rounded-full uppercase">@job.JobType</span>
+                            </div>
+                        </div>
+
+                    }
+                    <!-- View All Button -->
+                    <button
+                        class="w-full border border-gray-200 bg-transparent text-gray-800 text-xs font-semibold py-3 rounded-full hover:bg-white/50 transition mt-2">
+                        View all 2,400+ jobs
+                    </button>
+                </section>
+
+            </main>

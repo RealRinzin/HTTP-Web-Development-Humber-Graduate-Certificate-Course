@@ -1,0 +1,12 @@
+extends layout 
+
+block main-content 
+  h1.page-title Show 
+  img(src=`//${show.images.poster[0]}`, height="250")
+  ul
+    li #{show.title}
+    li #{show.year}
+    li #{show.tagline}
+    li #{show.runtime}
+    li #{show.rating}
+    li: a(href=`https://www.imdb.com/title/${show.ids.imdb}`) IMDB Link 

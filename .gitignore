@@ -1,0 +1,24 @@
+# Build output / dependencies (matches recursively everywhere)
+bin/
+obj/
+node_modules/
+vendor/
+
+# Build output (Next.js/frontend projects)
+.next/
+dist/
+build/
+out/
+
+# Env files (you only cover env.php — miss .NET/Node ones)
+.env
+.env.local
+appsettings.Development.json
+
+# OS/IDE cruft
+.DS_Store
+.vs/
+.vscode/
+
+# Environment configuration
+env.php

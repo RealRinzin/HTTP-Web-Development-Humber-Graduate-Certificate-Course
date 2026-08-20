@@ -1,0 +1,83 @@
+@model TorontoSurvivalJobs.Models.Company
+
+@{
+    ViewData["Title"] = "Company Details";
+}
+
+<h1>Company Details</h1>
+
+<div class="card">
+    <div class="card-body">
+
+        <h2>@Model.Name</h2>
+
+        <p>
+            <strong>Location:</strong>
+            @Model.Location
+        </p>
+
+        @if (!string.IsNullOrEmpty(Model.Website))
+        {
+            <p>
+                <strong>Website:</strong>
+                @Model.Website
+            </p>
+        }
+
+        <hr />
+
+        <h4>Jobs from this company</h4>
+
+        @if (Model.Jobs.Any())
+        {
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Job Type</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var job in Model.Jobs)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Jobs"
+                                   asp-action="Details"
+                                   asp-route-id="@job.JobId">
+                                    @job.Title
+                                </a>
+                            </td>
+
+                            <td>
+                                @job.Location
+                            </td>
+
+                            <td>
+                                @job.JobType
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <p>
+                No jobs are currently associated with this company.
+            </p>
+        }
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back to Companies
+        </a>
+
+    </div>
+</div>

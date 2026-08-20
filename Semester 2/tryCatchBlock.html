@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try Catch Finally Block - JS</title>
+  </head>
+  <body>
+    <div>
+      <h1>Try Catch Finally Block</h1>
+      <span id="loading"></span>
+      <p id="error-message"></p>
+      <ul id="user-list" style="list-style: none"></ul>
+    </div>
+    <script>
+      // Define a function to fetch user data
+      const errorMessage = document.getElementById("error-message");
+      const loadingMessage = document.getElementById("loading");
+      let loading = false;
+
+      /**
+       * Asynchronous function to fetch user data
+       */ 
+      async function getUsers() {
+        loading = true;
+        loadingMessage.textContent = "Loading..."; // Show loading message while fetching data
+        try {
+          // fetch("https://jsonplaceholder.typicode.com/users")
+          const res = await fetch("https://dummyjson.com/users");
+          // If the response is not successful, throw an error to be caught in the catch block
+          if (!res.ok) {
+            console.error(res.status); // log the error message for the status error code
+            // throw new Error(`HTTP error! Status: ${res.status}`); // Throw an error with the status code to be caught in the catch block
+            throw new Error(
+              `Currently there is a server issue. Come back later.`,
+            ); // Throw an error with the status code to be caught in the catch block
+          }
+
+          // Check if the response is successful (status code 200-299)
+          const data = await res.json(); // Parse the response as JSON
+          // Process the data (e.g., log user IDs)
+          data.users.map((user) => {
+            const li = document.createElement("li");
+            li.style.padding = "3px";
+            li.textContent = user.firstName + " " + user.lastName;
+            document.getElementById("user-list").appendChild(li);
+            // console.log(user.id);
+          });
+          console.log("Try succese");
+        } catch (error) {
+          // Catch any errors that occur in the try block
+          console.log("Error");
+          errorMessage.textContent = error.message;
+          console.error("Fetch failed:", error.message);
+          // Handle the error (e.g., show an error message to the user)
+        } finally {
+          // This block will execute regardless of whether an error occurred or not
+          console.log("Finally");
+          loadingMessage.textContent = ""; // Hide loading message
+          loading = false;
+        }
+      }
+      // Call the function to fetch users when the page loads
+      getUsers();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+@model BookingApp.Models.Appointment
+
+@{
+    ViewData["Title"] = "Edit Appointment";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Edit Appointment</h2>
+
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+    <form asp-action="Update" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="ClientId" class="form-label">Client</label>
+            <select asp-for="ClientId" class="form-select" asp-items="ViewBag.Clients">
+                <option value="">-- Select Client --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ServiceId" class="form-label">Service</label>
+            <select asp-for="ServiceId" class="form-select" asp-items="ViewBag.Services">
+                <option value="">-- Select Service --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date</label>
+            <input asp-for="Date" type="date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Time" class="form-label">Time</label>
+            <input asp-for="Time" type="time" class="form-control" value="@Model.Time.ToString(@"hh\:mm")" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

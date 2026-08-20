@@ -1,0 +1,33 @@
+@model Service
+
+
+<div class="w-25 p-3 mx-auto shadow-md">
+            <h5 class="fs-2">Add Service</h1>
+
+    <form asp-action="AddNew" method="post">
+        <div class="mb-3">
+            <label asp-for="name" class="form-label">Name</label>
+            <input asp-for="name" class="form-control" data-val="true" data-val-required="Name is required"
+                   data-val-email="Invalid Name"
+                   placeholder="Service Name"
+                    />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="price" class="form-label">Price</label>
+            <input asp-for="price" type="number" class="form-control" data-val="true"
+                   data-val-required="Price is required" data-val-email="Invalid Price" 
+                   placeholder="Price"/>
+            <span asp-validation-for="description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="description" class="form-label">Description</label>
+            <textarea asp-for="description" class="form-control" data-val="true"
+                data-val-required="Description is required" data-val-email="Invalid Description"
+                placeholder="Description about the service">
+            </textarea>
+            <span asp-validation-for="description" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Service</button>
+    </form>
+</div>

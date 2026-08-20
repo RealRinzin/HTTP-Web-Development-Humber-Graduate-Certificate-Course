@@ -1,0 +1,7 @@
+mixin CountryCard(country)
+    .rounded-md.bg-gray-100.p-4.shadow-md.my-2
+        .flex.gap-4
+            img(src=country.flag.url_png alt="" height="40" width="45")
+            h1.text-xl.font-bold.text-gray-700=country.names.official
+        .flex.gap-4
+            p.text-gray-600.font-medium=country.region

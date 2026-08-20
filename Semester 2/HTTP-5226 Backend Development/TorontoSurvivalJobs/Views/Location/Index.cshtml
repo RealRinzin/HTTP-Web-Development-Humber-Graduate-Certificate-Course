@@ -1,0 +1,30 @@
+@model IEnumerable<TorontoSurvivalJobs.Models.Location>
+
+@{
+    ViewData["Title"] = "Toronto Jobs";
+}
+<div class="w-full md:w-1/2 lg:w-1/2 mx-auto  ">
+    @if (TempData["ScrapeMessage"] != null)
+    {
+        <div class="alert alert-success bg-[#EBF4EC] text-[#2D6A4F] w-fit px-4 py-1">
+            @TempData["ScrapeMessage"]
+        </div>
+    }
+    @foreach (var locations in Model)
+    {
+        <div
+            class="bg-white p-4 sm:p-5 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md transition my-8">
+            <div class="flex items-center space-x-4">
+                <div
+                    class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-[10px] font-bold text-gray-400 uppercase tracking-widest shrink-0">
+                </div>
+                <div>
+                    <h3 class="text-sm font-bold text-gray-900">
+                            @locations.Name
+                    </h3>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>

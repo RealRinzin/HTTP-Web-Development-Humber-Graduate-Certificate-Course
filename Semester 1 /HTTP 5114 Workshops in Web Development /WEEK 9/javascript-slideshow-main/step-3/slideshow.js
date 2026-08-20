@@ -1,0 +1,2 @@
+
+var current = 0;

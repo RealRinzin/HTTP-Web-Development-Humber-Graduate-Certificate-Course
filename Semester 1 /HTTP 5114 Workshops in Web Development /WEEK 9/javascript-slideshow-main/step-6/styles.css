@@ -1,0 +1,15 @@
+
+#slideshow {
+    position: relative;
+    width: 800px;
+    height: 400px;
+}
+.slide {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    display: none;
+}
+.slide:first-child {
+    display: inline-block;
+}

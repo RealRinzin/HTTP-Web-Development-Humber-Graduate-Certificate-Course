@@ -1,0 +1,20 @@
+extends common/layout 
+
+block layout-content
+    div
+        p #{link._id}
+    form(method="post", action="/admin/menu/edit/submit")
+      input(type="hidden", name="linkId", value=link._id)
+      //-weight
+      div 
+        label(for="wgt") Weight: 
+        input(type="number", id="wgt", value=link.weight name="weight", placeholder="1")
+      //-path
+      div 
+        label(for="href") Link URI: 
+        input(type="text", id="href", name="path", value=link.path placeholder="e.g. /about")
+      //-name
+      div 
+        label(for="link-name") Link text: 
+        input(type="text", id="link-name", name="name", value=link.name placeholder="e.g. About")
+      button(type="submit") Update
